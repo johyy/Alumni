@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { LoginPage } from './pages/login/login.page';
 import { TimelinePage } from './pages/timeline/timeline.page';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPage,
     TimelinePage,
-    NavbarComponent
+    NavbarComponent,
+    CalendarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
