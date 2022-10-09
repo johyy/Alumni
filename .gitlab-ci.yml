@@ -1,0 +1,19 @@
+image: node:latest
+
+cache:
+    paths:
+        - node_modules/
+
+stages:
+    - build
+
+build-job:
+    stage: build
+    rules:
+        - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+          when: always
+        - if: $CI_PIPELINE_SOURCE == "push"
+          when: always
+    script:
+        - npm ci
+        - npm run build
