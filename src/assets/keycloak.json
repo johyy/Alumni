@@ -1,0 +1,8 @@
+{
+    "realm": "alumni",
+    "auth-server-url": "https://keycloak-a.herokuapp.com/auth/",
+    "ssl-required": "external",
+    "resource": "angular-client",
+    "public-client": true,
+    "confidential-port": 0
+  }
