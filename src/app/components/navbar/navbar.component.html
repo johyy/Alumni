@@ -1,6 +1,6 @@
 <nav class="navbar">
     <span class="header">ALUMNI</span>
-    <ul class="buttons">
+    <ul class="buttons logged-in" *ngIf="this.auth.isAuthenticated()">
         <li>
             <a id="profile_button" routerLink="/profile">Profile</a>
         </li>
@@ -16,7 +16,15 @@
             </ul>
         </li>
         <li>
-            <a id="logout_button">Log out</a>
+            <a id="logout_button" (click)="this.auth.logout()">Log out</a>
+        </li>
+    </ul>
+    <ul class="buttons logged-out" *ngIf="!this.auth.isAuthenticated()">
+        <li>
+            <a id="login_button" (click)="this.auth.login()">Log in</a>
+        </li>
+        <li>
+            <a id="register_button" (click)="this.auth.register()">Register</a>
         </li>
     </ul>
 </nav>
