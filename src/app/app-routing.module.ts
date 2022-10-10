@@ -31,6 +31,7 @@ const routes: Routes = [
     path: "groups",
     component: GroupsListComponent,
     canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

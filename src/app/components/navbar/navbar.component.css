@@ -50,54 +50,6 @@ a:active {
     text-decoration: none;
 }
 
-#logout_button {
-    position: relative;
-    left: 750px;
-    color: #FFFFFF;
-    background-color: #949494;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#timeline_button {
-    position: relative;
-    left: 600px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#calendar_button {
-    position: relative;
-    left: 440px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#profile_button {
-    position: relative;
-    left: 310px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
 ul ul {
 	display: none;
 	position: absolute; 
@@ -126,7 +78,7 @@ li > a:only-child:after { content: ''; }
 
 #logout_button {
     position: relative;
-    left: 720px;
+    left: 750px;
     color: #FFFFFF;
     background-color: #949494;
     border: 2px solid #949494;
