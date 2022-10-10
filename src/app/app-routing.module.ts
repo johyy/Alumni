@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { LoginPage } from './pages/login/login.page';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -12,15 +13,18 @@ const routes: Routes = [
   },
   {
     path: "timeline",
-    component: TimelinePage
+    component: TimelinePage,
+    canActivate: [AuthGuard]
   },
   {
     path: "calendar",
-    component: CalendarComponent
+    component: CalendarComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "profile",
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
