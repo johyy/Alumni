@@ -63,14 +63,6 @@ ul li:hover > ul {
 ul ul li {
 	float:none;
 	display:list-item;
-	position: absolute;
-    left: 608px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-
 }
 
 li > a:after { content:  ' ⇩'; }
@@ -88,7 +80,7 @@ li > a:only-child:after { content: ''; }
     padding-right: 20px;
 }
 
-#timeline_button {
+#menu_button {
     position: relative;
     left: 600px;
     border: 2px solid #949494;
