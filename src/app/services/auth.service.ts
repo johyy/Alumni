@@ -9,7 +9,6 @@ export class AuthService {
   constructor() { }
 
   isAuthenticated() {
-    console.log(keycloak.authenticated);
     return keycloak.authenticated;
   }
 
@@ -19,9 +18,5 @@ export class AuthService {
 
   logout() {
     keycloak.logout();
-  }
-
-  register() {
-    // Register new user
   }
 }
