@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { LoginPage } from './pages/login/login.page';
 import { TimelinePage } from './pages/timeline/timeline.page';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CalendarComponent } from './pages/calendar/calendar.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { GroupsListComponent } from './pages/groups-list/groups-list.component';
+import { CalendarPage } from './pages/calendar/calendar.page';
+import { ProfilePage } from './pages/profile/profile.page';
+import { GroupListPage } from './pages/group-list/group-list.page';
 
 @NgModule({
   declarations: [
@@ -16,9 +16,9 @@ import { GroupsListComponent } from './pages/groups-list/groups-list.component';
     LoginPage,
     TimelinePage,
     NavbarComponent,
-    CalendarComponent,
-    ProfileComponent,
-    GroupsListComponent
+    CalendarPage,
+    ProfilePage,
+    GroupListPage
   ],
   imports: [
     BrowserModule,
