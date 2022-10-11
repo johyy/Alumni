@@ -2,26 +2,26 @@
     <span class="header">ALUMNI</span>
     <ul class="buttons logged-in" *ngIf="this.auth.isAuthenticated()">
         <li>
-            <a id="profile_button" routerLink="/profile">Profile</a>
+            <a class="button" id="profile_button" routerLink="/profile">Profile</a>
         </li>
         <li>
-            <a id="calendar_button" routerLink="/calendar">Calendar</a>
+            <a class="button" id="calendar_button" routerLink="/calendar">Calendar</a>
         </li>
         <li>
-            <a id="timeline_button" routerLink="/timeline">Main</a>
-            <ul>
+            <a class="button" id="timeline_button" routerLink="/timeline">Main</a>
+            <ul class="dropdown">
                 <li>
                     <a routerLink="/groups">Groups</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a id="logout_button" (click)="this.auth.logout()">Log out</a>
+            <a class="button" id="logout_button" (click)="this.auth.logout()">Log out</a>
         </li>
     </ul>
     <ul class="buttons logged-out" *ngIf="!this.auth.isAuthenticated()">
         <li>
-            <a id="login_button" (click)="this.auth.login()">Log in</a>
+            <a class="button" id="login_button" (click)="this.auth.login()">Log in</a>
         </li>
     </ul>
 </nav>

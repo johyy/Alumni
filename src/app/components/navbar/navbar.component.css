@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 
 .navbar {
-    flex: initial;
+    display: flex;
+    justify-content: space-between;
     padding-left: 30px;
     padding-right: 30px;
     top: 0;
@@ -14,21 +15,42 @@
     font-size: 100px;
 }
 
+ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
 .buttons {
     font-family: 'Shadows Into Light Two';
     font-size: 30px;
     color: #949494;
-    padding: 20px;
 }
 
-ul {
-    list-style-type: none;
+a {
+    border: 2px solid #949494;
+    border-radius: 30px;
+    border: 2px solid #949494;
+    border-radius: 30px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+#logout_button, #login_button {
+    color: #FFFFFF;
+    background-color: #949494;
+}
+
+#logout_button:hover, #login_button:hover {
+    color: #000000;
 }
 
 ul li {
-    position: absolute;
-    top: 40px;
-    
+    padding: 10px;
+    display: inline-block;
 }
 
 a:link {
@@ -51,88 +73,20 @@ a:active {
     text-decoration: none;
 }
 
-ul ul {
+.dropdown {
 	display: none;
-	position: absolute; 
-	top: 15px;
+    position: absolute;
 }
 	
 ul li:hover > ul {
-	display:inherit;
+	display: inherit;
 }
 	
 ul ul li {
-	float:none;
-	display:list-item;
-	position: absolute;
-    left: 608px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-
+	float: left;
+	display: list-item;
+    padding: 22px;
 }
 
 li > a:after { content:  ' ⇩'; }
 li > a:only-child:after { content: ''; }
-
-#logout_button {
-    position: relative;
-    left: 750px;
-    color: #FFFFFF;
-    background-color: #949494;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#timeline_button {
-    position: relative;
-    left: 600px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#calendar_button {
-    position: relative;
-    left: 440px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#profile_button {
-    position: relative;
-    left: 310px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#login_button {
-    position: relative;
-    left: 310px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}

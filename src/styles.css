@@ -3,7 +3,10 @@ html {
     height: 100vh;
     box-sizing: border-box;
     margin: 0;
-    overflow: hidden;
+    background: url(./assets/img/graduation.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 body {
