@@ -135,22 +135,3 @@ li > a:only-child:after { content: ''; }
     padding-left: 20px;
     padding-right: 20px;
 }
-
-#register_button {
-    position: relative;
-    left: 440px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: #949494;
-    color: white;
-}
-
-
-
-
-
