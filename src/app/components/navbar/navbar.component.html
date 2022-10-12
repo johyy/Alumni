@@ -1,30 +1,30 @@
 <nav class="navbar">
     <span class="header">ALUMNI</span>
     <ul class="buttons logged-in" *ngIf="this.auth.isAuthenticated()">
-        <li>
-            <a class="button" id="profile_button" routerLink="/profile">Profile</a>
+        <li class="button">
+            <a id="profile_button" routerLink="/profile">Profile</a>
         </li>
-        <li>
-            <a class="button" id="calendar_button" routerLink="/calendar">Calendar</a>
+        <li class="button">
+            <a id="calendar_button" routerLink="/calendar">Calendar</a>
         </li>
-        <li>
+        <li class="dropdown_button button">
             <a id="menu_button">Menu</a>
             <ul>
-                <li>
+                <li class="button">
                     <a id="timeline" routerLink="/timeline">Timeline</a>
                 </li>
-                <li>
+                <li class="button">
                     <a id="groups" routerLink="/groups">Groups</a>
                 </li>
             </ul>
         </li>
-        <li>
-            <a class="button" id="logout_button" (click)="this.auth.logout()">Log out</a>
+        <li class="button">
+            <a id="logout_button" (click)="this.auth.logout()">Log out</a>
         </li>
     </ul>
     <ul class="buttons logged-out" *ngIf="!this.auth.isAuthenticated()">
         <li>
-            <a class="button" id="login_button" (click)="this.auth.login()">Log in</a>
+            <a id="login_button" (click)="this.auth.login()">Log in</a>
         </li>
     </ul>
 </nav>
