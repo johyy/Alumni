@@ -34,7 +34,7 @@ import { RefreshTokenHttpInterceptor } from './interceptors/refresh-token-http.i
       provide: HTTP_INTERCEPTORS,
       useClass: RefreshTokenHttpInterceptor,
       multi: true,
-    }
+    },
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthHttpInterceptor,
