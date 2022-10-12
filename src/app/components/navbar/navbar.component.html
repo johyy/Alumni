@@ -8,13 +8,13 @@
             <a id="calendar_button" routerLink="/calendar">Calendar</a>
         </li>
         <li class="dropdown_button button">
-            <a id="menu_button">{{ this.dropDownText }}</a>
+            <a id="menu_button">{{ this.router.url.charAt(1).toUpperCase() + this.router.url.substring(2) }}</a>
             <ul>
-                <li *ngIf="showTimelineOption" class="button timeline">
-                    <a (click)="handleClickTimelineButton()" routerLink="/timeline">Timeline</a>
+                <li *ngIf="this.router.url.substring(1) !== 'timeline'" class="button timeline">
+                    <a routerLink="/timeline">Timeline</a>
                 </li>
-                <li *ngIf="showGroupsOption" class="button groups">
-                    <a (click)="handleClickGroupsButton()" id="groups_button" routerLink="/groups">Groups</a>
+                <li *ngIf="this.router.url.substring(1) !== 'groups'" class="button groups">
+                    <a id="groups_button" routerLink="/groups">Groups</a>
                 </li>
             </ul>
         </li>

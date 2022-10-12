@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,25 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  dropDownText = "Timeline";
-  showTimelineOption = false;
-  showGroupsOption = true;
-
-  constructor(public auth: AuthService) { }
+  constructor(
+    public auth: AuthService,
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
   }
-
-  handleClickTimelineButton() {
-    this.dropDownText = "Timeline";
-    this.showTimelineOption = false;
-    this.showGroupsOption = true;
-  }
-
-  handleClickGroupsButton() {
-    this.dropDownText = "Groups";
-    this.showGroupsOption = false;
-    this.showTimelineOption = true;
-  }
-
 }
