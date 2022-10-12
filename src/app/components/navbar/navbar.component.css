@@ -72,20 +72,14 @@ a:active {
     color: #FFFFFF;
     text-decoration: none;
 }
-
-.dropdown {
-	display: none;
-    position: absolute;
-}
 	
 ul li:hover > ul {
 	display: inherit;
 }
 	
 ul ul li {
-	float: left;
-	display: list-item;
-    padding: 22px;
+	float:none;
+	display:list-item;
 }
 
 li > a:after { content:  ' ⇩'; }

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-import { CalendarComponent } from './pages/calendar/calendar.component';
-import { GroupsListComponent } from './pages/groups-list/groups-list.component';
+import { CalendarPage } from './pages/calendar/calendar.page';
+import { GroupListPage } from './pages/group-list/group-list.page';
 import { LoginPage } from './pages/login/login.page';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfilePage } from './pages/profile/profile.page';
 import { TimelinePage } from './pages/timeline/timeline.page';
 
 const routes: Routes = [
@@ -19,17 +19,17 @@ const routes: Routes = [
   },
   {
     path: "calendar",
-    component: CalendarComponent,
+    component: CalendarPage,
     canActivate: [AuthGuard]
   },
   {
     path: "profile",
-    component: ProfileComponent,
+    component: ProfilePage,
     canActivate: [AuthGuard]
   },
   {
     path: "groups",
-    component: GroupsListComponent,
+    component: GroupListPage,
     canActivate: [AuthGuard]
   }
 ];
