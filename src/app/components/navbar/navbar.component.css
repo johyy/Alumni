@@ -19,12 +19,13 @@ ul {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0;
 }
 
 .buttons {
     font-family: 'Shadows Into Light Two';
-    font-size: 30px;
+    font-size: 20px;
     color: #949494;
 }
 
@@ -37,7 +38,7 @@ a {
     padding-left: 20px;
     padding-right: 20px;
     cursor: pointer;
-    width: 140px;
+    width: 150px;
     text-align: center;
 }
 
@@ -57,6 +58,7 @@ ul li {
 
 li {
     width: 160px;
+    height: 60px;
 }
 
 a:link {
@@ -109,12 +111,16 @@ ul ul li {
     flex-direction: column;
     position: absolute;
     z-index: 10;
-    top: 80px;
+    top: 60px;
     left: 0;
 }
 
 .dropdown_button > ul > li {
     padding: 15px;
+}
+
+#timeline_button {
+    display: none;
 }
 
 li > a:after { content:  ' ⇩'; }

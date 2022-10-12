@@ -8,13 +8,13 @@
             <a id="calendar_button" routerLink="/calendar">Calendar</a>
         </li>
         <li class="dropdown_button button">
-            <a id="menu_button">Menu</a>
+            <a id="menu_button">{{ this.dropDownText }}</a>
             <ul>
-                <li class="button">
-                    <a id="timeline" routerLink="/timeline">Timeline</a>
+                <li *ngIf="showTimelineOption" class="button timeline">
+                    <a (click)="handleClickTimelineButton()" routerLink="/timeline">Timeline</a>
                 </li>
-                <li class="button">
-                    <a id="groups" routerLink="/groups">Groups</a>
+                <li *ngIf="showGroupsOption" class="button groups">
+                    <a (click)="handleClickGroupsButton()" id="groups_button" routerLink="/groups">Groups</a>
                 </li>
             </ul>
         </li>
