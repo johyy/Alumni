@@ -40,6 +40,7 @@ a {
     cursor: pointer;
     width: 150px;
     text-align: center;
+    display: block;
 }
 
 #logout_button, #login_button {
@@ -110,8 +111,8 @@ ul ul li {
     flex-direction: column;
     position: absolute;
     z-index: 10;
-    top: 60px;
-    left: 0;
+    top: 50px;
+    left: -10px;
 }
 
 .dropdown_button > ul > li {
