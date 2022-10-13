@@ -1,3 +1,5 @@
-<div class="groups"> 
-    <b>GROUPS</b> 
+<div  class="groups"> 
+    <b id="title">GROUPS</b>
+    <p *ngIf="loading">Loading groups..</p>
+    <app-groups-list [groups]="groups"></app-groups-list>
 </div> 
