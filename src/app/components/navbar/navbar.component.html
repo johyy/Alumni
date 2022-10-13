@@ -1,20 +1,22 @@
 <nav class="navbar">
     <span class="header">ALUMNI</span>
     <ul class="buttons logged-in" *ngIf="this.auth.isAuthenticated()">
-        <li class="button">
-            <a id="profile_button" routerLink="/profile">Profile</a>
-        </li>
-        <li class="button">
-            <a id="calendar_button" routerLink="/calendar">Calendar</a>
-        </li>
         <li class="dropdown_button button">
-            <a id="menu_button">{{ this.router.url.charAt(1).toUpperCase() + this.router.url.substring(2) }}</a>
+            <a id="menu_button">
+                {{ this.router.url.charAt(1).toUpperCase() + this.router.url.substring(2) }}
+            </a>
             <ul>
-                <li *ngIf="this.router.url.substring(1) !== 'timeline'" class="button timeline">
+                <li *ngIf="this.router.url !== '/timeline'" class="button timeline">
                     <a routerLink="/timeline">Timeline</a>
                 </li>
-                <li *ngIf="this.router.url.substring(1) !== 'groups'" class="button groups">
+                <li *ngIf="this.router.url !== '/groups'" class="button groups">
                     <a id="groups_button" routerLink="/groups">Groups</a>
+                </li>
+                <li *ngIf="this.router.url !== '/calendar'" class="button">
+                    <a id="calendar_button" routerLink="/calendar">Calendar</a>
+                </li>
+                <li *ngIf="this.router.url !== '/profile'" class="button">
+                    <a id="profile_button" routerLink="/profile">Profile</a>
                 </li>
             </ul>
         </li>
