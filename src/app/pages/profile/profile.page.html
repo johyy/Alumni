@@ -1,19 +1,5 @@
-<div class="profile"> 
-    <ul> 
-        <li> 
-            <b>NAME:</b> 
-        </li> 
-        <li> 
-            <b>WORK STATUS:</b> 
-        </li> 
-        <li> 
-           <b>BIO:</b> 
-        </li> 
-        <li> 
-            <b>FUN FACT:</b> 
-        </li> 
-    </ul> 
-</div>
-<div class="profile_picture"> 
-    PLACEHOLDER FOR A PICTURE 
+<div class="profile">
+    <p id="loading" *ngIf="loading">Loading the profile..</p>
+    <app-user-info [user]="user">
+    </app-user-info>
 </div> 

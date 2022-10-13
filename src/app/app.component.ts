@@ -14,6 +14,7 @@ export class AppComponent {
   }
 
   get token() : string | undefined {
+    console.log(keycloak.token)
     return keycloak.token;
   }
 }

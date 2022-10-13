@@ -13,6 +13,7 @@ import { ProfilePage } from './pages/profile/profile.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
 import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
 import { RefreshTokenHttpInterceptor } from './interceptors/refresh-token-http.interceptor';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RefreshTokenHttpInterceptor } from './interceptors/refresh-token-http.i
     NavbarComponent,
     CalendarPage,
     ProfilePage,
-    GroupListPage
+    GroupListPage,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
