@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 
 .navbar {
-    flex: initial;
+    display: flex;
+    justify-content: space-between;
     padding-left: 30px;
+    padding-right: 30px;
     top: 0;
     position: sticky;
 }
@@ -13,21 +15,50 @@
     font-size: 100px;
 }
 
-.buttons {
-    font-family: 'Shadows Into Light Two';
-    font-size: 30px;
-    color: #949494;
-    padding: 20px;
-}
-
 ul {
     list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.buttons {
+    font-family: 'Shadows Into Light Two';
+    font-size: 20px;
+    color: #949494;
+}
+
+a {
+    border: 2px solid #949494;
+    border-radius: 30px;
+    border: 2px solid #949494;
+    border-radius: 30px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+    display: block;
+}
+
+#logout_button, #login_button {
+    color: #FFFFFF;
+    background-color: #949494;
+}
+
+#logout_button:hover, #login_button:hover {
+    color: #000000;
 }
 
 ul li {
-    position: absolute;
-    top: 40px;
-    
+    padding: 10px;
+}
+
+li {
+    width: 160px;
+    height: 60px;
 }
 
 a:link {
@@ -49,15 +80,13 @@ a:active {
     color: #FFFFFF;
     text-decoration: none;
 }
-
-ul ul {
-	display: none;
-	position: absolute; 
-	top: 15px;
-}
 	
+ul li > ul {
+    display: none;
+}
+
 ul li:hover > ul {
-	display:inherit;
+	display: inherit;
 }
 	
 ul ul li {
@@ -65,105 +94,34 @@ ul ul li {
 	display:list-item;
 }
 
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown_button {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.dropdown_button > ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    top: 50px;
+    left: -10px;
+}
+
+.dropdown_button > ul > li {
+    padding: 15px;
+}
+
+#timeline_button {
+    display: none;
+}
+
 li > a:after { content:  ' ⇩'; }
 li > a:only-child:after { content: ''; }
-
-#logout_button {
-    position: relative;
-    left: 750px;
-    color: #FFFFFF;
-    background-color: #949494;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#menu_button {
-    position: relative;
-    left: 600px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#calendar_button {
-    position: relative;
-    left: 440px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#profile_button {
-    position: relative;
-    left: 310px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#login_button {
-    position: relative;
-    left: 310px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#register_button {
-    position: relative;
-    left: 440px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: #949494;
-    color: white;
-}
-
-#timeline {
-    position: relative;
-    left: 500px;
-    top: 15px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#groups {
-    position: relative;
-    left: 640px;
-    top: 15px;
-    border: 2px solid #949494;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-
-
-
