@@ -38,6 +38,7 @@ export class PostService {
     )
     .subscribe({
       next: (posts: Post[]) => {
+        console.log(posts);
         this._posts = posts;
       },
       error: (error: HttpErrorResponse) => {
