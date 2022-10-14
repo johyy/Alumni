@@ -1,8 +1,4 @@
-ul { 
-    list-style-type: none;
-} 
-
-ul li { 
+#group { 
     border: 2px solid #000000; 
     background: #949494; 
     border-radius: 20px;
@@ -11,11 +7,4 @@ ul li {
     padding-right: 20px;
     color: #FFFFFF;
     margin-bottom: 10px;
-}
-
-div span.only-show-on-hover {
-    visibility: hidden;
-}
-div:hover span.only-show-on-hover  {
-    visibility: visible;
 }

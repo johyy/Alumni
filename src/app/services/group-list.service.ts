@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Group } from '../models/group.model';
@@ -27,7 +28,7 @@ export class GroupListService {
     return this._loading;
   }
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient, private router: Router) { }
 
   public findAllGroups(): void {
     this._loading = true;
@@ -45,7 +46,15 @@ export class GroupListService {
         this._error = error.message;
       }
     })
+  }
 
+  navigateToGroupPage(groupId: number) {
+    this.router.navigate(['/group', groupId])
+  }
+
+  groupById(id: number): Group {
+    const group = this.groups.find((group: Group) => group.id === id);
+    return group!
   }
 }
     

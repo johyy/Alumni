@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let group of groups">
-        {{ group.title }}
-    </li>
+    <app-groups-list-item *ngFor="let group of groups"
+    [group]="group">
+    </app-groups-list-item> 
 </ul>
