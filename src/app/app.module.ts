@@ -14,6 +14,9 @@ import { GroupListPage } from './pages/group-list/group-list.page';
 import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
 import { RefreshTokenHttpInterceptor } from './interceptors/refresh-token-http.interceptor';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { GroupsListComponent } from './components/groups-list/groups-list.component';
+import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
+import { GroupInfoComponent } from './components/group-info/group-info.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     CalendarPage,
     ProfilePage,
     GroupListPage,
-    UserInfoComponent
+    UserInfoComponent,
+    GroupsListComponent,
+    GroupsListItemComponent,
+    GroupInfoComponent
   ],
   imports: [
     BrowserModule,

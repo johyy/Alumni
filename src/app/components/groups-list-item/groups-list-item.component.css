@@ -1,0 +1,10 @@
+#group { 
+    border: 2px solid #000000; 
+    background: #949494; 
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}

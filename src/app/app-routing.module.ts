@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CalendarPage } from './pages/calendar/calendar.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
@@ -31,7 +32,13 @@ const routes: Routes = [
     path: "groups",
     component: GroupListPage,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "group/:id",
+    component: GroupInfoComponent,
+    canActivate: [AuthGuard]
   }
+
 ];
 
 @NgModule({
