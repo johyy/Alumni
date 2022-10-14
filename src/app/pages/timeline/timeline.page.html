@@ -1,6 +1,10 @@
 <div class="posts">
     <b>POSTS</b>
-
+    <div>
+        <p *ngFor="let post of posts">
+            {{ post.title }}
+        </p>
+    </div>
 </div>
 <div class="events">
     <b>EVENTS</b>
