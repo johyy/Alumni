@@ -9,22 +9,8 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class TimelinePage implements OnInit {
 
-  get posts(): Post[] {
-    return this.postService.posts;
-  }
+  constructor() { }
 
-  get loading(): boolean {
-    return this.postService.loading;
-  }
-
-  get error(): string {
-    return this.postService.error;
-  }
-
-  constructor(private postService: PostService) { }
-
-  ngOnInit(): void {
-    this.postService.findPosts()
-  }
+  ngOnInit(): void { }
 
 }
