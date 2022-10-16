@@ -13,7 +13,6 @@
     height: 367px;
     left: 30px;
     top: 150px;
-    overflow-y: scroll;
 }
 
 .events {
@@ -29,4 +28,27 @@
     height: 367px;
     left: 610px;
     top: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.posts-header {
+    height: 10%;
+}
+
+.posts-container {
+    overflow-y: scroll;
+    height: 90%;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 10px;
 }

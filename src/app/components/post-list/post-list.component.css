@@ -6,15 +6,3 @@
     background-color: gray;
     display: flex;
 }
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: gray;
-    border-radius: 10px;
-}

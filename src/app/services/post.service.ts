@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
 import { environment } from 'src/environments/environment';
 import { finalize } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,6 @@ export class PostService {
   private _loading: boolean = false;
 
   get posts(): Post[] {
-    console.log(typeof(this._posts))
     return this._posts;
   }
 
@@ -26,7 +26,10 @@ export class PostService {
     return this._loading;
   }
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(
+    private readonly http: HttpClient,
+    private readonly userService: UserService
+  ) { }
 
   public findPosts(): void {
     this._loading = true;
@@ -39,6 +42,10 @@ export class PostService {
     .subscribe({
       next: (posts: Post[]) => {
         console.log(posts);
+        posts.forEach(post => {
+          const author = post.author;
+          post.author = this.userService.findUserById(author)!;
+        })
         this._posts = posts;
       },
       error: (error: HttpErrorResponse) => {

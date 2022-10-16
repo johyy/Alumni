@@ -16,7 +16,6 @@ export class UserService {
   private _loading: boolean = false;
 
   get user(): User {
-    console.log(typeof(this._user))
     return this._user;
   }
 
@@ -46,5 +45,25 @@ export class UserService {
         this._error = error.message;
       }
     })
+  }
+
+  findUserById(id: User): User | undefined {
+    this._loading = true;
+    let user: User | undefined = undefined;
+    this.http.get<User>(apiUsers + "/" + id)
+      .pipe(
+        finalize(() => {
+          this._loading = false;
+        })
+      )
+      .subscribe({
+        next: (result: User) => {
+          user = result;
+        },
+        error: (error: HttpErrorResponse) => {
+          this._error = error.message;
+        }
+      })
+    return user;
   }
 }
