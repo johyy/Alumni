@@ -11,12 +11,11 @@ const { apiUsers } = environment
 })
 export class UserService {
 
-  private _user: User = Object();
+  private _user!: User;
   private _error: string = "";
   private _loading: boolean = false;
 
   get user(): User {
-    console.log(typeof(this._user))
     return this._user;
   }
 
@@ -40,7 +39,8 @@ export class UserService {
     )
     .subscribe({
       next: (user: User) => {
-        this._user = user;
+        this._user = user
+        
       },
       error: (error: HttpErrorResponse) => {
         this._error = error.message;

@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Group } from 'src/app/models/group.model';
+import { User } from 'src/app/models/user.model';
 import { GroupListService } from 'src/app/services/group-list.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-groups-list-item',
@@ -9,15 +11,21 @@ import { GroupListService } from 'src/app/services/group-list.service';
 })
 export class GroupsListItemComponent implements OnInit {
 
-  @Input() group?: Group;
+  public isIn: boolean = false;
+  @Input() group!: Group;
 
-  constructor(private groupListService: GroupListService) { }
+  get user(): User {
+    return this.userService.user;
+  }
+
+  constructor(private groupListService: GroupListService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.findProfile();
+    this.isIn = this.groupListService.checkIfUserInGroup((this.userService.user.id), this.group);
   }
 
   onGroupClicked(groupId: number) {
     this.groupListService.navigateToGroupPage(groupId);
   }
-
 }

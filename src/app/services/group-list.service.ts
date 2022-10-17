@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Group } from '../models/group.model';
+import { User } from '../models/user.model';
 
 const { apiGroups } = environment;
 
@@ -55,6 +56,16 @@ export class GroupListService {
   groupById(id: number): Group {
     const group = this.groups.find((group: Group) => group.id === id);
     return group!
+  }
+
+  checkIfUserInGroup(userId: number, group: Group) {
+    console.log(" group.users " + group.users + " " + group.title + " userId " + userId)
+    for (let user of group.users) {
+      if (user == userId) {
+        return true
+      } 
+    }
+    return false
   }
 }
     

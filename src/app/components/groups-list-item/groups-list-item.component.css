@@ -8,3 +8,8 @@
     color: #FFFFFF;
     margin-bottom: 10px;
 }
+
+#grouped {
+    margin-left: 10px;
+    filter: invert(1);
+}
