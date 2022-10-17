@@ -56,6 +56,15 @@ export class GroupListService {
     const group = this.groups.find((group: Group) => group.id === id);
     return group!
   }
+
+  checkIfUserInGroup(userId: number, group: Group) {
+    for (let user of group.users) {
+      if (user == userId) {
+        return true
+      } 
+    }
+    return false
+  }
 }
     
   
