@@ -7,9 +7,16 @@
                         <div class="avatar-border">
                             <img class="avatar" src="{{ post.author.avatar ? post.author.avatar : '/assets/img/blank_avatar.png'}}"/>
                         </div>
-                        <a class="name">{{ post.author.name }}</a>
+                        <a class="name" href="/timeline">{{ post.author.name }}</a>
                         <p>on</p>
-                        <a class="group">{{ post.target_group_id }}</a>
+                        <div class="group" *ngIf="post.target_group_id !== 0">
+                            <p>group</p>
+                            <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id).title }}</a>
+                        </div>
+                        <div class="topic" *ngIf="post.target_topic_id !== 0">
+                            <p>topic</p>
+                            <a routerLink="/timeline">{{ post.target_topic_id }}</a>
+                        </div>
                     </div>
                     <p class="date">
                         {{ 

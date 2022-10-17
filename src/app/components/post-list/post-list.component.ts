@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
+import { GroupListService } from 'src/app/services/group-list.service';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -21,10 +22,14 @@ export class PostListComponent implements OnInit {
     return this.postService.error;
   }
 
-  constructor(private postService: PostService) { }
+  constructor(
+    private readonly postService: PostService,
+    readonly groupListService: GroupListService
+  ) { }
 
   ngOnInit(): void {
-    this.postService.findPosts()
+    this.postService.findPosts();
+    this.groupListService.findAllGroups();
   }
 
 }

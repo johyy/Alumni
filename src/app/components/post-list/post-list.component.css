@@ -49,3 +49,12 @@ ul {
     padding: 0px;
     list-style-type: none;
 }
+
+.group, .topic {
+    display: flex;
+    align-items: center;
+}
+
+a {
+    padding-left: 10px;
+}
