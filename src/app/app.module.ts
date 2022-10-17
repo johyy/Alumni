@@ -15,6 +15,10 @@ import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
 import { RefreshTokenHttpInterceptor } from './interceptors/refresh-token-http.interceptor';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { PostListComponent } from './components/post-list/post-list.component';
+import { GroupsListComponent } from './components/groups-list/groups-list.component';
+import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
+import { GroupInfoComponent } from './components/group-info/group-info.component';
+import { JoinButtonComponent } from './components/join-button/join-button.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { PostListComponent } from './components/post-list/post-list.component';
     ProfilePage,
     GroupListPage,
     UserInfoComponent,
-    PostListComponent
+    PostListComponent,
+    GroupsListComponent,
+    GroupsListItemComponent,
+    GroupInfoComponent,
+    JoinButtonComponent
   ],
   imports: [
     BrowserModule,

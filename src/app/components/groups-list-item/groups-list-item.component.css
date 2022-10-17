@@ -1,0 +1,35 @@
+#group { 
+    border: 2px solid #000000; 
+    background: #949494; 
+    border-radius: 20px;
+    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+#grouped {
+    margin-left: 10px;
+    filter: invert(1);
+    position: absolute;
+    left: 2%;
+
+}
+
+#leavegroup {
+    border: 2px solid #000000;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #000000;
+    position: sticky;
+    left: 80%;
+
+}
+
+#title {
+    position: relative;
+    right: 18%;
+}

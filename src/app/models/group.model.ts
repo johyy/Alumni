@@ -3,4 +3,5 @@ export interface Group {
     private: boolean;
     title: string;
     description: string;
+    users: number[];
 }
