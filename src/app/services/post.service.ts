@@ -44,7 +44,7 @@ export class PostService {
         console.log(posts);
         posts.forEach(post => {
           const author = post.author;
-          post.author = this.userService.findUserById(author)!;
+          this.userService.findUserById(author).subscribe(user => post.author = user);
         })
         this._posts = posts;
       },

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 
@@ -47,23 +47,7 @@ export class UserService {
     })
   }
 
-  findUserById(id: User): User | undefined {
-    this._loading = true;
-    let user: User | undefined = undefined;
-    this.http.get<User>(apiUsers + "/" + id)
-      .pipe(
-        finalize(() => {
-          this._loading = false;
-        })
-      )
-      .subscribe({
-        next: (result: User) => {
-          user = result;
-        },
-        error: (error: HttpErrorResponse) => {
-          this._error = error.message;
-        }
-      })
-    return user;
+  findUserById(id: User): Observable<User> {
+    return this.http.get<User>(apiUsers + "/" + id);
   }
 }
