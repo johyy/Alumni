@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 import { GroupListService } from 'src/app/services/group-list.service';
 import { PostService } from 'src/app/services/post.service';
+import { TopicService } from 'src/app/services/topic.service';
 
 @Component({
   selector: 'app-post-list',
@@ -24,12 +25,14 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private readonly postService: PostService,
-    readonly groupListService: GroupListService
+    readonly groupListService: GroupListService,
+    readonly topicService: TopicService
   ) { }
 
   ngOnInit(): void {
     this.postService.findPosts();
     this.groupListService.findAllGroups();
+    this.topicService.findAllTopics();
   }
 
 }

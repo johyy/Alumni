@@ -41,7 +41,6 @@ export class PostService {
     )
     .subscribe({
       next: (posts: Post[]) => {
-        console.log(posts);
         posts.forEach(post => {
           const author = post.author;
           this.userService.findUserById(author).subscribe(user => post.author = user);
