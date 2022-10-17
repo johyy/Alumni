@@ -1,6 +1,7 @@
 <div (click)="onGroupClicked(group.id)" *ngIf="group" >
     <section id="group">
-    <a>{{ group.title }}</a><span *ngIf="isIn; then grouped"></span>
-    <ng-template #grouped><img id="grouped" src="../assets/img/check.svg" alt="In" width="25"></ng-template>
+    <span *ngIf="isIn; then grouped else notGrouped"></span>
+    <ng-template #grouped><a id="leavegroup">LEAVE GROUP</a><a id="title">{{ group.title }}</a><img id="grouped" src="../assets/img/check.svg" alt="In" width="25"></ng-template>
+    <ng-template #notGrouped><a>{{ group.title }}</a><a id="join">JOIN</a></ng-template>
     </section>
 </div>

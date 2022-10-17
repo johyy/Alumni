@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Group } from '../models/group.model';
-import { User } from '../models/user.model';
 
 const { apiGroups } = environment;
 
