@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Group } from 'src/app/models/group.model';
 import { User } from 'src/app/models/user.model';
 import { GroupListService } from 'src/app/services/group-list.service';
+import { JoinGroupService } from 'src/app/services/join-group.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class GroupsListItemComponent implements OnInit {
     return this.userService.user;
   }
 
-  constructor(private groupListService: GroupListService, private userService: UserService) { }
+  constructor(private groupListService: GroupListService, private userService: UserService, private joinGroupService: JoinGroupService) { }
 
   ngOnInit(): void {
     this.userService.findProfile();
@@ -26,6 +27,12 @@ export class GroupsListItemComponent implements OnInit {
   }
 
   onGroupClicked(groupId: number) {
-    this.groupListService.navigateToGroupPage(groupId);
+    if (this.isIn === true) {
+      this.groupListService.navigateToGroupPage(groupId);
+    }
+  }
+
+  onJoinClick(groupId: number): void {
+    this.joinGroupService.addToGroup(groupId);
   }
 }

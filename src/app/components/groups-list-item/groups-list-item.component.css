@@ -29,17 +29,6 @@
 
 }
 
-#join {
-    border: 2px solid #FFFFFF;
-    border-radius: 20px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #FFFFFF;
-    position: sticky;
-    left: 95%;
-}
-
 #title {
     position: relative;
     right: 18%;

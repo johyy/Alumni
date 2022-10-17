@@ -17,6 +17,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
+import { JoinButtonComponent } from './components/join-button/join-button.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GroupInfoComponent } from './components/group-info/group-info.component
     UserInfoComponent,
     GroupsListComponent,
     GroupsListItemComponent,
-    GroupInfoComponent
+    GroupInfoComponent,
+    JoinButtonComponent
   ],
   imports: [
     BrowserModule,

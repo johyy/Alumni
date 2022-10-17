@@ -58,7 +58,6 @@ export class GroupListService {
   }
 
   checkIfUserInGroup(userId: number, group: Group) {
-    console.log(" group.users " + group.users + " " + group.title + " userId " + userId)
     for (let user of group.users) {
       if (user == userId) {
         return true
