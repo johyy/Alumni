@@ -8,6 +8,12 @@
     flex-direction: column;
 }
 
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .avatar-border {
     height: 50px;
     width: 50px;
@@ -32,7 +38,7 @@
 }
 
 .line-1 {
-    gap: 10px;
+    justify-content: space-between;
 }
 
 .line-3 {
