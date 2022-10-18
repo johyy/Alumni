@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize, firstValueFrom, Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Group } from '../models/group.model';
 import { User } from '../models/user.model';
 
 const { apiUsers } = environment
@@ -50,5 +51,17 @@ export class UserService {
 
   findUserById(id: User): Observable<User> {
     return this.http.get<User>(apiUsers + "/" + id);
+  }
+
+  public addToGroup(userId: number, group: Group): void {
+    if (group) {
+      group.users.push(userId);
+    }
+  }
+
+  public removeFromGroup(userId: number, group: Group): void {
+    if (group) {
+      group.users = group.users.filter((userId: number) => this.user.id !== userId)
+    }
   }
 }

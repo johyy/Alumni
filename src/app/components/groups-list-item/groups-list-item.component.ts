@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Group } from 'src/app/models/group.model';
 import { User } from 'src/app/models/user.model';
@@ -23,7 +24,7 @@ export class GroupsListItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.findProfile();
-    this.isIn = this.groupListService.checkIfUserInGroup((this.userService.user.id), this.group);
+    this.checkIfIsIn();
   }
 
   onGroupClicked(groupId: number) {
@@ -33,6 +34,33 @@ export class GroupsListItemComponent implements OnInit {
   }
 
   onJoinClick(groupId: number): void {
-    this.joinGroupService.addToGroup(groupId);
+    this.joinGroupService.addToGroup(groupId)
+      .subscribe({
+        next: (group: Group) => {
+          this.isIn = this.groupListService.checkIfUserInGroup(this.user.id, group);
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log("ERROR", error.message)
+        }
+      })
+  }
+
+  onLeaveClick(groupId: number): void {
+    this.joinGroupService.removeFromGroup(groupId)
+      .subscribe({
+        next: (group: Group) => {
+          this.isIn = this.groupListService.checkIfUserInGroup(this.user.id, group);
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log("ERROR", error.message)
+        }
+      })
+  }
+
+  checkIfIsIn(): void {
+    if (this.user.id === undefined) {
+      return
+    }
+    this.isIn = this.groupListService.checkIfUserInGroup((this.user.id), this.group);
   }
 }
