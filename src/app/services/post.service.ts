@@ -20,6 +20,10 @@ export class PostService {
     return this._posts;
   }
 
+  set posts(posts: Post[]) {
+    this._posts = posts;
+  }
+
   get error(): string {
     return this._error;
   }
@@ -54,6 +58,15 @@ export class PostService {
         this._error = error.message;
       }
     })
+  }
+
+  findAuthors() {
+    const posts = this._posts;
+    posts.forEach(post => {
+      const author = post.author;
+      this.userService.findUserById(author).subscribe(user => post.author = user);
+    })
+    this._posts = posts;
   }
 
 

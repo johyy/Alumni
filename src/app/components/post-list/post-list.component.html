@@ -1,6 +1,6 @@
 <p *ngIf="loading">Loading posts...</p>
 <ul>
-    <li *ngFor="let post of _posts">
+    <li *ngFor="let post of posts">
         <div *ngIf="post.original_post_id === 0" class="post_info">
                 <div class="line line-1">
                     <div class="user-info">
@@ -11,7 +11,7 @@
                         <p>on</p>
                         <div class="group" *ngIf="post.target_group_id !== 0">
                             <p>group</p>
-                            <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id)?.title }}</a>
+                            <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id).title }}</a>
                         </div>
                         <div class="topic" *ngIf="post.target_topic_id !== 0">
                             <p>topic</p>

@@ -15,7 +15,9 @@ import { StorageUtil } from 'src/app/utils/storage.util';
 })
 export class PostListComponent implements OnInit {
 
-  _posts: any;
+  get posts(): Post[] {
+    return this.postService.posts;
+  }
 
   get loading(): boolean {
     return this.postService.loading;
@@ -34,15 +36,8 @@ export class PostListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Find all posts
     this.postService.findPosts();
-    const posts = StorageUtil.storageRead<Post>(StorageKeys.Posts);
-    // Fetch the author for each post
-    posts?.forEach(post => {
-      const author = post.author;
-      this.userService.findUserById(author).subscribe(user => post.author = user);
-    })
-    this._posts = posts;
+    this.postService.findAuthors();
     this.groupListService.findAllGroups();
     this.topicService.findAllTopics();
   }
