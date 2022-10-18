@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-buttons',
@@ -8,17 +7,10 @@ import { Router } from '@angular/router';
 })
 export class AddButtonsComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor() { }
 
 
   ngOnInit(): void {
-  }
-
-  newPost():void{
-    this.router.navigate(['post'])
-  }
-  newEvent():void{
-
   }
 
 }

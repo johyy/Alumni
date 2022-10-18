@@ -1,7 +1,9 @@
 <div class="post-compose-wrap">  
         <h1 class="post-compose-header-text">GROUP NAME HERE</h1>      
-        <form #createPostForm="ngForm" (ngSubmit)="createPost()">
-            <span class="post-compose-validation" *ngIf="title.invalid && (title.dirty || title.touched)">
+        <form #createPostForm="ngForm" 
+            (ngSubmit)="title.invalid?title.control.markAsTouched():createPost(createPostForm);
+                        post.invalid?post.control.markAsTouched():null">
+            <span class="post-compose-validation" *ngIf="title.invalid && title.touched">
                 Title is required
             </span>
             <div class="post-compose-group"> 
@@ -16,7 +18,7 @@
                     #title="ngModel"
                 >                
             </div>
-            <span class="post-compose-validation" *ngIf="post.invalid && (post.dirty || post.touched)">
+            <span class="post-compose-validation" *ngIf="post.invalid && post.touched">
                     Post is required
             </span>
             <div class="post-compose-group">                   
@@ -31,12 +33,13 @@
                 </textarea>
             </div>
             <div class="post-compose-button-group">
-                <button type="button" class="post-compose-button" >CANCEL</button>
+                <button type="button" class="post-compose-button" (click)="cancel()">CANCEL</button>
                 <div class="post-compose-button-group-inner">
                     <button type="button" class="post-compose-button" >PREVIEW</button>
-                    <button type="submit" class="post-compose-button" >SEND</button>     
-                </div>                
+                    <button type="submit" class="post-compose-button"  >SEND</button>     
+                </div>           
             </div> 
+           
         </form>
     
 

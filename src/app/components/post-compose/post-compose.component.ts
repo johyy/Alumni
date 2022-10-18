@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl,NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common'
+
 
 @Component({
   selector: 'app-post-compose',
@@ -7,17 +10,23 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./post-compose.component.css']
 })
 export class PostComposeComponent implements OnInit {
-  title: String = "";
-  post: String = "";
 
-  constructor() { } 
+  constructor(public router: Router, private location: Location) { } 
 
   ngOnInit(): void {
   }
 
-  createPost(): void {
-    console.log("Submitted");
+  createPost(createPostForm: NgForm): void {
+    const {title,post} = createPostForm.value;    
+    if(createPostForm.valid){
+
+    }
     
+  }
+
+  // Navigate a step back on cancel post
+  cancel(): void {
+    this.location.back()
   }
 
 }
