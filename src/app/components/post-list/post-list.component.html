@@ -1,6 +1,6 @@
 <p *ngIf="loading">Loading posts...</p>
 <ul>
-    <li *ngFor="let post of posts">
+    <li *ngFor="let post of _posts">
         <div *ngIf="post.original_post_id === 0" class="post_info">
                 <div class="line line-1">
                     <div class="user-info">
