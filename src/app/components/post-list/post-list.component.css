@@ -41,8 +41,13 @@
     justify-content: space-between;
 }
 
+.line-2 {
+    cursor: pointer;
+}
+
 .line-3 {
     flex-direction: row-reverse;
+    cursor: pointer;
 }
 
 ul {

@@ -7,7 +7,7 @@
                         <div class="avatar-border">
                             <img class="avatar" src="{{ post.author.avatar ?? '/assets/img/blank_avatar.png'}}"/>
                         </div>
-                        <a class="name" href="/timeline">{{ post.author.name }}</a>
+                        <a class="name" routerLink="/timeline">{{ post.author.name }}</a>
                         <p>on</p>
                         <div class="group" *ngIf="post.target_group_id !== 0">
                             <p>group</p>
@@ -26,8 +26,8 @@
                     </p>
 
                 </div>
-                <h3 class="line line-2">{{ post.title }}</h3>
-                <p class="line line-3">{{ post.reply_posts.length + " comments" }}</p>
+                <h3 class="line line-2" (click)="navigateToPost(post.id)">{{ post.title }}</h3>
+                <p class="line line-3" (click)="navigateToPost(post.id)">{{ post.reply_posts.length + " comments" }}</p>
         </div>
     </li>
 </ul>
