@@ -65,6 +65,14 @@ export class GroupListService {
     }
     return false
   }
+
+  navigateToPage(boolean: boolean, groupId: number) {
+    if (boolean === true) {
+      this.router.navigate(['/join_group', groupId])
+    } else {
+      this.router.navigate(['/leave_group', groupId])
+    }
+  }
 }
     
   

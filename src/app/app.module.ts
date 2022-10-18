@@ -21,6 +21,8 @@ import { PostPage } from './pages/post/post.page';
 import { LeaveGroupButtonComponent } from './components/leave-group-button/leave-group-button.component';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
+import { JoinGroupPage } from './pages/join-group/join-group.page';
+import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { GroupsListItemComponent } from './components/groups-list-item/groups-li
     PostPage,
     LeaveGroupButtonComponent,
     GroupsListComponent,
-    GroupsListItemComponent
+    GroupsListItemComponent,
+    JoinGroupPage,
+    LeaveGroupPage
   ],
   imports: [
     BrowserModule,

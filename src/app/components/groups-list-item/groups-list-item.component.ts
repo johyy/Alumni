@@ -34,6 +34,7 @@ export class GroupsListItemComponent implements OnInit {
   }
 
   onJoinClick(groupId: number): void {
+    this.groupListService.navigateToPage(true, groupId)
     this.joinGroupService.addToGroup(groupId)
       .subscribe({
         next: (group: Group) => {
@@ -46,6 +47,7 @@ export class GroupsListItemComponent implements OnInit {
   }
 
   onLeaveClick(groupId: number): void {
+    this.groupListService.navigateToPage(false, groupId)
     this.joinGroupService.removeFromGroup(groupId)
       .subscribe({
         next: (group: Group) => {
