@@ -1,5 +1,6 @@
+import { startOfDay } from 'date-fns';
 import { Component, OnInit } from '@angular/core';
-import { CalendarView } from 'angular-calendar';
+import { CalendarView, CalendarEvent } from 'angular-calendar';
 
 @Component({
   selector: 'app-calendar',
@@ -13,6 +14,17 @@ export class CalendarComponent implements OnInit {
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
+
+  events: CalendarEvent[] = [
+    {
+      start: startOfDay(new Date()),
+      title: 'First event',
+    },
+    {
+      start: startOfDay(new Date()),
+      title: 'Second event',
+    }
+  ]
 
   ngOnInit(): void {
   }
