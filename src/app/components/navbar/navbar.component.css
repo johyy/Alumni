@@ -2,11 +2,14 @@
 
 .navbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     padding-left: 30px;
     padding-right: 30px;
     top: 0;
     position: sticky;
+    height: 15vh;
     z-index: 9;
 }
 
@@ -42,6 +45,7 @@ a {
     width: 150px;
     text-align: center;
     display: block;
+    background-color: #fbf7e4;
 }
 
 #logout_button, #login_button {

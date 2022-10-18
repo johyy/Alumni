@@ -14,10 +14,12 @@ import { GroupListPage } from './pages/group-list/group-list.page';
 import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
 import { RefreshTokenHttpInterceptor } from './interceptors/refresh-token-http.interceptor';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { PostListComponent } from './components/post-list/post-list.component';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { JoinButtonComponent } from './components/join-button/join-button.component';
+import { PostPage } from './pages/post/post.page';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import { JoinButtonComponent } from './components/join-button/join-button.compon
     ProfilePage,
     GroupListPage,
     UserInfoComponent,
+    PostListComponent,
     GroupsListComponent,
     GroupsListItemComponent,
     GroupInfoComponent,
-    JoinButtonComponent
+    JoinButtonComponent,
+    PostPage
   ],
   imports: [
     BrowserModule,
