@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 
+section {
+    height: 85vh;
+}
+
 .posts {
     font-family: 'Shadows Into Light Two';
     font-size: x-large;
@@ -8,11 +12,13 @@
     background: rgba(217, 216, 210, 0.8);
     border-radius: 30px;
     box-sizing: border-box;
-    position: absolute;
-    width: 550px;
-    height: 367px;
-    left: 30px;
-    top: 150px;
+    width: 80%;
+    height: 80%;
+    max-width: 50em;
+    margin: 0 auto;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .events {
@@ -28,4 +34,28 @@
     height: 367px;
     left: 610px;
     top: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.posts-header {
+    height: 10%;
+}
+
+.posts-container {
+    overflow-y: scroll;
+    border-top: 2px solid #000000;
+    border-radius: 5px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 10px;
 }

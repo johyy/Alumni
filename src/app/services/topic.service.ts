@@ -1,22 +1,20 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, firstValueFrom, Observable, take } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from '../models/user.model';
-
-const { apiUsers } = environment
+import { Topic } from '../models/topic.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class TopicService {
 
-  private _user!: User;
+  private _topics: Topic[] = [];
   private _error: string = "";
   private _loading: boolean = false;
 
-  get user(): User {
-    return this._user;
+  get topics(): Topic[] {
+    return this._topics;
   }
 
   get error(): string {
@@ -29,18 +27,17 @@ export class UserService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public findProfile(): void {
+  findAllTopics(): void {
     this._loading = true;
-    this.http.get<User>(apiUsers)
-    .pipe( 
+    this.http.get<Topic[]>(environment.apiTopics)
+    .pipe(
       finalize(() => {
         this._loading = false;
       })
     )
     .subscribe({
-      next: (user: User) => {
-        this._user = user
-        
+      next: (topics: Topic[]) => {
+        this._topics = topics
       },
       error: (error: HttpErrorResponse) => {
         this._error = error.message;
@@ -48,7 +45,7 @@ export class UserService {
     })
   }
 
-  public findUserById(id: User): Observable<User> {
-    return this.http.get<User>(apiUsers + "/" + id);
+  findTopicById(id: number): Topic | undefined {
+    return this.topics.find((topic: Topic) => topic.id === id);
   }
 }
