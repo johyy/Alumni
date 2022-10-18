@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
+
 import { AppComponent } from './app.component';
 import { LoginPage } from './pages/login/login.page';
 import { TimelinePage } from './pages/timeline/timeline.page';
@@ -18,6 +19,10 @@ import { GroupsListComponent } from './components/groups-list/groups-list.compon
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { JoinButtonComponent } from './components/join-button/join-button.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -32,12 +37,15 @@ import { JoinButtonComponent } from './components/join-button/join-button.compon
     GroupsListComponent,
     GroupsListItemComponent,
     GroupInfoComponent,
-    JoinButtonComponent
+    JoinButtonComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [
     {

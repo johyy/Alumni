@@ -1,8 +1,10 @@
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
 * {
     box-sizing: border-box;
 }
 
-html {
+.background {
     width: 100vw;
     height: 100vh;
     margin: 0;
