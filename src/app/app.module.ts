@@ -18,6 +18,10 @@ import { GroupsListComponent } from './components/groups-list/groups-list.compon
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { JoinButtonComponent } from './components/join-button/join-button.component';
+import { AddButtonsComponent } from './components/add-buttons/add-buttons.component';
+import { PostPage } from './pages/post/post.page';
+import { PostComposeComponent } from './components/post-compose/post-compose.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,12 +36,16 @@ import { JoinButtonComponent } from './components/join-button/join-button.compon
     GroupsListComponent,
     GroupsListItemComponent,
     GroupInfoComponent,
-    JoinButtonComponent
+    JoinButtonComponent,
+    AddButtonsComponent,
+    PostPage,
+    PostComposeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {

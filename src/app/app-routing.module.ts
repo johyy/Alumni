@@ -5,6 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { CalendarPage } from './pages/calendar/calendar.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
 import { LoginPage } from './pages/login/login.page';
+import { PostPage } from './pages/post/post.page';
 import { ProfilePage } from './pages/profile/profile.page';
 import { TimelinePage } from './pages/timeline/timeline.page';
 
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: "groups",
     component: GroupListPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "post",
+    component: PostPage,
     canActivate: [AuthGuard]
   },
   {

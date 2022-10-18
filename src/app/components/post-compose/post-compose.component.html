@@ -1,0 +1,44 @@
+<div class="post-compose-wrap">  
+        <h1 class="post-compose-header-text">GROUP NAME HERE</h1>      
+        <form #createPostForm="ngForm" (ngSubmit)="createPost()">
+            <span class="post-compose-validation" *ngIf="title.invalid && (title.dirty || title.touched)">
+                Title is required
+            </span>
+            <div class="post-compose-group"> 
+                <label for="title" class="post-compose-text">TITLE: </label>
+                <input 
+                    type="text"
+                    id="title"
+                    name="title"
+                    class="post-compose-title-input"                     
+                    required
+                    ngModel
+                    #title="ngModel"
+                >                
+            </div>
+            <span class="post-compose-validation" *ngIf="post.invalid && (post.dirty || post.touched)">
+                    Post is required
+            </span>
+            <div class="post-compose-group">                   
+                <label for="post" class="post-compose-text label-textarea">POST: </label>  
+                <textarea 
+                    class="post-compose-textarea" 
+                    id="post"
+                    name="post"
+                    required
+                    ngModel
+                    #post="ngModel" >
+                </textarea>
+            </div>
+            <div class="post-compose-button-group">
+                <button type="button" class="post-compose-button" >CANCEL</button>
+                <div class="post-compose-button-group-inner">
+                    <button type="button" class="post-compose-button" >PREVIEW</button>
+                    <button type="submit" class="post-compose-button" >SEND</button>     
+                </div>                
+            </div> 
+        </form>
+    
+
+</div>
+ 
