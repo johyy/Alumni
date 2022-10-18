@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Event } from 'src/app/models/event.model';
+import { Group } from 'src/app/models/group.model';
 
 @Component({
   selector: 'app-add-buttons',
@@ -7,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddButtonsComponent implements OnInit {
 
-  constructor() { }
+  @Input() entity!: Group | Event;
+  @Input() target!: String;
 
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  newPost():void{
+    if(this.entity && this.target){
+      this.router.navigate(['post',this.target,this.entity.id])
+    }
   }
 
 }

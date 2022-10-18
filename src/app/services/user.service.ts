@@ -32,7 +32,7 @@ export class UserService {
   public findProfile(): void {
     this._loading = true;
     this.http.get<User>(apiUsers)
-    .pipe(
+    .pipe( 
       finalize(() => {
         this._loading = false;
       })
