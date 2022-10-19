@@ -20,7 +20,7 @@
                     post.created_time.toString().split("T")[1].split(":").splice(0, 2).join(":")
                 }}
             </p>
-            <img *ngIf="this.userService.user.id === post.author.id" class="edit-btn" (click)="handleEditClick()" src="/assets/img/edit.png"/>
+            <img *ngIf="this.userService.user.id === post.author.id" class="edit-btn" (click)="handleEditClick(post)" src="/assets/img/edit.png"/>
         </div>
     </div>
     <div class="comments">
@@ -45,7 +45,7 @@
                                 comment.created_time.toString().split("T")[1].split(":").splice(0, 2).join(":")
                             }}
                         </p>
-                        <img *ngIf="this.userService.user.id === comment.author.id" class="edit-btn" (click)="handleEditClick()" src="/assets/img/edit.png"/>
+                        <img *ngIf="this.userService.user.id === comment.author.id" class="edit-btn" (click)="handleEditClick(comment)" src="/assets/img/edit.png"/>
                     </div>
                 </div>
             </li>

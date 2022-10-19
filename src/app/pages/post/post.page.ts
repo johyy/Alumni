@@ -39,13 +39,24 @@ export class PostPage implements OnInit {
     this.userService.findProfile();
   }
 
-  handleEditClick() {
-    this.router.navigateByUrl("/");
+  // Handle edit post click, navigate -> CreatePostPage
+  handleEditClick(post: Post):void {
+    if(post){
+      const {target, targetId} = this.checkTarget(post);
+      this.router.navigate(['post',target,targetId,post.id])
+    }
   }
 
   // Handle reply to post, navigate -> CreatePostPage
   replyPost(post: Post):void{ 
     if(post){
+      const {target, targetId} = this.checkTarget(post);
+      this.router.navigate(['post-reply',target,targetId,post.id])
+    }
+  }
+
+  // Determine what is the target audience (group,event or topic) and id of that target
+  private checkTarget(post: Post): {target: string, targetId: number}{
       let targetId = post.target_group_id;
       let target = "group";
       if(post.target_event_id != 0) {
@@ -55,8 +66,7 @@ export class PostPage implements OnInit {
         target = "topic";
         targetId = post.target_topic_id;
       }
-      this.router.navigate(['post-reply',target,targetId,post.id])
-    }
+    return {target, targetId}
   }
 
 }
