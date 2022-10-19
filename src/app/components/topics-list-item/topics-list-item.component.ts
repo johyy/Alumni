@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Topic } from 'src/app/models/topic.model';
 import { User } from 'src/app/models/user.model';
+import { JoinTopicService } from 'src/app/services/join-topic.service';
 import { TopicService } from 'src/app/services/topic.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -18,7 +20,7 @@ export class TopicsListItemComponent implements OnInit {
     return this.userService.user;
   }
 
-  constructor(private topicService: TopicService, private userService: UserService) { }
+  constructor(private topicService: TopicService, private userService: UserService, private joinTopicService: JoinTopicService) { }
 
   ngOnInit(): void {
     this.userService.findProfile();
@@ -37,5 +39,31 @@ export class TopicsListItemComponent implements OnInit {
     }
     this.isIn = this.topicService.checkIfUserInTopic((this.user.id), this.topic);
   }
+  
+  onExitClick(topicId: number): void {
+    this.topicService.navigateToPage(false, topicId)
+    this.joinTopicService.removeFromTopic(topicId)
+      .subscribe({
+        next: (topic: Topic) => {
+          this.isIn = this.topicService.checkIfUserInTopic((this.user.id), topic);  
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log("ERROR", error.message)
+        }
+      })
+  }
+
+  onJoinClick(topicId: number): void {
+    this.topicService.navigateToPage(true, topicId)
+    this.joinTopicService.addToTopic(topicId)
+      .subscribe({
+        next: (topic: Topic) => {
+          this.isIn = this.topicService.checkIfUserInTopic((this.user.id), topic);  
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log("ERROR", error.message)
+        }
+      })
+    }
 
 }

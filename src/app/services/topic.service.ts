@@ -63,4 +63,12 @@ export class TopicService {
   navigateToTopicPage(topicId: number) {
     this.router.navigate(['/topic', topicId])
   }
+  
+  navigateToPage(boolean: boolean, topicId: number) {
+    if (boolean === true) {
+      this.router.navigate(['/join_topic', topicId])
+    } else {
+      this.router.navigate(['/exit_topic', topicId])
+    }
+  }
 }

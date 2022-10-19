@@ -5,8 +5,10 @@ import { TopicInfoComponent } from './components/topic-info/topic-info.component
 import { AuthGuard } from './guards/auth.guard';
 import { CalendarPage } from './pages/calendar/calendar.page';
 import { CreatePostPage } from './pages/create-post/create-post.page';
+import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
+import { JoinTopicPage } from './pages/join-topic/join-topic.page';
 import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 import { LoginPage } from './pages/login/login.page';
 import { PostPage } from './pages/post/post.page';
@@ -73,7 +75,17 @@ const routes: Routes = [
   path: "topic/:id",
   component: TopicInfoComponent,
   canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: "join_topic/:id",
+    component: JoinTopicPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "exit_topic/:id",
+    component: ExitTopicPage,
+    canActivate: [AuthGuard]
+  },
 
 ];
 

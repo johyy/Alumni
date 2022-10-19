@@ -32,6 +32,8 @@ import { TopicsListComponent } from './components/topics-list/topics-list.compon
 import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
 import { TopicInfoComponent } from './components/topic-info/topic-info.component';
 import { ExitTopicButtonComponent } from './components/exit-topic-button/exit-topic-button.component';
+import { JoinTopicPage } from './pages/join-topic/join-topic.page';
+import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { ExitTopicButtonComponent } from './components/exit-topic-button/exit-to
     TopicsListComponent,
     TopicsListItemComponent,
     TopicInfoComponent,
-    ExitTopicButtonComponent
+    ExitTopicButtonComponent,
+    JoinTopicPage,
+    ExitTopicPage
   ],
   imports: [
     BrowserModule,
