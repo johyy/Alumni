@@ -46,14 +46,14 @@ export class PostService {
   ) { }
 
   /**
-   * Create a new post.
+   * Create a new post. (POST)
    * @param title title of the post
    * @param post posts text body
    * @param target target of post (e.g. group / event)
    * @param target_id id of target
    * @returns 
    */
-   createPost(title: String, post: String,target: String ,target_id:number): Observable<string>{
+   createPost(title: String, post: String,target: String ,target_id:number): Observable<any>{
     const body = {
       title:title,
       body:post,
@@ -63,8 +63,25 @@ export class PostService {
     if(target === "group") body.target_group_id = target_id;
     else if(target === "event") body.target_event_id = target_id;
 
-    return this.http.post<any>(`${environment.baseUrl}/post`,body,this.httpOptions).pipe(      
-      catchError(this.handleError<string>('createPost'))
+    return this.http.post<any>(`${environment.baseUrl}/post`,body,{
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      observe: 'response',}).pipe( 
+        tap(resp => console.log("post service createPost response: ",resp)),
+        catchError(this.handleError<string>('createPost'))
+    )
+   };
+
+   /**
+    * Edit existing post (PUT)
+    * @param postId 
+    * @param post 
+    * @returns 
+    */
+   editPost(postId: number, post: Post): Observable<string>{
+    const body = post;
+    return this.http.put<any>(`${environment.baseUrl}/post/${postId}`,body,this.httpOptions).pipe(
+      tap(resp => console.log("post service editPost response: ",resp)),
+      catchError(this.handleError<string>('editPost'))
     )
    }
 
@@ -105,10 +122,11 @@ export class PostService {
 
 
   findPostById(postId: number): Post {
-    if(!StorageUtil.storageRead<Post>(StorageKeys.Posts)) {
+    if(!StorageUtil.storageRead<Post>(StorageKeys.Posts)) {      
       this.findPosts();
     }
-    const post = this._posts.find((p: Post) => p.id === postId);
+    const post = this._posts.find((p: Post) => p.id == postId);
+    
     return post!;
   }
 }

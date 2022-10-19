@@ -41,6 +41,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "post/:target/:id/:postId",
+    component: CreatePostPage,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "group/:id",
     component: GroupInfoComponent,
     canActivate: [AuthGuard]

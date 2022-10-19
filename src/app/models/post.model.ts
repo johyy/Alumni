@@ -1,7 +1,7 @@
 import { Time } from "@angular/common";
 import { User } from "./user.model";
 
-export interface Post {
+export interface Post { 
     author: User;
     body: string;
     created_time: Time;

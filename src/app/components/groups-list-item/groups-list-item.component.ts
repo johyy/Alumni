@@ -22,7 +22,7 @@ export class GroupsListItemComponent implements OnInit {
   constructor(private groupListService: GroupListService, private userService: UserService, private joinGroupService: JoinGroupService) { }
 
   ngOnInit(): void {
-    this.userService.findProfile();
+    this.userService.findProfile(); 
     this.isIn = this.groupListService.checkIfUserInGroup((this.userService.user.id), this.group);
   }
 
