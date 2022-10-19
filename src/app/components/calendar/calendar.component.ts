@@ -1,6 +1,9 @@
 import { startOfDay } from 'date-fns';
 import { Component, OnInit } from '@angular/core';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
+import { EventService } from 'src/app/services/event.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-calendar',
@@ -9,11 +12,15 @@ import { CalendarView, CalendarEvent } from 'angular-calendar';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventService: EventService, private userService : UserService) { }
 
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
+
+  get user(): User {
+    return this.userService.user;
+  }
 
   events: CalendarEvent[] = [
     {
@@ -26,7 +33,12 @@ export class CalendarComponent implements OnInit {
     }
   ]
 
+
+
   ngOnInit(): void {
+
+
+    
   }
 
 }

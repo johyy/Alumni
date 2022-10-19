@@ -27,6 +27,9 @@ import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 import { PostComposeComponent } from './components/post-compose/post-compose.component';
 import { FormsModule } from '@angular/forms';
 import { CreatePostPage } from './pages/create-post/create-post.page';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,13 @@ import { CreatePostPage } from './pages/create-post/create-post.page';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   ],
   providers: [
     {
