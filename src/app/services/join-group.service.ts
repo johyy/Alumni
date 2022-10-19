@@ -31,14 +31,38 @@ export class JoinGroupService {
       throw new Error("addToGroup: No user")
     }
 
+    this.userService.addToGroup(user, group)
+
     const headers = new HttpHeaders({
       'content-type': 'application/json'
     })
 
-    console.log(headers)
-    return this.http.patch<Group>(`${apiGroups}/${group.id}/${user}/join`, {
+    return this.http.put<Group>(`${apiGroups}/${group.id}/join`, {
       users: [...group.users]
     }, {
+      headers
+    })
+  }
+
+  public removeFromGroup(groupId: number): Observable<Group> {
+    if (!this.groupService.groupById(groupId)) {
+      throw new Error("addToGroup: There is no group with this id")
+    }
+
+    const user: number = this.userService.user.id;
+    const group: Group = this.groupService.groupById(groupId);
+
+    if (!user) {
+      throw new Error("addToGroup: No user")
+    }
+
+    this.userService.removeFromGroup(user, group)
+
+    const headers = new HttpHeaders({
+      'content-type': 'application/json'
+    })
+
+    return this.http.delete<Group>(`${apiGroups}/${group.id}/leave`, {
       headers
     })
   }
