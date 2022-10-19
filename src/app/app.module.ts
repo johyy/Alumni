@@ -44,13 +44,12 @@ import { JoinGroupPage } from './pages/join-group/join-group.page';
     PostPage,
     GroupsListComponent,
     GroupsListItemComponent,
+    JoinGroupPage,
+    LeaveGroupPage,
     AddButtonsComponent,
     PostPage,
     PostComposeComponent,
     CreatePostPage,
-    LeaveGroupButtonComponent,
-    LeaveGroupPage,
-    JoinGroupPage
   ],
   imports: [
     BrowserModule,
