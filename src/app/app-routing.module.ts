@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CalendarPage } from './pages/calendar/calendar.page';
+import { CreatePostPage } from './pages/create-post/create-post.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
 import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: "groups",
     component: GroupListPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "post/:target/:id",
+    component: CreatePostPage,
     canActivate: [AuthGuard]
   },
   {

@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
+
+.add-buttons-button {
+    position: relative;
+    margin: 20px 15px 15px 15px;
+    width: 240px;
+    height: 70px;    
+    border-radius: 30px;
+    background: #949494;
+    color: #FFFFFF;
+    border-color: transparent;
+    font-family: 'Shadows Into Light Two';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 70px;      
+}
+.add-buttons-button:hover{
+    color: black;
+}

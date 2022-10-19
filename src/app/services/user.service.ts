@@ -40,7 +40,7 @@ export class UserService {
     }
     this._loading = true;
     this.http.get<User>(apiUsers)
-    .pipe(
+    .pipe( 
       finalize(() => {
         this._loading = false;
       })
@@ -56,7 +56,7 @@ export class UserService {
     })
   }
 
-  findUserById(id: User): Observable<User> {
+  public findUserById(id: User): Observable<User> {
     if (!StorageUtil.storageReadOne<User>(StorageKeys.User)) {
       this.findProfile();
     }
