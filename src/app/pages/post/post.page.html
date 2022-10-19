@@ -5,7 +5,7 @@
         <div class="content">
             <h3 class="post-title">{{ post.title }}</h3>
             <p class="post-body">{{ post.body }}</p>
-            <a routerLink="/" class="reply-btn">Reply</a>
+            <a (click)="replyPost(post)" class="reply-btn">Reply</a> 
         </div>
         <div class="side">
             <div class="user-info">

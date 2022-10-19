@@ -43,4 +43,20 @@ export class PostPage implements OnInit {
     this.router.navigateByUrl("/");
   }
 
+  // Handle reply to post, navigate -> CreatePostPage
+  replyPost(post: Post):void{ 
+    if(post){
+      let targetId = post.target_group_id;
+      let target = "group";
+      if(post.target_event_id != 0) {
+        target = "event";
+        targetId = post.target_event_id;
+      }else if(post.target_topic_id != 0) {
+        target = "topic";
+        targetId = post.target_topic_id;
+      }
+      this.router.navigate(['post-reply',target,targetId,post.id])
+    }
+  }
+
 }
