@@ -4,7 +4,7 @@ section {
     height: 85vh;
 }
 
-.groups {
+.topics {
     font-family: 'Shadows Into Light Two';
     font-size: x-large;
     padding: 20px;
@@ -21,7 +21,7 @@ section {
     flex-direction: column;
 }
 
-.group-container {
+.topic-container {
     overflow-y: scroll;
     border-top: 2px solid #000000;
     border-radius: 5px;

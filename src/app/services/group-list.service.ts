@@ -53,8 +53,9 @@ export class GroupListService {
     this.router.navigate(['/group', groupId])
   }
 
-  groupById(id: number): Group | undefined {
-    return this.groups.find((group: Group) => group.id === id);
+  groupById(id: number): Group {
+    const group = this.groups.find((group: Group) => group.id === id);
+    return group!;
   }
 
   checkIfUserInGroup(userId: number, group: Group) {
