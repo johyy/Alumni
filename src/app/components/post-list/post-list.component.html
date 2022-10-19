@@ -11,7 +11,7 @@
                         <p>on</p>
                         <div class="group" *ngIf="post.target_group_id !== 0">
                             <p>group</p>
-                            <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id).title }}</a>
+                            <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id)?.title }}</a>
                         </div>
                         <div class="topic" *ngIf="post.target_topic_id !== 0">
                             <p>topic</p>

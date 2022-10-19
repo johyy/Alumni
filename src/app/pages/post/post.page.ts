@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { GroupListService } from 'src/app/services/group-list.service';
 import { PostService } from 'src/app/services/post.service';
 import { TopicService } from 'src/app/services/topic.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-post',
@@ -21,7 +22,9 @@ export class PostPage implements OnInit {
     private readonly postService: PostService,
     readonly groupListService: GroupListService,
     readonly topicService: TopicService,
-    private readonly activatedRoute: ActivatedRoute
+    readonly userService: UserService,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +36,11 @@ export class PostPage implements OnInit {
     });
     this.groupListService.findAllGroups();
     this.topicService.findAllTopics();
+    this.userService.findProfile();
+  }
+
+  handleEditClick() {
+    this.router.navigateByUrl("/");
   }
 
 }

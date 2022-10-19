@@ -25,7 +25,7 @@ export class JoinGroupService {
     }
 
     const user: number = this.userService.user.id;
-    const group: Group = this.groupService.groupById(groupId);
+    const group: Group = this.groupService.groupById(groupId)!;
 
     if (!user) {
       throw new Error("addToGroup: No user")
