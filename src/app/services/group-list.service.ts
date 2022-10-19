@@ -12,7 +12,7 @@ const { apiGroups } = environment;
 })
 export class GroupListService {
 
-  private _groups: Group[] = [];
+  private _groups!: Group[];
   private _error: string = "";
   private _loading: boolean = false;
 
@@ -31,6 +31,7 @@ export class GroupListService {
   constructor(private readonly http: HttpClient, private router: Router) { }
 
   public findAllGroups(): void {
+    if (this._groups) return;
     this._loading = true;
     this.http.get<Group[]>(apiGroups)
     .pipe(
