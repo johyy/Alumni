@@ -14,7 +14,7 @@ export class GroupInfoComponent implements OnInit {
 
   constructor(private groupListService: GroupListService, public router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     let parts = this.router.url.split("/")
     this.group = this.groupListService.groupById(parseInt(parts[2]))
   }
