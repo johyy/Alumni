@@ -32,10 +32,6 @@ export class PostService {
     return this._posts;
   }
 
-  set posts(posts: Post[]) {
-    this._posts = posts;
-  }
-
   get error(): string {
     return this._error;
   }
@@ -73,6 +69,7 @@ export class PostService {
    }
 
   public findPosts(): void {
+    if(this._posts) return;
     if(StorageUtil.storageRead(StorageKeys.Posts)) {
       this._posts = StorageUtil.storageRead(StorageKeys.Posts)!;
       return;
@@ -96,11 +93,13 @@ export class PostService {
   }
 
   findAuthors() {
+    if(typeof this._posts[0].author === "object") return;
     const posts = this._posts;
     posts.forEach(post => {
       const author = post.author;
       this.userService.findUserById(author).subscribe(user => post.author = user);
     })
+    StorageUtil.storageSave(StorageKeys.Posts, posts);
     this._posts = posts;
   }
 

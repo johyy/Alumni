@@ -1,12 +1,50 @@
 <div class="post-container">
+    <!-- <h2 class="group" *ngIf="post.target_group_id !== 0">{{ this.groupListService.groupById(this.post.target_group_id)?.title }}</h2>
+    <h2 class="topic" *ngIf="post.target_topic_id !== 0">{{ this.topicService.findTopicById(this.post.target_group_id)?.title }}</h2> -->
     <div class="post">
         <div class="content">
             <h3 class="post-title">{{ post.title }}</h3>
             <p class="post-body">{{ post.body }}</p>
         </div>
         <div class="side">
-            
+            <div class="user-info">
+                <div class="avatar-border">
+                    <img class="avatar" src="{{ post.author.avatar ?? '/assets/img/blank_avatar.png'}}"/>
+                </div>
+                <a class="name" routerLink="/timeline">{{ post.author.name }}</a>
+            </div>
+            <p class="date">
+                {{ 
+                    post.created_time.toString().split("T")[0].split("-").reverse().join(".") + " " + 
+                    post.created_time.toString().split("T")[1].split(":").splice(0, 2).join(":")
+                }}
+            </p>
         </div>
     </div>
-    <div class="comments"></div>
+    <div class="comments">
+        <ul>
+            <li *ngFor="let comment of posts">
+                <div class="comment" *ngIf="comment.original_post_id === post.id">
+                    <div class="content">
+                        <h3 class="post-title">{{ comment.title }}</h3>
+                        <p class="post-body">{{ comment.body }}</p>
+                    </div>
+                    <div class="side comment-side">
+                        <div class="user-info">
+                            <div class="avatar-border">
+                                <img class="avatar" src="{{ comment.author.avatar ?? '/assets/img/blank_avatar.png'}}"/>
+                            </div>
+                            <a class="name" routerLink="/timeline">{{ comment.author.name }}</a>
+                        </div>
+                        <p class="date">
+                            {{ 
+                                comment.created_time.toString().split("T")[0].split("-").reverse().join(".") + " " + 
+                                comment.created_time.toString().split("T")[1].split(":").splice(0, 2).join(":")
+                            }}
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
