@@ -27,6 +27,10 @@ export class EventService {
 
   constructor(private readonly http: HttpClient) { }
 
+  getEvents(): Observable<Event[]>{
+    return this.http.get<Event[]>(environment.apiEvents);
+  }
+
   findAllUsersEvents(): void {
     this._loading = true;
     this.http.get<Event[]>(environment.apiEvents)

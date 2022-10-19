@@ -18,6 +18,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { JoinButtonComponent } from './components/join-button/join-button.component';
 import { AddButtonsComponent } from './components/add-buttons/add-buttons.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { PostPage } from './pages/post/post.page';
 import { LeaveGroupButtonComponent } from './components/leave-group-button/leave-group-button.component';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
@@ -38,6 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TimelinePage,
     NavbarComponent,
     CalendarPage,
+    CalendarComponent,
     ProfilePage,
     GroupListPage,
     UserInfoComponent,

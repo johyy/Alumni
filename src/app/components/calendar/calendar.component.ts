@@ -4,6 +4,7 @@ import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
+import { Event } from 'src/app/models/event.model';
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +12,7 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  userEvents: Event[] = [];
 
   constructor(private eventService: EventService, private userService : UserService) { }
 
@@ -21,6 +23,7 @@ export class CalendarComponent implements OnInit {
   get user(): User {
     return this.userService.user;
   }
+
 
   events: CalendarEvent[] = [
     {
@@ -37,8 +40,9 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    
+    this.eventService.getEvents().subscribe((events) => this.userEvents = events );
+  // this.userEvents.forEach(e => this.events.push({start: new Date(e.date_time_begin), title: e.title}))
   }
+
 
 }
