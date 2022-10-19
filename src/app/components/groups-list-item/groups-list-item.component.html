@@ -1,7 +1,7 @@
 <div (click)="onGroupClicked(group.id)" *ngIf="group" >
     <section id="group">
-    <span *ngIf="isIn; then grouped else notGrouped"></span>
-    <ng-template #grouped><a>{{ group.title }}</a><img id="grouped" src="../assets/img/check.svg" alt="In" width="25"><div (click)="onLeaveClick(group.id)"><app-leave-group-button></app-leave-group-button></div></ng-template>
-    <ng-template #notGrouped><a>{{ group.title }}</a><div (click)="onJoinClick(group.id)"><app-join-button></app-join-button></div></ng-template>
+        <span *ngIf="isIn; then grouped else notGrouped"></span>
+        <ng-template #grouped><a>{{ group.title }}</a><img id="grouped" src="../assets/img/check.svg" alt="In" width="25"><div (click)="onLeaveClick(group.id)"><app-leave-group-button></app-leave-group-button></div></ng-template>
+        <ng-template #notGrouped><a>{{ group.title }}</a><div (click)="onJoinClick(group.id)"><app-join-button></app-join-button></div></ng-template>
     </section>
 </div>

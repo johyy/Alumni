@@ -27,6 +27,11 @@ import { CreatePostPage } from './pages/create-post/create-post.page';
 import { LeaveGroupButtonComponent } from './components/leave-group-button/leave-group-button.component';
 import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
+import { TopicListPage } from './pages/topic-list/topic-list.page';
+import { TopicsListComponent } from './components/topics-list/topics-list.component';
+import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
+import { TopicInfoComponent } from './components/topic-info/topic-info.component';
+import { ExitTopicButtonComponent } from './components/exit-topic-button/exit-topic-button.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +55,12 @@ import { JoinGroupPage } from './pages/join-group/join-group.page';
     PostPage,
     PostComposeComponent,
     CreatePostPage,
+    LeaveGroupButtonComponent,
+    TopicListPage,
+    TopicsListComponent,
+    TopicsListItemComponent,
+    TopicInfoComponent,
+    ExitTopicButtonComponent
   ],
   imports: [
     BrowserModule,

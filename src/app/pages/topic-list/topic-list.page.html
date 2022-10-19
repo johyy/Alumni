@@ -1,0 +1,9 @@
+<section>
+    <div  class="topics"> 
+        <b id="title">TOPICS</b><a>  Once you have joined a topic, you can go to the topic page by clicking on the topic name</a>
+        <div class="topic-container">
+            <p *ngIf="loading">Loading topics..</p>
+            <app-topics-list [topics]="topics"></app-topics-list>
+        </div>
+    </div>
+</section>

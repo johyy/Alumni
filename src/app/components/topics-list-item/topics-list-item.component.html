@@ -1,0 +1,7 @@
+<div (click)="onTopicClicked(topic.id)" *ngIf="topic" >
+    <section id="topic">
+        <span *ngIf="isIn; then grouped else notGrouped"></span>
+        <ng-template #grouped><a>{{ topic.title }}</a><img id="grouped" src="../assets/img/check.svg" alt="In" width="25"><app-exit-topic-button></app-exit-topic-button></ng-template>
+        <ng-template #notGrouped><a>{{ topic.title }}</a><app-join-button></app-join-button></ng-template>
+    </section>
+</div>
