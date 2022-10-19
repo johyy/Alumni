@@ -32,7 +32,7 @@ export class UserService {
   public findProfile(): void {
     this._loading = true;
     this.http.get<User>(apiUsers)
-    .pipe(
+    .pipe( 
       finalize(() => {
         this._loading = false;
       })
@@ -48,7 +48,7 @@ export class UserService {
     })
   }
 
-  findUserById(id: User): Observable<User> {
+  public findUserById(id: User): Observable<User> {
     return this.http.get<User>(apiUsers + "/" + id);
   }
 }
