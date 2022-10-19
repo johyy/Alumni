@@ -1,7 +1,7 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { finalize, Observable } from 'rxjs';
+import { catchError, finalize, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Topic } from '../models/topic.model';
 
@@ -13,6 +13,21 @@ export class TopicService {
   private _topics: Topic[] = [];
   private _error: string = "";
   private _loading: boolean = false;
+
+  private httpOptions = {
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      })
+  }
+  
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log((`${operation} failed: ${error.message}`));
+      return of(result as T);
+    };
+  }
+  
 
   get topics(): Topic[] {
     return this._topics;
@@ -71,4 +86,15 @@ export class TopicService {
       this.router.navigate(['/exit_topic', topicId])
     }
   }
+
+  createTopic(title: String, description: String): Observable<string>{
+    const body = {
+      title:title,
+      description:description,
+    }
+
+    return this.http.post<any>(`${environment.baseUrl}/topic`,body,this.httpOptions).pipe(      
+      catchError(this.handleError<string>('createTopic'))
+    )
+   }
 }
