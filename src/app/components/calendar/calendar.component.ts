@@ -10,12 +10,14 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 
 defineFullCalendarElement();
 
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+
 
   constructor(private eventService: EventService, private userService : UserService) { }
 
@@ -27,14 +29,15 @@ export class CalendarComponent implements OnInit {
      right: 'dayGridMonth,dayGridWeek,dayGridDay',
    },
    initialView: 'dayGridMonth',
+   events: this.events,
    weekends: true,
    editable: true,
    selectable: true,
    selectMirror: true,
-   dayMaxEvents: true,
+   dayMaxEvents: true
  };
 
-  get events(): CalendarEvent[] {
+  get events(): any {
     return this.eventService.calendarEvents;
   }
 
@@ -47,10 +50,33 @@ export class CalendarComponent implements OnInit {
   }
 
 
+renderCalendar() {
+   this.calendarOptions = {
+      plugins: [dayGridPlugin],
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,dayGridWeek,dayGridDay',
+      },
+      initialView: 'dayGridMonth',
+      events: this.events,
+      weekends: true,
+      editable: true,
+      selectable: true,
+      selectMirror: true,
+      dayMaxEvents: true,
+      eventClick: function(info) {
+        alert('Event: ' + info.event.title + "event view as popup?");
+      }
+    };
+}
+
+
+
   ngOnInit(): void {
     
     this.eventService.findAllUsersEvents()
-
+    setTimeout(() => this.renderCalendar(), 1000)
   }
 
 

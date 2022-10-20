@@ -2,7 +2,9 @@
 <li *ngFor="let event of events">
     {{event.title}}
     </li>
+    <!-- <div *ngIf="events?renderCalendar():false">;</div> -->
     <div class="calendar">
     <full-calendar  [options]='calendarOptions'></full-calendar>
     <div>
+
 
