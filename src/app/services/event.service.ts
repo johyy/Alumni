@@ -19,6 +19,7 @@ export class EventService {
     return this._events;
   }
 
+  //for calendar
   get calendarEvents(): CalendarEvent[] {
       let calendarevents: CalendarEvent[] = []
       for(let event of this.events)

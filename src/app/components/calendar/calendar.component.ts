@@ -32,17 +32,6 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  // events: CalendarEvent[] = [
-  //   {
-  //     start: startOfDay(new Date()),
-  //     title: 'First event',
-  //   },
-  //   {
-  //     start: startOfDay(new Date()),
-  //     title: 'Second event',
-  //   }
-  // ]
-
   ngOnInit(): void {
     
     this.eventService.findAllUsersEvents()
