@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common'
 import { NgForm } from '@angular/forms';
-import { Event } from 'src/app/models/event.model';
 import { NewEvent } from 'src/app/models/new-event.model';
 import { EventService } from 'src/app/services/event.service';
+import { TopicService } from 'src/app/services/topic.service';
+import { GroupListService } from 'src/app/services/group-list.service';
 
 @Component({
   selector: 'app-event-create',
@@ -15,17 +16,19 @@ export class EventCreateComponent implements OnInit {
   private eventTargetId: number | null = null;
   private target: String | null = null;
   public errorMsg: String | null = null;
+  public targetTitle: String = "";
 
   constructor(public router: Router, private location: Location,private route: ActivatedRoute,
-    private eventService: EventService) { }
+    private eventService: EventService, private topicService: TopicService, private glService: GroupListService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.eventTargetId = params['id'];      
       this.target = params['target'];
-      /* if(params['postId']) this.postInEdit = this.postService.findPostById(params['postId']);      
-      if(params['ogId']) this.ogPostId = params['ogId'];  */ 
     });
+    // Get target title for header h1    
+    if(this.target == "group") this.targetTitle = this.glService.groups?.find(g=> g.id == this.eventTargetId)?.title ?? this.targetTitle;
+    if(this.target == "topic") this.targetTitle = this.topicService.topics?.find(t=> t.id == this.eventTargetId)?.title ?? this.targetTitle;
   }
 
   createEvent(createEventForm: NgForm): void {
