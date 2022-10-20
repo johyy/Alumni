@@ -2,34 +2,7 @@
 <li *ngFor="let event of events">
     {{event.title}}
     </li>
-    
-
-<div class="row text-center">
-
-    <div class="col-md-4">
-        <div class="btn-group">
-            <div class="btn btn-dark" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
-                Previous
-            </div>
-            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
-                Today
-            </div>
-            <div class="btn btn-dark" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
-                Next
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
-    </div>
-
-</div>
-
-
-
-<mwl-calendar-month-view
- [viewDate]="viewDate"  [events]="events"
- >
-</mwl-calendar-month-view>
+    <div class="calendar">
+    <full-calendar  [options]='calendarOptions'></full-calendar>
+    <div>
 

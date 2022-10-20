@@ -5,6 +5,10 @@ import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { Event } from 'src/app/models/event.model';
+import { CalendarOptions, defineFullCalendarElement } from '@fullcalendar/web-component';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+defineFullCalendarElement();
 
 @Component({
   selector: 'app-calendar',
@@ -15,9 +19,20 @@ export class CalendarComponent implements OnInit {
 
   constructor(private eventService: EventService, private userService : UserService) { }
 
-  viewDate: Date = new Date();
-  view: CalendarView = CalendarView.Month;
-  CalendarView = CalendarView;
+  calendarOptions: CalendarOptions = {
+   plugins: [dayGridPlugin],
+   headerToolbar: {
+     left: 'prev,next today',
+     center: 'title',
+     right: 'dayGridMonth,dayGridWeek,dayGridDay',
+   },
+   initialView: 'dayGridMonth',
+   weekends: true,
+   editable: true,
+   selectable: true,
+   selectMirror: true,
+   dayMaxEvents: true,
+ };
 
   get events(): CalendarEvent[] {
     return this.eventService.calendarEvents;
