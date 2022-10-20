@@ -4,6 +4,7 @@ import { finalize, firstValueFrom, Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StorageKeys } from '../enums/storage-keys.enum';
 import { Group } from '../models/group.model';
+import { Topic } from '../models/topic.model';
 import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 
@@ -30,7 +31,7 @@ export class UserService {
     return this._loading;
   }
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { } 
 
   public findProfile(): void {
     if (this._user) return;
@@ -72,6 +73,18 @@ export class UserService {
   public removeFromGroup(userId: number, group: Group): void {
     if (group) {
       group.users = group.users.filter((userId: number) => this.user.id !== userId)
+    }
+  }
+
+  public addToTopic(userId: number, topic: Topic): void {
+    if (topic) {
+      topic.users.push(userId);
+    }
+  }
+
+  public removeFromTopic(userId: number, topic: Topic): void {
+    if (topic) {
+      topic.users = topic.users.filter((userId: number) => this.user.id !== userId)
     }
   }
 }

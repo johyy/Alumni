@@ -40,6 +40,7 @@ export class PostListComponent implements OnInit {
     this.postService.findAuthors();
     this.groupListService.findAllGroups();
     this.topicService.findAllTopics();
+    this.userService.findProfile();
   }
 
   navigateToPost(postId: number) {

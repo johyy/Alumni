@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Group } from '../models/group.model';
-import { User } from '../models/user.model';
 import { GroupListService } from './group-list.service';
 import { UserService } from './user.service';
 
@@ -25,7 +24,7 @@ export class JoinGroupService {
     }
 
     const user: number = this.userService.user.id;
-    const group: Group = this.groupService.groupById(groupId);
+    const group: Group = this.groupService.groupById(groupId)!;
 
     if (!user) {
       throw new Error("addToGroup: No user")

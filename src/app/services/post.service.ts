@@ -7,6 +7,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../enums/storage-keys.enum';
+import { NewPost } from '../models/new-post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -46,25 +47,31 @@ export class PostService {
   ) { }
 
   /**
-   * Create a new post.
-   * @param title title of the post
-   * @param post posts text body
-   * @param target target of post (e.g. group / event)
-   * @param target_id id of target
-   * @returns 
+   * Create a new post. (POST)
+   * @param post NewPost model
+   * @returns http response
    */
-   createPost(title: String, post: String,target: String ,target_id:number): Observable<string>{
-    const body = {
-      title:title,
-      body:post,
-      target_group_id:0,
-      target_event_id:0
-    }
-    if(target === "group") body.target_group_id = target_id;
-    else if(target === "event") body.target_event_id = target_id;
+   createPost(post: NewPost): Observable<any>{
+    return this.http.post<any>(`${environment.baseUrl}/post`,post,{
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      observe: 'response', }).pipe( 
+        //tap(resp => console.log("post service createPost response: ",resp)),
+        catchError(this.handleError<string>('createPost'))
+    )
+   };
 
-    return this.http.post<any>(`${environment.baseUrl}/post`,body,this.httpOptions).pipe(      
-      catchError(this.handleError<string>('createPost'))
+   /**
+    * Edit existing post (PUT)
+    * @param postId 
+    * @param post 
+    * @returns 
+    */
+   editPost(postId: number, post: Post): Observable<string>{
+    const body: any = post;
+    body.author = post.author.id;
+    return this.http.put<any>(`${environment.baseUrl}/post/${postId}`,body,this.httpOptions).pipe(
+      //tap(resp => console.log("post service editPost response: ",resp)),
+      catchError(this.handleError<string>('editPost'))
     )
    }
 
@@ -105,10 +112,11 @@ export class PostService {
 
 
   findPostById(postId: number): Post {
-    if(!StorageUtil.storageRead<Post>(StorageKeys.Posts)) {
+    if(!StorageUtil.storageRead<Post>(StorageKeys.Posts)) {      
       this.findPosts();
     }
-    const post = this._posts.find((p: Post) => p.id === postId);
+    const post = this._posts.find((p: Post) => p.id == postId);
+    
     return post!;
   }
 }

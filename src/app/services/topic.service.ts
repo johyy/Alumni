@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Topic } from '../models/topic.model';
@@ -25,7 +26,7 @@ export class TopicService {
     return this._loading;
   }
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient, private router: Router) { }
 
   findAllTopics(): void {
     this._loading = true;
@@ -45,7 +46,29 @@ export class TopicService {
     })
   }
 
-  findTopicById(id: number): Topic | undefined {
-    return this.topics.find((topic: Topic) => topic.id === id);
+  findTopicById(id: number): Topic {
+    const topic = this.topics.find((topic: Topic) => topic.id === id);
+    return topic!
+  }
+
+  checkIfUserInTopic(userId: number, topic: Topic) {
+    for (let user of topic.users) {
+      if (user == userId) {
+        return true
+      } 
+    }
+    return false
+  }
+
+  navigateToTopicPage(topicId: number) {
+    this.router.navigate(['/topic', topicId])
+  }
+  
+  navigateToPage(boolean: boolean, topicId: number) {
+    if (boolean === true) {
+      this.router.navigate(['/join_topic', topicId])
+    } else {
+      this.router.navigate(['/exit_topic', topicId])
+    }
   }
 }

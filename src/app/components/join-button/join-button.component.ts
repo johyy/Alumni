@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Group } from 'src/app/models/group.model';
-import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-join-button',
@@ -10,18 +7,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class JoinButtonComponent implements OnInit {
 
-  @Input() group!: Group;
-
-  get user(): User {
-    return this.userService.user;
-  }
-
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onJoinClick(): void {
-    console.log("click")
   }
 }

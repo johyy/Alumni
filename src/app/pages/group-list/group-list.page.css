@@ -26,3 +26,11 @@ section {
     border-top: 2px solid #000000;
     border-radius: 5px;
 }
+
+b {
+    margin-bottom: 10px;
+}
+
+#add {
+    padding-left: 2%;
+}

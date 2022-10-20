@@ -20,17 +20,26 @@ import { JoinButtonComponent } from './components/join-button/join-button.compon
 import { AddButtonsComponent } from './components/add-buttons/add-buttons.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { PostPage } from './pages/post/post.page';
-import { LeaveGroupButtonComponent } from './components/leave-group-button/leave-group-button.component';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
-import { JoinGroupPage } from './pages/join-group/join-group.page';
-import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 import { PostComposeComponent } from './components/post-compose/post-compose.component';
 import { FormsModule } from '@angular/forms';
 import { CreatePostPage } from './pages/create-post/create-post.page';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LeaveGroupButtonComponent } from './components/leave-group-button/leave-group-button.component';
+import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
+import { JoinGroupPage } from './pages/join-group/join-group.page';
+import { TopicListPage } from './pages/topic-list/topic-list.page';
+import { TopicsListComponent } from './components/topics-list/topics-list.component';
+import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
+import { TopicInfoComponent } from './components/topic-info/topic-info.component';
+import { ExitTopicButtonComponent } from './components/exit-topic-button/exit-topic-button.component';
+import { JoinTopicPage } from './pages/join-topic/join-topic.page';
+import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
+import { AddTopicButtonComponent } from './components/add-topic-button/add-topic-button.component';
+import { AddGroupButtonComponent } from './components/add-group-button/add-group-button.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +56,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GroupInfoComponent,
     JoinButtonComponent,
     PostPage,
-    LeaveGroupButtonComponent,
     GroupsListComponent,
     GroupsListItemComponent,
     JoinGroupPage,
@@ -56,13 +64,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PostPage,
     PostComposeComponent,
     CreatePostPage,
+    LeaveGroupButtonComponent,
+    TopicListPage,
+    TopicsListComponent,
+    TopicsListItemComponent,
+    TopicInfoComponent,
+    ExitTopicButtonComponent,
+    JoinTopicPage,
+    ExitTopicPage,
+    AddTopicButtonComponent,
+    AddGroupButtonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,

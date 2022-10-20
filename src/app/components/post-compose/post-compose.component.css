@@ -59,6 +59,11 @@
     position: absolute;
     color: red;
 }
+.post-compose-errormsg{
+    position: absolute;
+    color: red;
+    left: 50%;
+}
 .post-compose-button{
     font-family: 'Shadows Into Light Two';    
     width: 203px;
