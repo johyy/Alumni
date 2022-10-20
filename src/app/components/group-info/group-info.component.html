@@ -9,7 +9,14 @@
     <app-add-buttons [entity]="group" [target]="'group'"></app-add-buttons>
 </div>
 <section>
-<div class="posts">
-    <b>POSTS</b>
-</div>
+    <div class="posts">
+        <b>POSTS</b>
+        <div class="posts-container">
+            <ul>
+                <li *ngFor="let post of posts">
+                    <app-post-list-item *ngIf="post.target_group_id === group.id" [post]="post"></app-post-list-item>
+                </li>
+            </ul>
+        </div>
+    </div>
 </section>

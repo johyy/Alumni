@@ -1,33 +1,4 @@
 <p *ngIf="loading">Loading posts...</p>
 <ul>
-    <li *ngFor="let post of posts">
-        <div *ngIf="post.original_post_id === 0" class="post_info">
-                <div class="line line-1">
-                    <div class="user-info">
-                        <div class="avatar-border">
-                            <img class="avatar" src="{{ post.author.avatar ?? '/assets/img/blank_avatar.png'}}"/>
-                        </div>
-                        <a class="name" routerLink="/timeline">{{ post.author.name }}</a>
-                        <p>on</p>
-                        <div class="group" *ngIf="post.target_group_id !== 0">
-                            <p>group</p>
-                            <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id)?.title }}</a>
-                        </div>
-                        <div class="topic" *ngIf="post.target_topic_id !== 0">
-                            <p>topic</p>
-                            <a routerLink="/timeline">{{ this.topicService.findTopicById(post.target_topic_id)?.title }}</a>
-                        </div>
-                    </div>
-                    <p class="date">
-                        {{ 
-                            post.created_time.toString().split("T")[0].split("-").reverse().join(".") + " " + 
-                            post.created_time.toString().split("T")[1].split(":").splice(0, 2).join(":")
-                        }}
-                    </p>
-
-                </div>
-                <h3 class="line line-2" (click)="navigateToPost(post.id)">{{ post.title }}</h3>
-                <p class="line line-3" (click)="navigateToPost(post.id)">{{ post.reply_posts.length + " comments" }}</p>
-        </div>
-    </li>
+    <app-post-list-item *ngFor="let post of posts" [post]="post"></app-post-list-item>
 </ul>
