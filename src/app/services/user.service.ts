@@ -31,7 +31,7 @@ export class UserService {
     return this._loading;
   }
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { } 
 
   public findProfile(): void {
     if (this._user) return;

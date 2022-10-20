@@ -41,8 +41,18 @@ const routes: Routes = [
     component: GroupListPage,
     canActivate: [AuthGuard]
   },
-  {
-    path: "post/:target/:id",
+  {// New post ( e.g. post/group/1 | :id = group.id)
+    path: "post/:target/:id", 
+    component: CreatePostPage,
+    canActivate: [AuthGuard]
+  },
+  {// Edit post ( e.g. post/group/1/2 | :id = group.id)
+    path: "post/:target/:id/:postId", 
+    component: CreatePostPage,
+    canActivate: [AuthGuard]
+  },
+  {// Reply to post (e.g. post/reply/group/1/3 | :id = group.id | :ogId = originalpost.id)
+    path: "post-reply/:target/:id/:ogId", 
     component: CreatePostPage,
     canActivate: [AuthGuard]
   },

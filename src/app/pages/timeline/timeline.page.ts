@@ -11,6 +11,8 @@ export class TimelinePage implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    
+  }
 
 }
