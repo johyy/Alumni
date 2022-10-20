@@ -47,7 +47,7 @@ export class PostService {
   ) { }
 
   /**
-   * Create a new post. (POST)
+   * Create a new post. (POST). Id of created post in response.body.
    * @param post NewPost model
    * @returns http response
    */
