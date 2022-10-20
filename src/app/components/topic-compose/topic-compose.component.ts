@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,NgForm } from '@angular/forms';
-import { Router,ActivatedRoute, ParamMap } from '@angular/router';
-import { Location } from '@angular/common'
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { TopicService } from 'src/app/services/topic.service';
 
 @Component({
@@ -27,5 +27,4 @@ export class TopicComposeComponent implements OnInit {
   cancel(): void {
     this.location.back()
   }
-
 }

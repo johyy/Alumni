@@ -1,7 +1,7 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
+import { catchError, finalize, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Group } from '../models/group.model';
 
@@ -15,6 +15,20 @@ export class GroupListService {
   private _groups!: Group[];
   private _error: string = "";
   private _loading: boolean = false;
+
+  private httpOptions = {
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      })
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log((`${operation} failed: ${error.message}`));
+      return of(result as T);
+    };
+  }
 
   get groups(): Group[] {
     return this._groups;
@@ -31,7 +45,6 @@ export class GroupListService {
   constructor(private readonly http: HttpClient, private router: Router) { }
 
   public findAllGroups(): void {
-    if (this._groups) return;
     this._loading = true;
     this.http.get<Group[]>(apiGroups)
     .pipe(
@@ -74,7 +87,16 @@ export class GroupListService {
       this.router.navigate(['/leave_group', groupId])
     }
   }
-}
-    
-  
 
+  createGroup(title: String, description: String, userId: number, privateBoolean: boolean): Observable<string>{
+    const body = {
+      title:title,
+      description:description,
+      users:[userId],
+      _private:privateBoolean
+    }
+    return this.http.post<any>(`${environment.baseUrl}/group`,body,this.httpOptions).pipe(      
+      catchError(this.handleError<string>('createGroup'))
+    )
+  }
+}
