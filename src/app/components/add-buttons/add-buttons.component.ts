@@ -25,8 +25,9 @@ export class AddButtonsComponent implements OnInit {
     }
   }
   newEvent():void{
-
-    //this.router.navigate([''])
+    if(this.entity && this.target){
+      this.router.navigate(['event',this.target,this.entity.id])
+    }
   }
 
 }

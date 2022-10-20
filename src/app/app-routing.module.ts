@@ -4,6 +4,7 @@ import { GroupInfoComponent } from './components/group-info/group-info.component
 import { TopicInfoComponent } from './components/topic-info/topic-info.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CalendarPage } from './pages/calendar/calendar.page';
+import { CreateEventPage } from './pages/create-event/create-event.page';
 import { CreatePostPage } from './pages/create-post/create-post.page';
 import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
@@ -54,6 +55,11 @@ const routes: Routes = [
   {// Reply to post (e.g. post/reply/group/1/3 | :id = group.id | :ogId = originalpost.id)
     path: "post-reply/:target/:id/:ogId", 
     component: CreatePostPage,
+    canActivate: [AuthGuard]
+  },
+  {// New event ( e.g. event/group/1 | :id = group.id)
+    path: "event/:target/:id",
+    component: CreateEventPage,
     canActivate: [AuthGuard]
   },
   {

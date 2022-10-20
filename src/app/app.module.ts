@@ -36,6 +36,8 @@ import { JoinTopicPage } from './pages/join-topic/join-topic.page';
 import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 import { AddTopicButtonComponent } from './components/add-topic-button/add-topic-button.component';
 import { AddGroupButtonComponent } from './components/add-group-button/add-group-button.component';
+import { CreateEventPage } from './pages/create-event/create-event.page';
+import { EventCreateComponent } from './components/event-create/event-create.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { AddGroupButtonComponent } from './components/add-group-button/add-group
     JoinTopicPage,
     ExitTopicPage,
     AddTopicButtonComponent,
-    AddGroupButtonComponent
+    AddGroupButtonComponent,
+    CreateEventPage,
+    EventCreateComponent
   ],
   imports: [
     BrowserModule,
