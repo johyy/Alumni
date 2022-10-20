@@ -21,6 +21,8 @@ export class TopicComposeComponent implements OnInit {
     if(createTopicForm.valid){
       this.topicService.createTopic(title, description).subscribe(
         resp => console.log("topic-compose: createTopic response: "+resp));
+        this.topicService.findAllTopics();
+        this.router.navigate(['/topics']);
     }    
   }
 

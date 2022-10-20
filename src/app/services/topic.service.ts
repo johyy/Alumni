@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, finalize, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { StorageKeys } from '../enums/storage-keys.enum';
 import { Topic } from '../models/topic.model';
-import { StorageUtil } from '../utils/storage.util';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +13,6 @@ export class TopicService {
   private _topics: Topic[] = [];
   private _error: string = "";
   private _loading: boolean = false;
-  private _refreshTopics: boolean = false;
 
   private httpOptions = {
     headers: new HttpHeaders({ 
@@ -31,7 +28,6 @@ export class TopicService {
     };
   }
   
-
   get topics(): Topic[] {
     return this._topics;
   }
@@ -47,12 +43,6 @@ export class TopicService {
   constructor(private readonly http: HttpClient, private router: Router) { }
 
   findAllTopics(): void {
-    if (!this._refreshTopics) {
-      if (StorageUtil.storageRead(StorageKeys.Topics)) {
-        this._topics = StorageUtil.storageRead(StorageKeys.Topics)!;
-        return;
-      }
-    }
     this._loading = true;
     this.http.get<Topic[]>(environment.apiTopics)
     .pipe(
@@ -62,9 +52,7 @@ export class TopicService {
     )
     .subscribe({
       next: (topics: Topic[]) => {
-        this._refreshTopics = false;
         this._topics = topics
-        StorageUtil.storageSave(StorageKeys.Topics, topics)
       },
       error: (error: HttpErrorResponse) => {
         this._error = error.message;
@@ -99,7 +87,6 @@ export class TopicService {
   }
 
   createTopic(title: String, description: String): Observable<string>{
-    this._refreshTopics = true;
     const body = {
       title:title,
       description:description,
