@@ -29,7 +29,8 @@ export class GroupComposeComponent implements OnInit {
     if(createGroupForm.valid){
       this.groupService.createGroup(title, description, this.user.id, this.isPrivate).subscribe(
         resp => console.log("group-compose: createGroup response: "+resp));
-      this.groupService.findAllGroups();
+        this.groupService.findAllGroups();
+        this.router.navigate(['/groups']);
     }    
   }
 
@@ -40,5 +41,4 @@ export class GroupComposeComponent implements OnInit {
   public onSavePrivacyChanged(value: boolean) {
     this.isPrivate = value;
   }
-
 }

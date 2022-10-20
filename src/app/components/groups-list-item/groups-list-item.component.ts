@@ -39,6 +39,7 @@ export class GroupsListItemComponent implements OnInit {
       .subscribe({
         next: (group: Group) => {
           this.isIn = this.groupListService.checkIfUserInGroup(this.user.id, group);
+          this.groupListService.findAllGroups();
         },
         error: (error: HttpErrorResponse) => {
           console.log("ERROR", error.message)
@@ -52,6 +53,7 @@ export class GroupsListItemComponent implements OnInit {
       .subscribe({
         next: (group: Group) => {
           this.isIn = this.groupListService.checkIfUserInGroup(this.user.id, group);
+          this.groupListService.findAllGroups();
         },
         error: (error: HttpErrorResponse) => {
           console.log("ERROR", error.message)
