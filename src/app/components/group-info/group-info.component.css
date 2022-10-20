@@ -22,6 +22,12 @@ section {
     margin-top: 200px;
 }
 
+.posts-container {
+    overflow-y: scroll;
+    border-top: 2px solid #000000;
+    border-radius: 5px;
+}
+
 
 .group-info {
     font-family: 'Shadows Into Light Two';
