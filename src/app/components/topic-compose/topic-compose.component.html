@@ -1,0 +1,42 @@
+<div class="topic-compose-wrap">  
+    <h1 class="topic-compose-header-text">ADD A NEW TOPIC</h1>      
+    <form #createTopicForm="ngForm" 
+        (ngSubmit)="title.invalid?title.control.markAsTouched():createTopic(createTopicForm);
+                    description.invalid?description.control.markAsTouched():null">
+        <span class="topic-compose-validation" *ngIf="title.invalid && title.touched">
+            Title is required
+        </span>
+        <div class="topic-compose-group"> 
+            <label for="title" class="topic-compose-text">TITLE: </label>
+            <input 
+                type="text"
+                id="title"
+                name="title"
+                class="topic-compose-title-input"                     
+                required
+                ngModel
+                #title="ngModel"
+            >                
+        </div>
+        <span class="topic-compose-validation" *ngIf="description.invalid && description.touched">
+                Description is required
+        </span>
+        <div class="topic-compose-group">                   
+            <label for="description" class="topic-compose-text label-textarea">DESCRIPTION: </label>  
+            <textarea 
+                class="topic-compose-textarea" 
+                id="description"
+                name="description"
+                required
+                ngModel
+                #description="ngModel" >
+            </textarea>
+        </div>
+        <div class="topic-compose-button-group">
+            <button type="button" class="topic-compose-button" (click)="cancel()">CANCEL</button>
+            <div class="topic-compose-button-group-inner">
+                <button type="submit" class="topic-compose-button">SEND</button>     
+            </div>           
+        </div> 
+       
+    </form>

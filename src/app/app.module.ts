@@ -33,7 +33,6 @@ import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
 import { TopicListPage } from './pages/topic-list/topic-list.page';
 import { TopicsListComponent } from './components/topics-list/topics-list.component';
-import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
 import { TopicInfoComponent } from './components/topic-info/topic-info.component';
 import { ExitTopicButtonComponent } from './components/exit-topic-button/exit-topic-button.component';
 import { JoinTopicPage } from './pages/join-topic/join-topic.page';
@@ -42,6 +41,11 @@ import { AddTopicButtonComponent } from './components/add-topic-button/add-topic
 import { AddGroupButtonComponent } from './components/add-group-button/add-group-button.component';
 import { CreateEventPage } from './pages/create-event/create-event.page';
 import { EventCreateComponent } from './components/event-create/event-create.component';
+import { AddTopicPage } from './pages/add-topic/add-topic.page';
+import { TopicComposeComponent } from './components/topic-compose/topic-compose.component';
+import { AddGroupPage } from './pages/add-group/add-group.page';
+import { GroupComposeComponent } from './components/group-compose/group-compose.component';
+import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +81,11 @@ import { EventCreateComponent } from './components/event-create/event-create.com
     AddTopicButtonComponent,
     AddGroupButtonComponent,
     CreateEventPage,
-    EventCreateComponent
+    EventCreateComponent,
+    AddTopicPage,
+    TopicComposeComponent,
+    AddGroupPage,
+    GroupComposeComponent
   ],
   imports: [
     BrowserModule,

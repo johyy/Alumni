@@ -1,9 +1,11 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
+import { catchError, finalize, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { StorageKeys } from '../enums/storage-keys.enum';
 import { Group } from '../models/group.model';
+import { StorageUtil } from '../utils/storage.util';
 
 const { apiGroups } = environment;
 
@@ -15,6 +17,21 @@ export class GroupListService {
   private _groups!: Group[];
   private _error: string = "";
   private _loading: boolean = false;
+  private _refreshGroups: boolean = false;
+
+  private httpOptions = {
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      })
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log((`${operation} failed: ${error.message}`));
+      return of(result as T);
+    };
+  }
 
   get groups(): Group[] {
     return this._groups;
@@ -31,7 +48,12 @@ export class GroupListService {
   constructor(private readonly http: HttpClient, private router: Router) { }
 
   public findAllGroups(): void {
-    if (this._groups) return;
+    if(!this._refreshGroups) {
+      if (StorageUtil.storageRead(StorageKeys.Groups)) {
+        this._groups = StorageUtil.storageRead(StorageKeys.Groups)!;
+        return;
+      }
+    }
     this._loading = true;
     this.http.get<Group[]>(apiGroups)
     .pipe(
@@ -41,7 +63,9 @@ export class GroupListService {
     )
     .subscribe({
       next: (groups: Group[]) => {
+        this._refreshGroups = false;
         this._groups = groups;
+        StorageUtil.storageSave(StorageKeys.Groups, groups)
       },
       error: (error: HttpErrorResponse) => {
         this._error = error.message;
@@ -74,7 +98,17 @@ export class GroupListService {
       this.router.navigate(['/leave_group', groupId])
     }
   }
-}
-    
-  
 
+  createGroup(title: String, description: String, userId: number, privateBoolean: boolean): Observable<string>{
+    this._refreshGroups = true;
+    const body = {
+      title:title,
+      description:description,
+      users:[userId],
+      _private:privateBoolean
+    }
+    return this.http.post<any>(`${environment.baseUrl}/group`,body,this.httpOptions).pipe(      
+      catchError(this.handleError<string>('createGroup'))
+    )
+  }
+}

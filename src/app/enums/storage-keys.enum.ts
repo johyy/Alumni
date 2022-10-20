@@ -1,4 +1,6 @@
 export enum StorageKeys {
     Posts = "posts",
-    User = "user"
+    User = "user",
+    Groups = "groups",
+    Topics = "topics"
 }

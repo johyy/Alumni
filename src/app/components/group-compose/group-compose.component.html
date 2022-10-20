@@ -1,0 +1,45 @@
+<div class="group-compose-wrap">  
+    <h1 class="group-compose-header-text">ADD A NEW GROUP</h1>      
+    <form #createGroupForm="ngForm" 
+        (ngSubmit)="title.invalid?title.control.markAsTouched():createGroup(createGroupForm);
+                    description.invalid?description.control.markAsTouched():null">
+        <span class="group-compose-validation" *ngIf="title.invalid && title.touched">
+            Title is required
+        </span>
+        <div class="group-compose-group"> 
+            <label for="title" class="group-compose-text">TITLE: </label>
+            <input 
+                type="text"
+                id="title"
+                name="title"
+                class="group-compose-title-input"                     
+                required
+                ngModel
+                #title="ngModel"
+            >                
+        </div>
+        <span class="group-compose-validation" *ngIf="description.invalid && description.touched">
+                Description is required
+        </span>
+        <div class="group-compose-group">                   
+            <label for="description" class="group-compose-text label-textarea">DESCRIPTION: </label>  
+            <textarea 
+                class="group-compose-textarea" 
+                id="description"
+                name="description"
+                required
+                ngModel
+                #description="ngModel" >
+            </textarea>
+        </div>
+        <div class="group-compose-button-group">
+            <button type="button" class="group-compose-button" (click)="cancel()">CANCEL</button>
+            <div class="group-compose-button-group-checbox">
+                <input #isPrivateCheckBox type="checkbox" id="private" [checked]="isPrivate" (change)="onSavePrivacyChanged(isPrivateCheckBox.checked)">
+                <label id="private_text" for="private"> This group will be a <b>private</b> group</label>
+            </div>
+            <div class="group-compose-button-group-inner">
+                <button type="submit" class="group-compose-button">SEND</button>     
+            </div>           
+        </div> 
+    </form>
