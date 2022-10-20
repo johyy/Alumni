@@ -1,9 +1,12 @@
 <div class="topic-info">
     <ul>
         <li id="title"><b>{{ topic.title }}</b></li>
-        <li>{{ topic.description }}</li>
+        <li>{{ topic.description }}</li> 
     </ul>
 
+</div>
+<div class="add-buttons">
+    <app-add-buttons [entity]="topic" [target]="'topic'"></app-add-buttons>
 </div>
 <section>
 <div class="posts">

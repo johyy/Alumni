@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from 'src/app/models/event.model';
 import { Group } from 'src/app/models/group.model';
+import { Topic } from 'src/app/models/topic.model';
 
 @Component({
   selector: 'app-add-buttons',
@@ -10,7 +11,7 @@ import { Group } from 'src/app/models/group.model';
 })
 export class AddButtonsComponent implements OnInit {
 
-  @Input() entity!: Group | Event;
+  @Input() entity!: Group | Event | Topic;
   @Input() target!: String;
 
   constructor(public router: Router) { }
@@ -25,8 +26,7 @@ export class AddButtonsComponent implements OnInit {
   }
   newEvent():void{
 
-    // THIS IS FOR TESTING
-    this.router.navigate(['post',this.target,this.entity.id,1])
+    //this.router.navigate([''])
   }
 
 }

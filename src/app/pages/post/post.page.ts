@@ -55,7 +55,7 @@ export class PostPage implements OnInit {
     }
   }
 
-  // Determine what is the target audience (group,event or topic) and id of that target
+  // Determine what is the target audience of a post (group,event or topic) and id of that target
   private checkTarget(post: Post): {target: string, targetId: number}{
       let targetId = post.target_group_id;
       let target = "group";
