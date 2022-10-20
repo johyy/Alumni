@@ -1,5 +1,5 @@
 import { startOfDay } from 'date-fns';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,7 +12,6 @@ import { Event } from 'src/app/models/event.model';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-  userEvents: Event[] = [];
 
   constructor(private eventService: EventService, private userService : UserService) { }
 
@@ -20,28 +19,34 @@ export class CalendarComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
 
-  get user(): User {
-    return this.userService.user;
+  get events(): CalendarEvent[] {
+    return this.eventService.calendarEvents;
+  }
+
+  get loading(): boolean {
+    return this.eventService.loading;
+  }
+
+  get error(): string {
+    return this.eventService.error;
   }
 
 
-  events: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      title: 'First event',
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'Second event',
-    }
-  ]
-
-
+  // events: CalendarEvent[] = [
+  //   {
+  //     start: startOfDay(new Date()),
+  //     title: 'First event',
+  //   },
+  //   {
+  //     start: startOfDay(new Date()),
+  //     title: 'Second event',
+  //   }
+  // ]
 
   ngOnInit(): void {
+    
+    this.eventService.findAllUsersEvents()
 
-    this.eventService.getEvents().subscribe((events) => this.userEvents = events );
-  // this.userEvents.forEach(e => this.events.push({start: new Date(e.date_time_begin), title: e.title}))
   }
 
 

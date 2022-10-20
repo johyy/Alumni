@@ -4,6 +4,8 @@ import { finalize, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Event } from '../models/event.model';
 
+import { CalendarEvent } from 'angular-calendar';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +17,22 @@ export class EventService {
 
   get events(): Event[] {
     return this._events;
+  }
+
+  get calendarEvents(): CalendarEvent[] {
+      let calendarevents: CalendarEvent[] = []
+      for(let event of this.events)
+      {
+      calendarevents = [
+              ...calendarevents,
+              {
+      start:new Date(event.updated_time.toString()),
+      title:event.title
+        }
+    ]
+    
+    }
+    return calendarevents;
   }
 
   get error(): string {
