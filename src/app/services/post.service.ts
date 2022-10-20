@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
 import { environment } from 'src/environments/environment';
-import { finalize, firstValueFrom, Observable, take, of } from 'rxjs';
+import { finalize, Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { StorageUtil } from '../utils/storage.util';
@@ -16,6 +16,7 @@ export class PostService {
   private _posts!: Post[];
   private _error: string = "";
   private _loading: boolean = false;
+  private _refreshPosts: boolean = false;
 
   private httpOptions = {
     headers: new HttpHeaders({ 
@@ -52,6 +53,7 @@ export class PostService {
    * @returns http response
    */
    createPost(post: NewPost): Observable<any>{
+    this._refreshPosts = true;
     return this.http.post<any>(`${environment.baseUrl}/post`,post,{
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       observe: 'response', }).pipe( 
@@ -67,6 +69,7 @@ export class PostService {
     * @returns 
     */
    editPost(postId: number, post: Post): Observable<string>{
+    this._refreshPosts = true;
     const body: any = post;
     body.author = post.author.id;
     return this.http.put<any>(`${environment.baseUrl}/post/${postId}`,body,this.httpOptions).pipe(
@@ -76,10 +79,14 @@ export class PostService {
    }
 
   public findPosts(): void {
-    if(this._posts) return;
-    if(StorageUtil.storageRead(StorageKeys.Posts)) {
-      this._posts = StorageUtil.storageRead(StorageKeys.Posts)!;
-      return;
+    // If posts should be refreshed (after edit or new post), force fetching them from backend
+    if(!this._refreshPosts) {
+      // If posts are already fetched return
+      if(this._posts) return;
+      if(StorageUtil.storageRead(StorageKeys.Posts)) {
+        this._posts = StorageUtil.storageRead(StorageKeys.Posts)!;
+        return;
+      }
     }
     this._loading = true;
     this.http.get<Post[]>(environment.apiPosts)
@@ -90,6 +97,7 @@ export class PostService {
     )
     .subscribe({
       next: (posts: Post[]) => {
+        this._refreshPosts = false;
         this._posts = posts;
         StorageUtil.storageSave(StorageKeys.Posts, posts);
       },
