@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user.model';
 import { Event } from 'src/app/models/event.model';
 import { CalendarOptions, defineFullCalendarElement } from '@fullcalendar/web-component';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { ActivatedRoute } from '@angular/router';
 
 defineFullCalendarElement();
 
@@ -17,9 +18,10 @@ defineFullCalendarElement();
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  events:any = []
+  userevents:any = []
 
-
-  constructor(private eventService: EventService, private userService : UserService) { }
+  constructor(private eventService: EventService, private userService : UserService, private route: ActivatedRoute) { }
 
   calendarOptions: CalendarOptions = {
    plugins: [dayGridPlugin],
@@ -37,9 +39,9 @@ export class CalendarComponent implements OnInit {
    dayMaxEvents: true
  };
 
-  get events(): any {
-    return this.eventService.calendarEvents;
-  }
+  // get events(): any {
+  //   return this.eventService.calendarEvents;
+  // }
 
   get loading(): boolean {
     return this.eventService.loading;
@@ -74,9 +76,23 @@ renderCalendar() {
 
 
   ngOnInit(): void {
-    
+    this.userevents = this.route.snapshot.data['events']
+    console.log(this.events)
+    let calendarevents: any= []
+    for(let event of this.userevents)
+    {
+      calendarevents = [
+              ...calendarevents,
+              {
+      start:new Date(event.date_time_begin.toString()),
+      title:event.title
+        }
+      ]
+    }
+    this.events = calendarevents
     this.eventService.findAllUsersEvents()
-    setTimeout(() => this.renderCalendar(), 1000)
+    this.renderCalendar()
+    //setTimeout(() => this.renderCalendar(), 1000)
   }
 
 

@@ -15,6 +15,7 @@ import { PostPage } from './pages/post/post.page';
 import { ProfilePage } from './pages/profile/profile.page';
 import { TimelinePage } from './pages/timeline/timeline.page';
 import { TopicListPage } from './pages/topic-list/topic-list.page';
+import { EventsResolverResolver } from './resolvers/events-resolver.resolver';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
   {
     path: "calendar",
     component: CalendarPage,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    resolve: { events: EventsResolverResolver }
   },
   {
     path: "profile",
