@@ -18,12 +18,16 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { JoinButtonComponent } from './components/join-button/join-button.component';
 import { AddButtonsComponent } from './components/add-buttons/add-buttons.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { PostPage } from './pages/post/post.page';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
 import { PostComposeComponent } from './components/post-compose/post-compose.component';
 import { FormsModule } from '@angular/forms';
 import { CreatePostPage } from './pages/create-post/create-post.page';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LeaveGroupButtonComponent } from './components/leave-group-button/leave-group-button.component';
 import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
@@ -46,6 +50,7 @@ import { EventCreateComponent } from './components/event-create/event-create.com
     TimelinePage,
     NavbarComponent,
     CalendarPage,
+    CalendarComponent,
     ProfilePage,
     GroupListPage,
     UserInfoComponent,
@@ -78,7 +83,12 @@ import { EventCreateComponent } from './components/event-create/event-create.com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   ],
   providers: [
     {
