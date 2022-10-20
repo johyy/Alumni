@@ -1,6 +1,7 @@
 <section>
     <div  class="groups"> 
-        <b id="title">GROUPS</b><a>  Once you have joined a group, you can go to the group page by clicking on the group name</a>
+        <b id="title">GROUPS<app-add-group-button id="add"></app-add-group-button></b>
+        <a>  Once you have joined a group, you can go to the group page by clicking on the group name</a>
         <div class="group-container">
             <p *ngIf="loading">Loading groups..</p>
             <app-groups-list [groups]="groups"></app-groups-list>
