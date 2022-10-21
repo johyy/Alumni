@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize, firstValueFrom, Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -7,6 +7,7 @@ import { Group } from '../models/group.model';
 import { Topic } from '../models/topic.model';
 import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
+import { catchError } from 'rxjs/operators';
 
 const { apiUsers } = environment
 
@@ -31,7 +32,20 @@ export class UserService {
     return this._loading;
   }
 
+  private httpOptions = {
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',})
+  };
+
   constructor(private readonly http: HttpClient) { } 
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log((`${operation} failed: ${error.message}`));
+      return of(result as T);
+    };
+  }
 
   public findProfile(): void {
     if (this._user) return;
@@ -87,4 +101,11 @@ export class UserService {
       topic.users = topic.users.filter((userId: number) => this.user.id !== userId)
     }
   }
+
+  editUser(userId: number, user: User): Observable<string>{
+    const body: any = user;
+    return this.http.put<any>(`${environment.baseUrl}/user/${userId}`,body,this.httpOptions).pipe(
+      catchError(this.handleError<string>('editPost'))
+    )
+    }
 }
