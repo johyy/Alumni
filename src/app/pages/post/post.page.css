@@ -87,3 +87,8 @@ ul {
 .edit-btn {
     cursor: pointer;
 }
+
+.header {
+    margin: 0;
+    text-align: center;
+}

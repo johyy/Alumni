@@ -12,10 +12,14 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./post.page.css']
 })
 export class PostPage implements OnInit {
-  post: any;
+  postId: number = 0;
 
   get posts(): Post[] {
     return this.postService.posts;
+  }
+
+  get post(): Post {
+    return this.postService.findPostById(this.postId);
   }
 
   constructor(
@@ -23,20 +27,16 @@ export class PostPage implements OnInit {
     readonly groupListService: GroupListService,
     readonly topicService: TopicService,
     readonly userService: UserService,
-    private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router
   ) { }
 
   ngOnInit(): void {
     this.postService.findPosts();
-    this.postService.findAuthors();
-    this.activatedRoute.params.subscribe(params => {
-      const id = parseInt(params["id"]);
-      this.post = this.postService.findPostById(id);
-    });
     this.groupListService.findAllGroups();
     this.topicService.findAllTopics();
     this.userService.findProfile();
+    let parts = this.router.url.split("/");
+    this.postId = parseInt(parts[2]);
   }
 
   // Handle edit post click, navigate -> CreatePostPage
@@ -67,6 +67,15 @@ export class PostPage implements OnInit {
         targetId = post.target_topic_id;
       }
     return {target, targetId}
+  }
+
+  loading(): boolean {
+    let stillLoading = false;
+    if(this.postService.loading) stillLoading = true;
+    if(this.groupListService.loading) stillLoading = true;
+    if(this.topicService.loading) stillLoading = true;
+    if(this.userService.loading) stillLoading = true;
+    return stillLoading;
   }
 
 }
