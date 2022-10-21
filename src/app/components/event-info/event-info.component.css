@@ -3,8 +3,8 @@
 .event-info-wrap {
     box-sizing: border-box;
     width: 90%;
-    height: 75%;
-    margin: 5%;
+    height: 80%;
+    margin: 2% 0% 0% 5%;
     background: #D9D8D2;
     border-radius: 30px;
     opacity: 0.95;
@@ -44,7 +44,7 @@
     position: relative;
     margin-left: 5%;
     width: 90%;
-    height: 306px;
+    height: 40%;
     background: #949494;
     border: 2px solid #000000;
     border-radius: 30px;
@@ -70,4 +70,26 @@
     letter-spacing: 1px;
     font-size: 20px;
     text-align: center;
+ }
+ .event-info-scroll{
+    overflow-y: scroll;
+    border-radius: 5px;
+    height: 45%;
+    width: 90%;
+    margin-left: 5%;
+ }
+ .event-info-comment{
+    position: relative;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    margin: 10px;
+    padding: 5px;
+    height: 200px;
+    background-color: #949494;
+    display: flex;
+    justify-content: space-around;
+ }
+ .event-info-host{
+    display: flex;
+    justify-content: flex-start;
  }

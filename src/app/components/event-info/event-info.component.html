@@ -16,9 +16,22 @@
         >Guest capacity: {{singleEvent && singleEvent.guest_capacity}}
         </h4>
         <p class="event-info-description">{{singleEvent && singleEvent.description}}</p>
-
     </div>
-
+    <div class="event-info-scroll">
+        <ul >
+            <div *ngFor="let comment of posts" class="event-info-comment">
+                <div style="width: 20%;">
+                  <img class="event-info-avatar"  src="{{ comment.author && comment.author.avatar ?? '/assets/img/event-detail-host.png'}}"/> 
+                <p class="event-info-small-headers-4">name{{comment && comment.author.name}}</p> 
+                <p class="event-info-small-headers-4">date{{comment.author}}</p>
+                <p class="event-info-small-headers-4">time{{comment.author}}</p>  
+                </div>                          
+                <div style="width: 70%;">
+                    <p>text {{comment.author}}</p>
+                </div> 
+            </div>
+        </ul>
+    </div>
 </div>
 
     

@@ -78,6 +78,18 @@ export class PostService {
     )
    }
 
+  
+   /**
+    * (GET) get all posts targeted to an event
+    * @param eventId 
+    * @returns 
+    */
+   findPostsByEvent(eventId:number): Observable<Post[]>{         
+    return this.http.get<any>(`${environment.apiPosts}/event/${eventId}`).pipe(
+      //tap(resp => console.log(resp)),
+    )
+  }
+
   public findPosts(): void {
     // If posts should be refreshed (after edit or new post), force fetching them from backend
     if(!this._refreshPosts) {
