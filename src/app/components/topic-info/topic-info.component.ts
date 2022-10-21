@@ -11,8 +11,15 @@ import { TopicService } from 'src/app/services/topic.service';
   styleUrls: ['./topic-info.component.css']
 })
 export class TopicInfoComponent implements OnInit {
+  topicId: number = 0;
 
-  @Input() topic!: Topic;
+  get topic(): Topic {
+    return this.topicService.findTopicById(this.topicId);
+  }
+
+  get loading(): boolean {
+    return this.topicService.loading;
+  }
 
   get posts(): Post[] {
     return this.postService.posts;
@@ -26,9 +33,9 @@ export class TopicInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.postService.findPosts();
-    this.postService.findAuthors();
-    let parts = this.router.url.split("/")
-    this.topic = this.topicService.findTopicById(parseInt(parts[2]))
+    this.topicService.findAllTopics();
+    let parts = this.router.url.split("/");
+    this.topicId = parseInt(parts[2]);
   }
 
 }

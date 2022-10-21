@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageKeys } from 'src/app/enums/storage-keys.enum';
 import { Post } from 'src/app/models/post.model';
@@ -19,27 +19,26 @@ export class PostListComponent implements OnInit {
     return this.postService.posts;
   }
 
-  get loading(): boolean {
-    return this.postService.loading;
-  }
-
-  get error(): string {
-    return this.postService.error;
-  }
-
   constructor(
     private readonly postService: PostService,
     readonly groupListService: GroupListService,
     readonly topicService: TopicService,
     readonly userService: UserService,
-    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
     this.postService.findPosts();
-    this.postService.findAuthors();
     this.groupListService.findAllGroups();
     this.topicService.findAllTopics();
     this.userService.findProfile();
+  }
+
+  loading(): boolean {
+    let stillLoading = false;
+    if(this.postService.loading) stillLoading = true;
+    if(this.groupListService.loading) stillLoading = true;
+    if(this.topicService.loading) stillLoading = true;
+    if(this.userService.loading) stillLoading = true;
+    return stillLoading;
   }
 }
