@@ -12,24 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TimelinePage implements OnInit {
 
-  constructor(private readonly postService: PostService,
-    readonly groupListService: GroupListService,
-    readonly topicService: TopicService,
-    readonly userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void { 
-    this.postService.findPosts();
-    this.groupListService.findAllGroups();
-    this.topicService.findAllTopics();
-    this.userService.findProfile();
-  }
-
-  loading(): boolean {
-    let stillLoading = false;
-    if(this.postService.loading) stillLoading = true;
-    if(this.groupListService.loading) stillLoading = true;
-    if(this.topicService.loading) stillLoading = true;
-    if(this.userService.loading) stillLoading = true;
-    return stillLoading;
   }
 }

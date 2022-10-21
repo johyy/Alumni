@@ -1,9 +1,5 @@
 <section>
     <div class="posts">
-        <b class="posts-header">POSTS</b>
-        <div class="posts-container">
-            <p *ngIf="loading()">Loading...</p>
-            <app-post-list *ngIf="!loading()"></app-post-list>
-        </div>
+        <app-post-list></app-post-list>
     </div>
 </section>
