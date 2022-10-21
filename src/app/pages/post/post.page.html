@@ -1,6 +1,6 @@
-<div class="post-container">
-    <!-- <h2 class="group" *ngIf="post.target_group_id !== 0">{{ this.groupListService.groupById(this.post.target_group_id)?.title }}</h2>
-    <h2 class="topic" *ngIf="post.target_topic_id !== 0">{{ this.topicService.findTopicById(this.post.target_group_id)?.title }}</h2> -->
+<div class="post-container" *ngIf="!loading()">
+    <h2 class="header" *ngIf="post.target_group_id !== 0">{{ this.groupListService.groupById(this.post.target_group_id).title }}</h2>
+    <h2 class="header" *ngIf="post.target_topic_id !== 0">{{ this.topicService.findTopicById(this.post.target_group_id).title }}</h2>
     <div class="post">
         <div class="content">
             <h3 class="post-title">{{ post.title }}</h3>
