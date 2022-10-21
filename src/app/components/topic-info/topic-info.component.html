@@ -1,22 +1,24 @@
-<div class="topic-info">
-    <ul>
-        <li id="title"><b>{{ topic.title }}</b></li>
-        <li>{{ topic.description }}</li> 
-    </ul>
+<div *ngIf="!loading">
+    <div class="topic-info">
+        <ul>
+            <li id="title"><b>{{ topic.title }}</b></li>
+            <li>{{ topic.description }}</li> 
+        </ul>
 
-</div>
-<div class="add-buttons">
-    <app-add-buttons [entity]="topic" [target]="'topic'"></app-add-buttons>
-</div>
-<section>
-    <div class="posts">
-        <b>POSTS</b>
-        <div class="posts-container">
-            <ul>
-                <li *ngFor="let post of posts">
-                    <app-post-list-item *ngIf="post.target_topic_id=== topic.id" [post]="post"></app-post-list-item>
-                </li>
-            </ul>
-        </div>
     </div>
-</section>
+    <div class="add-buttons">
+        <app-add-buttons [entity]="topic" [target]="'topic'"></app-add-buttons>
+    </div>
+    <section>
+        <div class="posts">
+            <b>POSTS</b>
+            <div class="posts-container">
+                <ul>
+                    <li *ngFor="let post of posts">
+                        <app-post-list-item *ngIf="post.target_topic_id=== topic.id" [post]="post"></app-post-list-item>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

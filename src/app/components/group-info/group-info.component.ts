@@ -11,8 +11,15 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./group-info.component.css']
 })
 export class GroupInfoComponent implements OnInit {
+  groupId: number = 0;
 
-  @Input() group!: Group;
+  get group(): Group {
+    return this.groupListService.groupById(this.groupId);
+  }
+
+  get loading(): boolean {
+    return this.groupListService.loading;
+  }
 
   get posts(): Post[] {
     return this.postService.posts;
@@ -26,9 +33,9 @@ export class GroupInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.postService.findPosts();
-    this.postService.findAuthors();
+    this.groupListService.findAllGroups();
     let parts = this.router.url.split("/")
-    this.group = this.groupListService.groupById(parseInt(parts[2]))!
+    this.groupId = parseInt(parts[2])
   }
 
 }

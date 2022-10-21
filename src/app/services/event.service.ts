@@ -36,14 +36,14 @@ export class EventService {
   }
 
   //for calendar
-  get calendarEvents(): CalendarEvent[] {
-      let calendarevents: CalendarEvent[] = []
+  get calendarEvents(): any {
+      let calendarevents: any= []
       for(let event of this.events)
       {
       calendarevents = [
               ...calendarevents,
               {
-      start:new Date(event.updated_time.toString()),
+      start:new Date(event.date_time_begin.toString()),
       title:event.title
         }
     ]
