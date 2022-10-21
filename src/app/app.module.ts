@@ -42,11 +42,13 @@ import { CreateEventPage } from './pages/create-event/create-event.page';
 import { EventCreateComponent } from './components/event-create/event-create.component';
 import { AddTopicPage } from './pages/add-topic/add-topic.page';
 import { TopicComposeComponent } from './components/topic-compose/topic-compose.component';
-import { AddGroupPage } from './pages/add-group/add-group.page';
 import { GroupComposeComponent } from './components/group-compose/group-compose.component';
 import { EventPage } from './pages/event/event.page';
 import { EventInfoComponent } from './components/event-info/event-info.component';
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
+import { SearchComponent } from './components/search/search.component';
+import { AddGroupPage } from './pages/add-group/add-group.page';
+import { UserPage } from './pages/user/user.page';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,9 @@ import { PostListItemComponent } from './components/post-list-item/post-list-ite
     GroupComposeComponent,
     EventPage,
     EventInfoComponent,
-    PostListItemComponent
+    PostListItemComponent,
+    SearchComponent,
+    UserPage
   ],
   imports: [
     BrowserModule,

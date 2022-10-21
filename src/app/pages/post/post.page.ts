@@ -78,4 +78,8 @@ export class PostPage implements OnInit {
     return stillLoading;
   }
 
+  navigateToUser(userId: number) {
+    this.router.navigateByUrl(`/user/${userId}`);
+  }
+
 }

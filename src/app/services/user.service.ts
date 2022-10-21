@@ -79,7 +79,8 @@ export class UserService {
     )
   }
 
-  public findUserById(id: User): Observable<User> {
+
+  public findUserById(id: User | number): Observable<User> {
     if (!StorageUtil.storageReadOne<User>(StorageKeys.User)) {
       this.findProfile();
     }
