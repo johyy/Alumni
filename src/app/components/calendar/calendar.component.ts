@@ -1,6 +1,5 @@
 import { startOfDay } from 'date-fns';
 import { Component, OnInit, Input } from '@angular/core';
-import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';

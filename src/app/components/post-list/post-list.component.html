@@ -1,4 +1,11 @@
-<p *ngIf="loading">Loading posts...</p>
-<ul>
-    <app-post-list-item *ngFor="let post of posts" [post]="post"></app-post-list-item>
-</ul>
+<div class="posts-header">
+    <b>POSTS</b>
+</div>
+<div class="posts-container">
+    <p *ngIf="loading()">Loading posts...</p>
+    <ul *ngIf="!loading()">
+        <li *ngFor="let post of posts">
+            <app-post-list-item [post]="post"></app-post-list-item>
+        </li>
+    </ul>
+</div>

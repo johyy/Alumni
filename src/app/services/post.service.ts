@@ -85,6 +85,7 @@ export class PostService {
       if(this._posts) return;
       if(StorageUtil.storageRead(StorageKeys.Posts)) {
         this._posts = StorageUtil.storageRead(StorageKeys.Posts)!;
+        this.findAuthors();
         return;
       }
     }
@@ -98,8 +99,10 @@ export class PostService {
     .subscribe({
       next: (posts: Post[]) => {
         this._refreshPosts = false;
+        posts.reverse();
         this._posts = posts;
         StorageUtil.storageSave(StorageKeys.Posts, posts);
+        this.findAuthors();
       },
       error: (error: HttpErrorResponse) => {
         this._error = error.message;
@@ -108,13 +111,11 @@ export class PostService {
   }
 
   findAuthors() {
-    if(typeof this._posts[0].author === "object") return;
     const posts = this._posts;
     posts.forEach(post => {
       const author = post.author;
       this.userService.findUserById(author).subscribe(user => post.author = user);
     })
-    StorageUtil.storageSave(StorageKeys.Posts, posts);
     this._posts = posts;
   }
 
