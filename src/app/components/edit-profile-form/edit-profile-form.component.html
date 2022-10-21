@@ -1,0 +1,65 @@
+<div class="edit-profile-wrap">    
+    <form #editProfileForm="ngForm" 
+        (ngSubmit)="editProfileForm">       
+        <div class="edit-profile-group"> 
+            <label for="avatar" class="profile-compose-text">AVATAR URL: </label> 
+            <input 
+                type="text"                  
+                id="avatar"
+                name="avatar"
+                class="edit-profile-text-input"                     
+                ngModel
+                #avatar="ngModel"
+            >                
+        </div>
+        <div class="edit-profile-group">                   
+            <label for="status_message" class="profile-compose-text">STATUS MESSAGE: </label>  
+            <textarea 
+                type="text"
+                id="status_message"
+                name="status_message"
+                class="edit-profile-text-input"  
+                ngModel
+                #status_message="ngModel" 
+            >
+            </textarea>
+        </div>  
+        <div class="edit-profile-group">                   
+            <label for="bio" class="profile-compose-text label-textarea">STATUS MESSAGE: </label>  
+            <textarea 
+                class="profile-compose-textarea" 
+                id="bio"
+                name="bio"
+                ngModel
+                #bio="ngModel" 
+            >
+            </textarea>
+        </div>   
+        <div class="edit-profile-group">                   
+            <label for="fun_fact" class="profile-compose-text">FUN FACT: </label>  
+            <textarea 
+                type="text"
+                id="fun_fact"
+                name="fun_fact"
+                class="edit-profile-text-input"  
+                ngModel
+                #fun_fact="ngModel" 
+            >
+            </textarea>
+        </div>         
+        <div class="profile-compose-button-group">
+            <button type="button" class="profile-compose-button" (click)="cancel()">CANCEL</button>
+            <div class="post-compose-button-group-inner">
+                <button type="submit" class="profile-compose-button"  >EDIT</button>     
+            </div>           
+        </div> 
+       
+    </form>
+
+
+</div>
+<!-- 
+avatar: string;
+status_message: string;
+bio: string;
+fun_fact: string; -->
