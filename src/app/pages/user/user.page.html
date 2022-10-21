@@ -1,0 +1,4 @@
+<div class="profile">
+    <p id="loading" *ngIf="!user">Loading the profile..</p>
+    <app-user-info *ngIf="user" [user]="user"></app-user-info>
+</div>

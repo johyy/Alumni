@@ -27,6 +27,17 @@ export class PostListItemComponent implements OnInit {
   navigateToPost(postId: number) {
     this.router.navigateByUrl(`/post/${postId}`);
   }
+  navigateToUser(userId: any) {
+    this.router.navigateByUrl(`/user/${userId}`);
+  }
+
+  navigateToGroup(groupId: number) {
+    this.router.navigateByUrl(`/group/${groupId}`);
+  }
+
+  navigateToTopic(topicId: number) {
+    this.router.navigateByUrl(`/topic/${topicId}`);
+  }
 
   searchText: string = this.postListComponent.searchText;
 }
