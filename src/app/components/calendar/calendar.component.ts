@@ -77,7 +77,6 @@ renderCalendar() {
 
   ngOnInit(): void {
     this.userevents = this.route.snapshot.data['events']
-    console.log(this.events)
     let calendarevents: any= []
     for(let event of this.userevents)
     {
@@ -92,7 +91,6 @@ renderCalendar() {
     this.events = calendarevents
     this.eventService.findAllUsersEvents()
     this.renderCalendar()
-    //setTimeout(() => this.renderCalendar(), 1000)
   }
 
 
