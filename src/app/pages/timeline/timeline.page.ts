@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
+import { GroupListService } from 'src/app/services/group-list.service';
 import { PostService } from 'src/app/services/post.service';
+import { TopicService } from 'src/app/services/topic.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-timeline',
@@ -9,10 +12,24 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class TimelinePage implements OnInit {
 
-  constructor() { }
+  constructor(private readonly postService: PostService,
+    readonly groupListService: GroupListService,
+    readonly topicService: TopicService,
+    readonly userService: UserService) { }
 
   ngOnInit(): void { 
-    
+    this.postService.findPosts();
+    this.groupListService.findAllGroups();
+    this.topicService.findAllTopics();
+    this.userService.findProfile();
   }
 
+  loading(): boolean {
+    let stillLoading = false;
+    if(this.postService.loading) stillLoading = true;
+    if(this.groupListService.loading) stillLoading = true;
+    if(this.topicService.loading) stillLoading = true;
+    if(this.userService.loading) stillLoading = true;
+    return stillLoading;
+  }
 }
