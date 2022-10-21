@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,17 +18,20 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { JoinButtonComponent } from './components/join-button/join-button.component';
 import { AddButtonsComponent } from './components/add-buttons/add-buttons.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { PostPage } from './pages/post/post.page';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
 import { GroupsListItemComponent } from './components/groups-list-item/groups-list-item.component';
 import { PostComposeComponent } from './components/post-compose/post-compose.component';
 import { FormsModule } from '@angular/forms';
 import { CreatePostPage } from './pages/create-post/create-post.page';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LeaveGroupButtonComponent } from './components/leave-group-button/leave-group-button.component';
 import { LeaveGroupPage } from './pages/leave-group/leave-group.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
 import { TopicListPage } from './pages/topic-list/topic-list.page';
 import { TopicsListComponent } from './components/topics-list/topics-list.component';
+import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
 import { TopicInfoComponent } from './components/topic-info/topic-info.component';
 import { ExitTopicButtonComponent } from './components/exit-topic-button/exit-topic-button.component';
 import { JoinTopicPage } from './pages/join-topic/join-topic.page';
@@ -39,7 +42,6 @@ import { AddTopicPage } from './pages/add-topic/add-topic.page';
 import { TopicComposeComponent } from './components/topic-compose/topic-compose.component';
 import { AddGroupPage } from './pages/add-group/add-group.page';
 import { GroupComposeComponent } from './components/group-compose/group-compose.component';
-import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
 
 @NgModule({
@@ -49,6 +51,7 @@ import { PostListItemComponent } from './components/post-list-item/post-list-ite
     TimelinePage,
     NavbarComponent,
     CalendarPage,
+    CalendarComponent,
     ProfilePage,
     GroupListPage,
     UserInfoComponent,
@@ -84,7 +87,8 @@ import { PostListItemComponent } from './components/post-list-item/post-list-ite
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
@@ -98,6 +102,7 @@ import { PostListItemComponent } from './components/post-list-item/post-list-ite
     multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
