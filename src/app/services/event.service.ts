@@ -4,7 +4,6 @@ import { finalize, Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Event } from '../models/event.model';
-
 import { CalendarEvent } from 'angular-calendar';
 import { NewEvent } from '../models/new-event.model';
 import { StorageUtil } from '../utils/storage.util';
@@ -97,8 +96,8 @@ export class EventService {
   }
 
   // -------- Test method --------
-  public eventFindTest(): Observable<Event>{
-    return this.http.get<Event>(environment.apiEvents).pipe(
+  public eventFindTest(): Observable<Event[]>{
+    return this.http.get<Event[]>(environment.apiEvents).pipe(
       tap(resp => {StorageUtil.StorageSaveOne(StorageKeys.Events,resp)})      
     )
   }

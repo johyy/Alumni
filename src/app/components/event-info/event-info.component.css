@@ -33,6 +33,13 @@
     margin-left: 2%;
     letter-spacing: 1px;
  }
+ .event-info-p{
+    font-family: 'Shadows Into Light Two';
+    font-weight: 600;
+    color: whitesmoke;
+    margin: 1%;
+    letter-spacing: 1px;
+ }
  .event-info-description{
     font-family: 'Shadows Into Light Two';
     color: whitesmoke;
@@ -44,7 +51,7 @@
     position: relative;
     margin-left: 5%;
     width: 90%;
-    height: 40%;
+    height: 35%;
     background: #949494;
     border: 2px solid #000000;
     border-radius: 30px;
@@ -74,7 +81,7 @@
  .event-info-scroll{
     overflow-y: scroll;
     border-radius: 5px;
-    height: 45%;
+    height: 50%;
     width: 90%;
     margin-left: 5%;
  }

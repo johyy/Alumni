@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Event } from 'src/app/models/event.model';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
@@ -10,23 +10,37 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './event-info.component.html',
   styleUrls: ['./event-info.component.css']
 })
-export class EventInfoComponent implements OnInit {
+export class EventInfoComponent implements OnInit, OnChanges {
   public posts?: Post[];
+  public users?: User[];
+  private refresh: Boolean = false;
 
   @Input() singleEvent : Event | undefined;
   @Input() eventHost: User | undefined;
 
   constructor(private postService: PostService, private userService: UserService) { }
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['singleEvent']) this.refresh = !this.refresh;
+  }
 
   ngOnInit(): void {
     // Get all posts targeted to event
     if(this.singleEvent) {this.postService.findPostsByEvent(this.singleEvent?.id).subscribe(
-      resp => this.posts = resp      
+      resp => {
+        this.posts = resp;
+        const userIds = resp.map(p => p.author);
+        // Get users who have posted for this event
+        this.userService.findUsersByIdList({userIds: userIds}).subscribe(
+          resp => {this.users = resp;this.mapIdsToUsers()}          
+          )
+      }    
     )}
   }
 
- /*  getCommentorInfo(id: number): User {
-    this.userService.
-  }
- */
+  // Maps post author ids to users
+  mapIdsToUsers(): void {
+    let a = this.posts?.map(p => p.author)
+    let c = a?.toString().split(",")!
+    this.posts?.map((p,indx) =>{p.author = this.users!.find(u => u.id.toString() == c[indx])!})
+  } 
 }
