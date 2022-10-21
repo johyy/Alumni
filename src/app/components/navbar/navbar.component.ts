@@ -15,4 +15,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  isTopName(): boolean {
+    let name = this.router.url.charAt(1).toUpperCase() + this.router.url.substring(2)
+    if (name === "Timeline" || name === "Groups" || name === "Topics" || name === "Calendar" || name === "Profile") {
+      return true;
+    }
+    return false
+  }
 }
