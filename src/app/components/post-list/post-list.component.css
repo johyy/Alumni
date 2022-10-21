@@ -21,3 +21,7 @@ ul {
     border-radius: 5px;
     height: 90%;
 }
+
+#search {
+    padding-left: 60%;
+}

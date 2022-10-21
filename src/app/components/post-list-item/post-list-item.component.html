@@ -1,3 +1,4 @@
+<div *ngIf="searchText === '' || post.title.includes(searchText) || post.author.name.includes(searchText)">
 <div *ngIf="post.original_post_id === 0" class="post_info">
     <div class="line line-1">
         <div class="user-info">
@@ -25,4 +26,5 @@
     </div>
     <h3 class="line line-2" (click)="navigateToPost(post.id)">{{ post.title }}</h3>
     <p class="line line-3" (click)="navigateToPost(post.id)">{{ post.reply_posts.length + " comments" }}</p>
+</div>
 </div>
