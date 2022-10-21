@@ -4,15 +4,15 @@
             <div class="avatar-border">
                 <img class="avatar" src="{{ post.author.avatar ?? '/assets/img/blank_avatar.png'}}"/>
             </div>
-            <a class="name" routerLink="/timeline">{{ post.author.name }}</a>
+            <a class="name" (click)="navigateToUser(post.author.id)">{{ post.author.name }}</a>
             <p>on</p>
             <div class="group" *ngIf="post.target_group_id !== 0">
                 <p>group</p>
-                <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id)?.title }}</a>
+                <a routerLink="/timeline">{{ this.groupListService.groupById(post.target_group_id).title }}</a>
             </div>
             <div class="topic" *ngIf="post.target_topic_id !== 0">
                 <p>topic</p>
-                <a routerLink="/timeline">{{ this.topicService.findTopicById(post.target_topic_id)?.title }}</a>
+                <a routerLink="/timeline">{{ this.topicService.findTopicById(post.target_topic_id).title }}</a>
             </div>
         </div>
         <p class="date">

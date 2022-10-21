@@ -26,4 +26,8 @@ export class PostListItemComponent implements OnInit {
     this.router.navigateByUrl(`/post/${postId}`);
   }
 
+  navigateToUser(userId: any) {
+    this.router.navigateByUrl(`/user/${userId}`);
+  }
+
 }

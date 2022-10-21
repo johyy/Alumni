@@ -14,8 +14,4 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  getAvatar() {
-    return this.user.avatar;
-  }
 }
