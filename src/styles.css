@@ -1,8 +1,11 @@
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 * {
     box-sizing: border-box;
 }
 
-html {
+.background {
     width: 100vw;
     height: 100vh;
     margin: 0;
