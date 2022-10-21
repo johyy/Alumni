@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, firstValueFrom, Observable, take } from 'rxjs';
+import { finalize, firstValueFrom, Observable, take, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StorageKeys } from '../enums/storage-keys.enum';
 import { Group } from '../models/group.model';
@@ -14,6 +14,10 @@ const { apiUsers } = environment
   providedIn: 'root'
 })
 export class UserService {
+  private httpOptions = {
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',})
+  };
 
   private _user!: User;
   private _error: string = "";
@@ -56,6 +60,25 @@ export class UserService {
       }
     })
   }
+
+  // -------- Test method --------
+  public userFindTest(): Observable<User>{
+    return this.http.get<User>(apiUsers).pipe(
+      tap(resp => {StorageUtil.StorageSaveOne(StorageKeys.User,resp);})      
+    )
+  }
+
+  /**
+   * (POST) Get list of users takes in params as: { "userIds" : [1, 2, 3] }
+   * @param userIdList 
+   * @returns 
+   */
+  findUsersByIdList(userIdList: Object): Observable<User[]>{
+    return this.http.post<User[]>(`${environment.apiUsers}/list`,userIdList,).pipe(
+      //tap(resp => console.log(resp)),
+    )
+  }
+
 
   public findUserById(id: User | number): Observable<User> {
     if (!StorageUtil.storageReadOne<User>(StorageKeys.User)) {
