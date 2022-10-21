@@ -43,6 +43,7 @@ import { TopicComposeComponent } from './components/topic-compose/topic-compose.
 import { AddGroupPage } from './pages/add-group/add-group.page';
 import { GroupComposeComponent } from './components/group-compose/group-compose.component';
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
+import { UserPage } from './pages/user/user.page';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { PostListItemComponent } from './components/post-list-item/post-list-ite
     TopicComposeComponent,
     AddGroupPage,
     GroupComposeComponent,
-    PostListItemComponent
+    PostListItemComponent,
+    UserPage
   ],
   imports: [
     BrowserModule,
