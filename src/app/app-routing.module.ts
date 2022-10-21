@@ -8,6 +8,7 @@ import { AddGroupPage } from './pages/add-group/add-group.page';
 import { AddTopicPage } from './pages/add-topic/add-topic.page';
 import { CalendarPage } from './pages/calendar/calendar.page';
 import { CreatePostPage } from './pages/create-post/create-post.page';
+import { EditProfilePage } from './pages/edit-profile/edit-profile.page';
 import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: "profile",
     component: ProfilePage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "profile/edit",
+    component: EditProfilePage,
     canActivate: [AuthGuard]
   },
   {

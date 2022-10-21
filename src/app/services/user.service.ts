@@ -8,6 +8,7 @@ import { Topic } from '../models/topic.model';
 import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 const { apiUsers } = environment
 
@@ -102,10 +103,10 @@ export class UserService {
     }
   }
 
-  editUser(userId: number, user: User): Observable<string>{
+  public editUser(userId: number, user: User): Observable<string>{
     const body: any = user;
     return this.http.put<any>(`${environment.baseUrl}/user/${userId}`,body,this.httpOptions).pipe(
-      catchError(this.handleError<string>('editPost'))
+      catchError(this.handleError<string>('edituser'))
     )
     }
 }
