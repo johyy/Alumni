@@ -46,6 +46,8 @@ import { TopicComposeComponent } from './components/topic-compose/topic-compose.
 import { AddGroupPage } from './pages/add-group/add-group.page';
 import { GroupComposeComponent } from './components/group-compose/group-compose.component';
 import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
+import { EventPage } from './pages/event/event.page';
+import { EventInfoComponent } from './components/event-info/event-info.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { TopicsListItemComponent } from './components/topics-list-item/topics-li
     AddTopicPage,
     TopicComposeComponent,
     AddGroupPage,
-    GroupComposeComponent
+    GroupComposeComponent,
+    EventPage,
+    EventInfoComponent
   ],
   imports: [
     BrowserModule,

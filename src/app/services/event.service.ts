@@ -7,15 +7,17 @@ import { Event } from '../models/event.model';
 
 import { CalendarEvent } from 'angular-calendar';
 import { NewEvent } from '../models/new-event.model';
+import { StorageUtil } from '../utils/storage.util';
+import { StorageKeys } from '../enums/storage-keys.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-
   private _events: Event[] = [];
   private _error: string = "";
   private _loading: boolean = false;
+  private _refreshEvents: boolean = false;
 
   private httpOptions = {
     headers: new HttpHeaders({ 
@@ -61,10 +63,17 @@ export class EventService {
   constructor(private readonly http: HttpClient) { }
 
   getEvents(): Observable<Event[]>{
-    return this.http.get<Event[]>(environment.apiEvents);
+    return this.http.get<Event[]>(environment.apiEvents); 
   }
 
   findAllUsersEvents(): void {
+    if(!this._refreshEvents){
+      if(this._events) return;
+      if(StorageUtil.storageRead(StorageKeys.Events)) {
+        this._events = StorageUtil.storageRead(StorageKeys.Events)!;
+        return;
+      }
+    }
     this._loading = true;
     this.http.get<Event[]>(environment.apiEvents)
     .pipe(
@@ -75,11 +84,18 @@ export class EventService {
     .subscribe({
       next: (events: Event[]) => {
         this._events = events
+        StorageUtil.storageSave(StorageKeys.Events, events);
+        this._refreshEvents = false;
       },
       error: (error: HttpErrorResponse) => {
         this._error = error.message;
       }
     })
+  }
+
+  getSpecificEvent(eventId:number): void{
+    console.log(this._events);
+    
   }
 
   /**
@@ -90,6 +106,7 @@ export class EventService {
    * @returns 
    */
   createEvent(event: NewEvent, targetAudience?: String, targetId?: number): Observable<any>{
+    this._refreshEvents = true;
     return this.http.post<any>(`${environment.baseUrl}/event`,event,{
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       observe: 'response', }).pipe( 

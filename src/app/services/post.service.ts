@@ -89,7 +89,7 @@ export class PostService {
       }
     }
     this._loading = true;
-    this.http.get<Post[]>(environment.apiPosts)
+    this.http.get<Post[]>(environment.apiPosts) 
     .pipe(
       finalize(() => {
         this._loading = false;
