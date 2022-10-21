@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
+ 
+ .topic-compose-wrap {
+    box-sizing: border-box;
+    width: 90%;
+    height: 75%;
+    margin: 5%;
+    background: #D9D8D2;
+    border: 4px solid #000000;
+    border-radius: 30px;
+ }
+ .topic-compose-header-text{
+    width: 100%;
+    margin: 15px;
+    font-family: 'Shadows Into Light Two';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    text-align: center;
+    color: #000000;
+ }
+ .topic-compose-title-input{
+    width: 85%;
+    height: 10%;
+    background: #FFFFFF;
+    border-color: transparent;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 2px;
+    font-family: 'Shadows Into Light Two';
+    padding: 8px;
+ }
+.topic-compose-textarea{
+    width: 80%;
+    height: 150px;
+    resize: none;
+    margin-left: 14px;
+    background: #FFFFFF;
+    border-radius: 30px;
+    border-color: transparent;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 2px;
+    font-family: 'Shadows Into Light Two';
+    padding: 8px;
+}
+.topic-compose-text{
+    font-family: 'Shadows Into Light Two';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 61px;
+    color: #000000;
+}
+.topic-compose-validation{
+    position: absolute;
+    color: red;
+}
+.topic-compose-button{
+    font-family: 'Shadows Into Light Two';    
+    width: 203px;
+    height: 57px;
+    margin: 2%;
+    background: #949494;
+    color: #FFFFFF;
+    border-color: transparent;
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 61px;    
+}
+.topic-compose-button:hover{
+    color: #000000;
+}
+.topic-compose-button-group{
+    width: 90%;
+    margin: 0px 0px 0px 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.topic-compose-button-group-inner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.topic-compose-group{
+    margin: 0px 15px 0px 15px;
+}
+.label-textarea{
+    vertical-align: top;
+}

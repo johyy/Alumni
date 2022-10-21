@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GroupInfoComponent } from './components/group-info/group-info.component';
 import { TopicInfoComponent } from './components/topic-info/topic-info.component';
+
 import { AuthGuard } from './guards/auth.guard';
+import { AddGroupPage } from './pages/add-group/add-group.page';
+import { AddTopicPage } from './pages/add-topic/add-topic.page';
 import { CalendarPage } from './pages/calendar/calendar.page';
 import { CreatePostPage } from './pages/create-post/create-post.page';
 import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
@@ -98,6 +101,16 @@ const routes: Routes = [
     component: ExitTopicPage,
     canActivate: [AuthGuard]
   },
+  {
+    path: "add_topic",
+    component: AddTopicPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "add_group",
+    component: AddGroupPage,
+    canActivate: [AuthGuard]
+  }
 
 ];
 
