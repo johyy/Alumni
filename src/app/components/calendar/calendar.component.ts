@@ -68,7 +68,7 @@ renderCalendar() {
       selectMirror: true,
       dayMaxEvents: true,
       eventClick: function(info) {
-        alert('Event: ' + info.event.title + "event view as popup?");
+        alert('Event: ' + info.event.title);
       }
     };
 }
