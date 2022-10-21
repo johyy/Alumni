@@ -1,6 +1,6 @@
 <div class="edit-profile-wrap">    
     <form #editProfileForm="ngForm" 
-        (ngSubmit)="editProfileForm">       
+        (ngSubmit)="editProfile(editProfileForm)">       
         <div class="edit-profile-group"> 
             <label for="avatar" class="profile-compose-text">AVATAR URL: </label> 
             <input 
@@ -10,6 +10,7 @@
                 class="edit-profile-text-input"                     
                 ngModel
                 #avatar="ngModel"
+                [(ngModel)]="userInEdit && userInEdit.avatar"
             >                
         </div>
         <div class="edit-profile-group">                   
@@ -21,17 +22,19 @@
                 class="edit-profile-text-input"  
                 ngModel
                 #status_message="ngModel" 
+                [(ngModel)]="userInEdit && userInEdit.status_message"
             >
             </textarea>
         </div>  
         <div class="edit-profile-group">                   
-            <label for="bio" class="profile-compose-text label-textarea">STATUS MESSAGE: </label>  
+            <label for="bio" class="profile-compose-text label-textarea">Bio: </label>  
             <textarea 
                 class="profile-compose-textarea" 
                 id="bio"
                 name="bio"
                 ngModel
                 #bio="ngModel" 
+                [(ngModel)]="userInEdit && userInEdit.bio"
             >
             </textarea>
         </div>   
@@ -41,8 +44,10 @@
                 type="text"
                 id="fun_fact"
                 name="fun_fact"
+                class="edit-profile-text-input" 
                 ngModel
                 #fun_fact="ngModel" 
+                [(ngModel)]="userInEdit && userInEdit.fun_fact"
             >
             </textarea>
         </div>         

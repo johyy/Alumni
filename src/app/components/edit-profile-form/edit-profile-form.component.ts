@@ -21,6 +21,7 @@ export class EditProfileFormComponent implements OnInit {
   
   ngOnInit(): void {
     this.userService.findProfile();
+    this.userInEdit = this.user
   }
 
   cancel(): void {
@@ -32,7 +33,7 @@ export class EditProfileFormComponent implements OnInit {
       if(this.userInEdit != null){
         const {avatar,status_message,bio,fun_fact} = editProfileForm.value;
         const editedProfile = this.userInEdit;
-        editedProfile.avatar = avatar;
+        // editedProfile.avatar = avatar;
         editedProfile.status_message = status_message;
         editedProfile.bio = bio;
         editedProfile.fun_fact= fun_fact;
