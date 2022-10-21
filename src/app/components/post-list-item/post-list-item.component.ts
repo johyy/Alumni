@@ -30,4 +30,12 @@ export class PostListItemComponent implements OnInit {
     this.router.navigateByUrl(`/user/${userId}`);
   }
 
+  navigateToGroup(groupId: number) {
+    this.router.navigateByUrl(`/group/${groupId}`);
+  }
+
+  navigateToTopic(topicId: number) {
+    this.router.navigateByUrl(`/topic/${topicId}`);
+  }
+
 }
