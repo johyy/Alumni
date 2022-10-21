@@ -29,7 +29,6 @@ export class PostPage implements OnInit {
 
   ngOnInit(): void {
     this.postService.findPosts();
-    this.postService.findAuthors();
     this.activatedRoute.params.subscribe(params => {
       const id = parseInt(params["id"]);
       this.post = this.postService.findPostById(id);
