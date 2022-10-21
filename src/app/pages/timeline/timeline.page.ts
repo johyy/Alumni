@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/post.model';
 import { EventService } from 'src/app/services/event.service';
-import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-timeline',
@@ -10,10 +9,17 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class TimelinePage implements OnInit {
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.eventService.findAllUsersEvents();
+    // Get user then get events.
+    this.userService.userFindTest().subscribe(
+      resp =>{ this.eventService.eventFindTest().subscribe(
+        res => console.log("Timeline eventFindTest: ",res)
+      )
+      console.log("Timeline userFindTest: ",resp);
+      }
+    )    
   }
 
 }

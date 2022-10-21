@@ -21,6 +21,7 @@ export class AuthService {
   }
 
   logout() {
+    sessionStorage.clear();
     keycloak.logout();
   }
 }

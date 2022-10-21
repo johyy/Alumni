@@ -48,6 +48,7 @@ import { GroupComposeComponent } from './components/group-compose/group-compose.
 import { TopicsListItemComponent } from './components/topics-list-item/topics-list-item.component';
 import { EventPage } from './pages/event/event.page';
 import { EventInfoComponent } from './components/event-info/event-info.component';
+import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { EventInfoComponent } from './components/event-info/event-info.component
     AddGroupPage,
     GroupComposeComponent,
     EventPage,
-    EventInfoComponent
+    EventInfoComponent,
+    PostListItemComponent
   ],
   imports: [
     BrowserModule,

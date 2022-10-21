@@ -45,7 +45,8 @@ export class TopicsListItemComponent implements OnInit {
     this.joinTopicService.removeFromTopic(topicId)
       .subscribe({
         next: (topic: Topic) => {
-          this.isIn = this.topicService.checkIfUserInTopic((this.user.id), topic);  
+          this.isIn = this.topicService.checkIfUserInTopic((this.user.id), topic);
+          this.topicService.findAllTopics();
         },
         error: (error: HttpErrorResponse) => {
           console.log("ERROR", error.message)
@@ -58,7 +59,8 @@ export class TopicsListItemComponent implements OnInit {
     this.joinTopicService.addToTopic(topicId)
       .subscribe({
         next: (topic: Topic) => {
-          this.isIn = this.topicService.checkIfUserInTopic((this.user.id), topic);  
+          this.isIn = this.topicService.checkIfUserInTopic((this.user.id), topic);
+          this.topicService.findAllTopics();
         },
         error: (error: HttpErrorResponse) => {
           console.log("ERROR", error.message)

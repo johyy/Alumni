@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, firstValueFrom, Observable, take } from 'rxjs';
+import { finalize, firstValueFrom, Observable, take, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StorageKeys } from '../enums/storage-keys.enum';
 import { Group } from '../models/group.model';
@@ -55,6 +55,13 @@ export class UserService {
         this._error = error.message;
       }
     })
+  }
+
+  // -------- Test method --------
+  public userFindTest(): Observable<User>{
+    return this.http.get<User>(apiUsers).pipe(
+      tap(resp => {StorageUtil.StorageSaveOne(StorageKeys.User,resp);})      
+    )
   }
 
   public findUserById(id: User): Observable<User> {

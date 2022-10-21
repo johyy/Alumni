@@ -42,9 +42,4 @@ export class PostListComponent implements OnInit {
     this.topicService.findAllTopics();
     this.userService.findProfile();
   }
-
-  navigateToPost(postId: number) {
-    this.router.navigateByUrl(`/post/${postId}`);
-  }
-
 }

@@ -1,1 +1,24 @@
-<p>event-info works!</p>
+<div class="event-info-wrap"> 
+    <h1 class="event-info-header-text">Event Details</h1>
+    <div class="event-info-event">        
+        <h3 class="event-info-small-headers-3">{{singleEvent && singleEvent.title}}</h3>
+        <div class="event-info-host">           
+            <img class="event-info-avatar" src="{{ eventHost && eventHost.avatar ?? '/assets/img/event-detail-host.png'}}"/> 
+              <p class="event-info-host-name">{{eventHost && eventHost.name}}</p>          
+        </div>
+        <h4 class="event-info-small-headers-4">
+            Date (begins):{{singleEvent && singleEvent.date_time_begin && singleEvent.date_time_begin.toString().split("T")[0].split("-").reverse().join(".")}}
+        </h4>
+        <h4 class="event-info-small-headers-4">
+            Date (ends): {{singleEvent && singleEvent.date_time_end && singleEvent.date_time_end.toString().split("T")[0].split("-").reverse().join(".")}}
+        </h4>
+        <h4 class="event-info-small-headers-4"
+        >Guest capacity: {{singleEvent && singleEvent.guest_capacity}}
+        </h4>
+        <p class="event-info-description">{{singleEvent && singleEvent.description}}</p>
+
+    </div>
+
+</div>
+
+    
