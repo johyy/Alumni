@@ -4,8 +4,6 @@ import { finalize, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Event } from '../models/event.model';
 
-import { CalendarEvent } from 'angular-calendar';
-
 @Injectable({
   providedIn: 'root'
 })
