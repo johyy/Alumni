@@ -9,6 +9,7 @@ import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { isAfter } from 'date-fns';
 
 const { apiUsers } = environment
 
@@ -104,8 +105,14 @@ export class UserService {
   }
 
   public editUser(userId: number, user: User): Observable<string>{
-    const body: any = user;
-    return this.http.put<any>(`${environment.baseUrl}/user/${userId}`,body,this.httpOptions).pipe(
+    const body = {
+      name: user.name,
+      avatar: user.avatar,
+      status_message: user.status_message,
+      bio: user.bio,
+      fun_fact: user.fun_fact
+    }
+    return this.http.patch<any>(`${environment.baseUrl}/user/${userId}`,body,this.httpOptions).pipe(
       catchError(this.handleError<string>('edituser'))
     )
     }

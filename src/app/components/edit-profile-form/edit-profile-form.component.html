@@ -2,6 +2,18 @@
     <form #editProfileForm="ngForm" 
         (ngSubmit)="editProfile(editProfileForm)">       
         <div class="edit-profile-group"> 
+            <label for="name" class="profile-compose-text">NAME: </label> 
+            <input 
+                type="text"                  
+                id="name"
+                name="name"
+                class="edit-profile-text-input"                     
+                ngModel
+                #name="ngModel"
+                [(ngModel)]="userInEdit && userInEdit.name"
+            >                
+        </div>
+        <div>
             <label for="avatar" class="profile-compose-text">AVATAR URL: </label> 
             <input 
                 type="text"                  
@@ -59,9 +71,3 @@
         </div> 
        
     </form>
-
-<!-- 
-avatar: string;
-status_message: string;
-bio: string;
-fun_fact: string; -->

@@ -29,15 +29,14 @@ export class EditProfileFormComponent implements OnInit {
   }
 
   editProfile(editProfileForm: NgForm): void {
-      this.userInEdit = this.user
       if(this.userInEdit != null){
-        const {avatar,status_message,bio,fun_fact} = editProfileForm.value;
+        const {name, avatar,status_message,bio,fun_fact} = editProfileForm.value;
         const editedProfile = this.userInEdit;
-        // editedProfile.avatar = avatar;
+        editedProfile.name=name;
+        editedProfile.avatar = avatar;
         editedProfile.status_message = status_message;
         editedProfile.bio = bio;
         editedProfile.fun_fact= fun_fact;
-        // Call editPost and navigate to post/{post_id}
         this.userService.editUser(this.userInEdit.id,editedProfile).subscribe(
           ()=> this.router.navigate(['profile'])
         )

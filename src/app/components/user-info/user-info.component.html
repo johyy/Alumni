@@ -1,3 +1,4 @@
+
 <ul>
     <li>
         <b>NAME: {{ user.name }}</b>
@@ -15,4 +16,4 @@
 <section id="avatar">
     <img id="img" [src]="getAvatar()" [alt]="user.name">
 </section>
-<button (click)="navigateToEditUser()">Edit Profile</button>
+<button class="editButton"(click)="navigateToEditUser()">Edit Profile</button>
