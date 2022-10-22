@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
+import { StorageUtil } from 'src/app/utils/storage.util';
+import { StorageKeys } from 'src/app/enums/storage-keys.enum';
 
 @Component({
   selector: 'app-edit-profile-form',
@@ -38,7 +40,9 @@ export class EditProfileFormComponent implements OnInit {
         editedProfile.bio = bio;
         editedProfile.fun_fact= fun_fact;
         this.userService.editUser(this.userInEdit.id,editedProfile).subscribe(
-          ()=> this.router.navigate(['profile'])
+          ()=>{this.router.navigate(['profile'])
+          StorageUtil.StorageSaveOne(StorageKeys.User, editedProfile)
+        } 
         )
       }
 
