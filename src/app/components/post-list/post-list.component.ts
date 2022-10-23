@@ -12,6 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PostListComponent implements OnInit {
 
+  @Input() topicId: number = 0;
+  @Input() groupId: number = 0;
+
   get posts(): Post[] {
     return this.postService.posts;
   }
