@@ -1,4 +1,4 @@
-<div *ngIf="group !== undefined">
+<div class="group-page" *ngIf="group !== undefined">
     <div class="group-info">
         <ul>
             <li id="title"><b>{{ group.title }}</b></li>
@@ -9,9 +9,7 @@
     <div class="add-buttons">
         <app-add-buttons [entity]="group" [target]="'group'"></app-add-buttons>
     </div>
-    <section>
-        <div class="posts">
-            <app-post-list [groupId]="group.id"></app-post-list>
-        </div>
-    </section>
+    <div class="posts">
+        <app-post-list [groupId]="group.id"></app-post-list>
+    </div>
 </div>

@@ -1,4 +1,4 @@
-<div *ngIf="topic !== undefined">
+<div class="topic-page" *ngIf="topic !== undefined">
     <div class="topic-info">
         <ul>
             <li id="title"><b>{{ topic.title }}</b></li>
@@ -9,9 +9,7 @@
     <div class="add-buttons">
         <app-add-buttons [entity]="topic" [target]="'topic'"></app-add-buttons>
     </div>
-    <section>
-        <div class="posts">
-            <app-post-list [topicId]="topic.id"></app-post-list>
-        </div>
-    </section>
+    <div class="posts">
+        <app-post-list [topicId]="topic.id"></app-post-list>
+    </div>
 </div>
