@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-info',
@@ -10,8 +11,12 @@ export class UserInfoComponent implements OnInit {
 
   @Input() user: User = Object();
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  navigateToEditUser() {
+    this.router.navigateByUrl(`/profile/edit`);
   }
 }

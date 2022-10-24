@@ -46,6 +46,8 @@ import { GroupComposeComponent } from './components/group-compose/group-compose.
 import { EventPage } from './pages/event/event.page';
 import { EventInfoComponent } from './components/event-info/event-info.component';
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
+import { EditProfileFormComponent } from './components/edit-profile-form/edit-profile-form.component';
+import { EditProfilePage } from './pages/edit-profile/edit-profile.page';
 import { SearchComponent } from './components/search/search.component';
 import { AddGroupPage } from './pages/add-group/add-group.page';
 import { UserPage } from './pages/user/user.page';
@@ -93,6 +95,8 @@ import { UserPage } from './pages/user/user.page';
     EventInfoComponent,
     PostListItemComponent,
     SearchComponent,
+    EditProfilePage,
+    EditProfileFormComponent,
     UserPage
   ],
   imports: [

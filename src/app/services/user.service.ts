@@ -7,6 +7,8 @@ import { Group } from '../models/group.model';
 import { Topic } from '../models/topic.model';
 import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 const { apiUsers } = environment
 
@@ -14,10 +16,6 @@ const { apiUsers } = environment
   providedIn: 'root'
 })
 export class UserService {
-  private httpOptions = {
-    headers: new HttpHeaders({ 
-      'Content-Type': 'application/json',})
-  };
 
   private _user!: User;
   private _error: string = "";
@@ -35,7 +33,20 @@ export class UserService {
     return this._loading;
   }
 
+  private httpOptions = {
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',})
+  };
+
   constructor(private readonly http: HttpClient) { } 
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log((`${operation} failed: ${error.message}`));
+      return of(result as T);
+    };
+  }
 
   public findProfile(): void {
     if (this._user) return;
@@ -61,6 +72,7 @@ export class UserService {
     })
   }
 
+  
   // -------- Test method --------
   public userFindTest(): Observable<User>{
     return this.http.get<User>(apiUsers).pipe(
@@ -110,4 +122,18 @@ export class UserService {
       topic.users = topic.users.filter((userId: number) => this.user.id !== userId)
     }
   }
+
+  public editUser(userId: number, user: User): Observable<string>{
+    const body = {
+      name: user.name,
+      avatar: user.avatar,
+      status_message: user.status_message,
+      bio: user.bio,
+      fun_fact: user.fun_fact
+    }
+
+    return this.http.patch<any>(`${environment.baseUrl}/user/${userId}`,body,this.httpOptions).pipe(
+      catchError(this.handleError<string>('edituser'))
+    )
+    }
 }

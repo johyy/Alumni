@@ -13,8 +13,8 @@ import { GroupListService } from 'src/app/services/group-list.service';
   styleUrls: ['./event-create.component.css']
 })
 export class EventCreateComponent implements OnInit {
-  private eventTargetId: number | null = null;
-  private target: String | null = null;
+  private eventTargetId: number = 0;
+  private target: String = "";
   public errorMsg: String | null = null;
   public targetTitle: String = "";
 
@@ -43,14 +43,15 @@ export class EventCreateComponent implements OnInit {
       }
       // If event is targeted to specific audience
       if(this.target && this.eventTargetId){
-        this.eventService.createEvent(newEvent,this.target,this.eventTargetId).subscribe(
-          resp => {if(resp.status == 201) this.router.navigate(['event',resp.body])}       
+        this.eventService.createEvent(newEvent).subscribe(
+          resp => {this.eventService.targetInvitation(this.target,resp.body,this.eventTargetId).subscribe(
+            res => {this.router.navigate(['event',resp.body])}
+          )}
         )
       }else { // event w/o target
-        console.log("w/o target")
         this.eventService.createEvent(newEvent).subscribe(
         resp => {if(resp.status == 201) this.router.navigate(['event',resp.body])}
-      );}      
+      )}    
     }
   }
 

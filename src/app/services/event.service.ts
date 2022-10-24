@@ -1,10 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize, Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, concatMap,  tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Event } from '../models/event.model';
-import { CalendarEvent } from 'angular-calendar';
 import { NewEvent } from '../models/new-event.model';
 import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../enums/storage-keys.enum';
@@ -43,7 +42,7 @@ export class EventService {
               ...calendarevents,
               {
       start:new Date(event.date_time_begin.toString()),
-      title:event.title
+      title:event.title,
         }
     ]
     
@@ -110,24 +109,38 @@ export class EventService {
 
   /**
    * (POST) Create new event. returns id of created event in response.body.
+   * @param event
+   * @returns 
+   */
+  createEvent(event: NewEvent): Observable<any>{
+    this._refreshEvents = true;
+    return this.http.post<any>(`${environment.baseUrl}/event`,event,{
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      observe: 'response', }).pipe(  
+        /* tap(resp => { console.log("createEvent: event created with id: ",resp.body);
+        }), */
+        catchError(this.handleError<string>('createEvent'))
+    )
+  };  
+
+  /**
+   * (POST) Create new event and invite for a given target audience.
    * @param event 
    * @param targetAudience 
    * @param targetId 
    * @returns 
    */
-  createEvent(event: NewEvent, targetAudience?: String, targetId?: number): Observable<any>{
+   createEventForSpecificTarget(event: NewEvent, targetAudience: String, targetId: number): Observable<any>{
     this._refreshEvents = true;
     return this.http.post<any>(`${environment.baseUrl}/event`,event,{
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      observe: 'response', }).pipe( 
-        tap(resp => {
-          if(targetAudience && targetId){
-            this.targetInvitation(targetAudience,resp.body,targetId).subscribe();
-          }
-        }),
+      observe: 'response', }).pipe(  
+        concatMap(res => this.http.post<any>(`${environment.baseUrl}/event/${res.body}/invite/${targetAudience}/${targetId}`,
+        {headers: new HttpHeaders({ 'Content-Type': 'application/json' }),observe: 'response', })
+        ),
         catchError(this.handleError<string>('createEvent'))
     )
-  };
+  };  
 
   /**
    * (POST) Call one of backends create new invitation endpoints (depending on params)

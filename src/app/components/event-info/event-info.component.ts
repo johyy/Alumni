@@ -4,6 +4,7 @@ import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-event-info',
@@ -18,7 +19,7 @@ export class EventInfoComponent implements OnInit, OnChanges {
   @Input() singleEvent : Event | undefined;
   @Input() eventHost: User | undefined;
 
-  constructor(private postService: PostService, private userService: UserService) { }
+  constructor(private location: Location, private postService: PostService, private userService: UserService) { }
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['singleEvent']) this.refresh = !this.refresh;
   }
@@ -35,6 +36,10 @@ export class EventInfoComponent implements OnInit, OnChanges {
           )
       }    
     )}
+  }
+
+  cancel(): void {
+    this.location.back()
   }
 
   // Maps post author ids to users
