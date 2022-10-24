@@ -5,7 +5,13 @@
     <p *ngIf="loading()">Loading posts...</p>
     <ul *ngIf="!loading()">
         <li *ngFor="let post of posts">
-            <app-post-list-item [post]="post"></app-post-list-item>
+            <app-post-list-item 
+                *ngIf="(topicId === 0 && groupId === 0)
+                || topicId === post.target_topic_id
+                || groupId === post.target_group_id" 
+                [post]="post"
+            >
+            </app-post-list-item>
         </li>
     </ul>
 </div>
