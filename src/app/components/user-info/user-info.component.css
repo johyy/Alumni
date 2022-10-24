@@ -1,5 +1,6 @@
 ul { 
     list-style-type: none;
+    margin: 0;
 } 
 
 ul li { 
@@ -11,8 +12,29 @@ ul li {
     height: 367px;
     border-radius: 30px;
     border: 4px solid #000000;
-    position: absolute;
-    left: 915px;
-    top: 0px;
     background-color: #D9D8D2;
+    grid-column: 3 4;
+    height: 100%;
+}
+
+.profile { 
+    font-family: 'Shadows Into Light Two'; 
+    font-size: x-large;
+    border: 4px solid #000000; 
+    background: #D9D8D2; 
+    border-radius: 30px; 
+    box-sizing: border-box;
+    grid-column: 1 / span 2;
+    height: 100%;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
