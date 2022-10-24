@@ -1,27 +1,60 @@
 # AlumniFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![TypeScript](https://badgen.net/badge/icon/typescript?icon=typescript&label)](https://typescriptlang.org)
+[![Angular](https://badges.aleen42.com/src/angular.svg)](https://angular.io/)
+<br />
+<br />
+Front-end client for *Alumni Network Portal* -web application.
+<br />
+<br />
+Separate repository for the [backend](https://gitlab.com/Laura_Byman/alumni_backend/-/blob/main/README.md?plain=0).
 
-## Development server
+## Table of contents
+* [Introduction](#introduction)
+* [Features](#features)
+* [Technologies](#technologies)
+* [Usage](#usage)
+* [Authors](#authors)
+* [Sources](#sources)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Introduction
 
-## Code scaffolding
+*Alumni Network Portal* is a full-stack web application developed to facilitate communication 
+between the participants and organizers of the Experis Academy fullstack developer course by 
+Noroff Accelerate.
+<br />
+<br />
+The application was developed as a part of the aforementioned course over a period of three and a half weeks.
+The primary purpose of the software is to demonstrate the capabilities of the developers and to act as a 
+capstone experience that ties up everything that was taught during the three-month long fullstack developer course.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+A single-page application built using Angular-framework. User authentication is handled by Keycloak.
 
-## Running unit tests
+## Technologies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- TypeScript
+- HTML/CSS
+- Angular
+- Keycloak
+- Render
 
-## Running end-to-end tests
+## Usage
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Frontend client on  [Render](https://alumni-fmt0.onrender.com/)
 
-## Further help
+## Authors
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[@Emil](https://gitlab.com/emilcalonius)<br />
+[@Jani](https://gitlab.com/janijk)<br />
+[@Jonna](https://gitlab.com/johyy)<br />
+[@Laura](https://gitlab.com/Laura_Byman)<br />
+
+## Sources
+
+Project was an assignment done during education program created by
+Noroff Education
+
