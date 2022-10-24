@@ -1,5 +1,8 @@
 <div class="posts-header">
-    <b>POSTS</b> <a id="search"><app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search></a>
+    <b>POSTS</b>
+    <a id="search">
+        <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+    </a>
 </div>
 <div class="posts-container">
     <p *ngIf="loading()">Loading posts...</p>

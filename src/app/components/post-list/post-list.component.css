@@ -7,12 +7,15 @@
 ul {
     padding: 0px;
     list-style-type: none;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .posts-header {
     height: 10%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .posts-container {
@@ -20,8 +23,4 @@ ul {
     border-top: 2px solid #000000;
     border-radius: 5px;
     height: 90%;
-}
-
-#search {
-    padding-left: 60%;
 }

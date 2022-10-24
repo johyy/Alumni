@@ -111,7 +111,6 @@ export class PostService {
     .subscribe({
       next: (posts: Post[]) => {
         this._refreshPosts = false;
-        posts.reverse();
         this._posts = posts;
         StorageUtil.storageSave(StorageKeys.Posts, posts);
         this.findAuthors();

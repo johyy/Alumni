@@ -1,19 +1,19 @@
-
-<ul>
-    <li>
-        <b>NAME: {{ user.name }}</b>
-    </li>
-    <li>
-        <b>WORK STATUS: </b>{{ user.status_message }}
-    </li>
-    <li>
-        <b>BIO: </b>{{ user.bio }}
-    </li>
-    <li>
-        <b>FUN FACT: </b>{{ user.fun_fact }}
-    </li>
-</ul>
-<section id="avatar">
-    <img id="img" src="{{ user.avatar ?? '/assets/img/blank_avatar.png' }}" [alt]="user.name">
-</section>
-<button class="editButton"(click)="navigateToEditUser()">Edit Profile</button>
+<div class="user-info">
+    <ul class="profile">
+        <li>
+            <b>NAME: {{ user.name }}</b>
+        </li>
+        <li>
+            <b>WORK STATUS: </b>{{ user.status_message }}
+        </li>
+        <li>
+            <b>BIO: </b>{{ user.bio }}
+        </li>
+        <li>
+            <b>FUN FACT: </b>{{ user.fun_fact }}
+        </li>
+    </ul>
+    <section id="avatar">
+        <img id="img" src="{{ user.avatar ?? '/assets/img/blank_avatar.png' }}" [alt]="user.name">
+    </section>
+</div>
