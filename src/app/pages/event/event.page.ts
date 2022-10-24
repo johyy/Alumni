@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Event } from 'src/app/models/event.model';
 import { User } from 'src/app/models/user.model';
@@ -24,7 +24,7 @@ export class EventPage implements OnInit {
     });
     // Get the event with event id
     this.eventService.eventFindTest().subscribe(
-      res => {this.singleEvent = res.find(e => e.id == this.eventId);
+      res => {this.singleEvent = res.find(e => e.id == this.eventId);      
         // Get the event hosts info
         if(this.singleEvent != undefined){
           this.userService.findUserById(this.singleEvent.host).subscribe(
