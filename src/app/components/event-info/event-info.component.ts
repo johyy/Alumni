@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Event } from 'src/app/models/event.model';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
@@ -11,10 +11,9 @@ import { Location } from '@angular/common';
   templateUrl: './event-info.component.html',
   styleUrls: ['./event-info.component.css']
 })
-export class EventInfoComponent implements OnInit, OnChanges {
+export class EventInfoComponent implements OnInit {
   public posts?: Post[];
   public users?: User[];
-  private refresh: Boolean = false;
 
   @Input() singleEvent : Event | undefined;
   @Input() eventHost: User | undefined;
