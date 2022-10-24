@@ -48,7 +48,7 @@ export class PostService {
   ) { }
 
   /**
-   * Create a new post. (POST)
+   * Create a new post. (POST). Id of created post in response.body.
    * @param post NewPost model
    * @returns http response
    */
@@ -73,10 +73,22 @@ export class PostService {
     const body: any = post;
     body.author = post.author.id;
     return this.http.put<any>(`${environment.baseUrl}/post/${postId}`,body,this.httpOptions).pipe(
-      //tap(resp => console.log("post service editPost response: ",resp)),
+      //tap(resp => console.log("post service editPost response: ",resp)), 
       catchError(this.handleError<string>('editPost'))
     )
    }
+
+  
+   /**
+    * (GET) get all posts targeted to an event
+    * @param eventId 
+    * @returns 
+    */
+   findPostsByEvent(eventId:number): Observable<Post[]>{         
+    return this.http.get<any>(`${environment.apiPosts}/event/${eventId}`).pipe(
+      //tap(resp => console.log(resp)),
+    )
+  }
 
   public findPosts(): void {
     // If posts should be refreshed (after edit or new post), force fetching them from backend
@@ -90,7 +102,7 @@ export class PostService {
       }
     }
     this._loading = true;
-    this.http.get<Post[]>(environment.apiPosts)
+    this.http.get<Post[]>(environment.apiPosts) 
     .pipe(
       finalize(() => {
         this._loading = false;

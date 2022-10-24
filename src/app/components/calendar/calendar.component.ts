@@ -38,9 +38,6 @@ export class CalendarComponent implements OnInit {
    dayMaxEvents: true
  };
 
-  // get events(): any {
-  //   return this.eventService.calendarEvents;
-  // }
 
   get loading(): boolean {
     return this.eventService.loading;

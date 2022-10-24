@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router,ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common'
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/models/post.model';
 import { NewPost } from 'src/app/models/new-post.model';
+import { TopicService } from 'src/app/services/topic.service';
+import { GroupListService } from 'src/app/services/group-list.service';
 
 @Component({
   selector: 'app-post-compose',
@@ -17,9 +19,10 @@ export class PostComposeComponent implements OnInit {
   private target: String = "";
   public errorMsg: String | null = null;
   public postInEdit: Post | null = null;
+  public targetTitle: String | undefined = undefined;
 
   constructor(public router: Router, private location: Location,private route: ActivatedRoute, 
-    private postService:PostService) { } 
+    private postService:PostService, private topicService: TopicService, private glService: GroupListService) { } 
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -28,6 +31,9 @@ export class PostComposeComponent implements OnInit {
       if(params['postId']) this.postInEdit = this.postService.findPostById(params['postId']);      
       if(params['ogId']) this.ogPostId = params['ogId'];  
     });
+    // Get target title for header h1 
+    if(this.target == "group") this.targetTitle = this.glService.groups?.find(g=> g.id == this.postTargetId)?.title ?? this.targetTitle;
+    if(this.target == "topic") this.targetTitle = this.topicService.topics?.find(t=> t.id == this.postTargetId)?.title ?? this.targetTitle;
   }
 
   // Create a new post. 

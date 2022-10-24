@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { GroupListService } from 'src/app/services/group-list.service';
 import { TopicService } from 'src/app/services/topic.service';
+import { PostListComponent } from '../post-list/post-list.component';
 
 @Component({
   selector: 'app-post-list-item',
@@ -16,6 +17,7 @@ export class PostListItemComponent implements OnInit {
   constructor(
     readonly groupListService: GroupListService,
     readonly topicService: TopicService,
+    readonly postListComponent: PostListComponent,
     private readonly router: Router
   ) { }
 
@@ -25,5 +27,17 @@ export class PostListItemComponent implements OnInit {
   navigateToPost(postId: number) {
     this.router.navigateByUrl(`/post/${postId}`);
   }
+  navigateToUser(userId: any) {
+    this.router.navigateByUrl(`/user/${userId}`);
+  }
 
+  navigateToGroup(groupId: number) {
+    this.router.navigateByUrl(`/group/${groupId}`);
+  }
+
+  navigateToTopic(topicId: number) {
+    this.router.navigateByUrl(`/topic/${topicId}`);
+  }
+
+  searchText: string = this.postListComponent.searchText;
 }

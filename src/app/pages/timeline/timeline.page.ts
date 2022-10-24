@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from 'src/app/services/event.service';
 import { Post } from 'src/app/models/post.model';
 import { GroupListService } from 'src/app/services/group-list.service';
 import { PostService } from 'src/app/services/post.service';
@@ -12,8 +13,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TimelinePage implements OnInit {
 
-  constructor() { }
+  constructor(private eventService: EventService, private userService: UserService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
   }
 }

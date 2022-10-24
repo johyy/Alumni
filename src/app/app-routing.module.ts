@@ -7,8 +7,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { AddGroupPage } from './pages/add-group/add-group.page';
 import { AddTopicPage } from './pages/add-topic/add-topic.page';
 import { CalendarPage } from './pages/calendar/calendar.page';
+import { CreateEventPage } from './pages/create-event/create-event.page';
 import { CreatePostPage } from './pages/create-post/create-post.page';
 import { EditProfilePage } from './pages/edit-profile/edit-profile.page';
+import { EventPage } from './pages/event/event.page';
 import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
 import { JoinGroupPage } from './pages/join-group/join-group.page';
@@ -19,6 +21,7 @@ import { PostPage } from './pages/post/post.page';
 import { ProfilePage } from './pages/profile/profile.page';
 import { TimelinePage } from './pages/timeline/timeline.page';
 import { TopicListPage } from './pages/topic-list/topic-list.page';
+import { UserPage } from './pages/user/user.page';
 import { EventsResolver } from './resolvers/events.resolver';
 
 const routes: Routes = [
@@ -65,6 +68,16 @@ const routes: Routes = [
   {// Reply to post (e.g. post/reply/group/1/3 | :id = group.id | :ogId = originalpost.id)
     path: "post-reply/:target/:id/:ogId", 
     component: CreatePostPage,
+    canActivate: [AuthGuard]
+  },
+   {// Specific Event details 
+    path: "event/:id",
+    component: EventPage,
+    canActivate: [AuthGuard]
+  },
+  {// New event ( e.g. event/group/1 | :id = group.id)
+    path: "event/:target/:id",
+    component: CreateEventPage,
     canActivate: [AuthGuard]
   },
   {
@@ -115,6 +128,11 @@ const routes: Routes = [
   {
     path: "add_group",
     component: AddGroupPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "user/:id",
+    component: UserPage,
     canActivate: [AuthGuard]
   }
 

@@ -38,13 +38,19 @@ import { JoinTopicPage } from './pages/join-topic/join-topic.page';
 import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 import { AddTopicButtonComponent } from './components/add-topic-button/add-topic-button.component';
 import { AddGroupButtonComponent } from './components/add-group-button/add-group-button.component';
+import { CreateEventPage } from './pages/create-event/create-event.page';
+import { EventCreateComponent } from './components/event-create/event-create.component';
 import { AddTopicPage } from './pages/add-topic/add-topic.page';
 import { TopicComposeComponent } from './components/topic-compose/topic-compose.component';
-import { AddGroupPage } from './pages/add-group/add-group.page';
 import { GroupComposeComponent } from './components/group-compose/group-compose.component';
+import { EventPage } from './pages/event/event.page';
+import { EventInfoComponent } from './components/event-info/event-info.component';
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
 import { EditProfileFormComponent } from './components/edit-profile-form/edit-profile-form.component';
 import { EditProfilePage } from './pages/edit-profile/edit-profile.page';
+import { SearchComponent } from './components/search/search.component';
+import { AddGroupPage } from './pages/add-group/add-group.page';
+import { UserPage } from './pages/user/user.page';
 
 @NgModule({
   declarations: [
@@ -79,13 +85,19 @@ import { EditProfilePage } from './pages/edit-profile/edit-profile.page';
     ExitTopicPage,
     AddTopicButtonComponent,
     AddGroupButtonComponent,
+    CreateEventPage,
+    EventCreateComponent,
     AddTopicPage,
     TopicComposeComponent,
     AddGroupPage,
     GroupComposeComponent,
+    EventPage,
+    EventInfoComponent,
     PostListItemComponent,
+    SearchComponent,
     EditProfilePage,
     EditProfileFormComponent
+    UserPage
   ],
   imports: [
     BrowserModule,

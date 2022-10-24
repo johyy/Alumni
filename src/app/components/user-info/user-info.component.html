@@ -14,6 +14,6 @@
     </li>
 </ul>
 <section id="avatar">
-    <img id="img" [src]="getAvatar()" [alt]="user.name">
+    <img id="img" src="{{ user.avatar ?? '/assets/img/blank_avatar.png' }}" [alt]="user.name">
 </section>
 <button class="editButton"(click)="navigateToEditUser()">Edit Profile</button>
