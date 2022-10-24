@@ -10,6 +10,7 @@ import { CalendarPage } from './pages/calendar/calendar.page';
 import { CreateEventPage } from './pages/create-event/create-event.page';
 import { CreatePostPage } from './pages/create-post/create-post.page';
 import { EditProfilePage } from './pages/edit-profile/edit-profile.page';
+import { ErrorPage } from './pages/error/error.page';
 import { EventPage } from './pages/event/event.page';
 import { ExitTopicPage } from './pages/exit-topic/exit-topic.page';
 import { GroupListPage } from './pages/group-list/group-list.page';
@@ -133,6 +134,11 @@ const routes: Routes = [
   {
     path: "user/:id",
     component: UserPage,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "error",
+    component: ErrorPage,
     canActivate: [AuthGuard]
   }
 

@@ -51,6 +51,7 @@ import { EditProfilePage } from './pages/edit-profile/edit-profile.page';
 import { SearchComponent } from './components/search/search.component';
 import { AddGroupPage } from './pages/add-group/add-group.page';
 import { UserPage } from './pages/user/user.page';
+import { ErrorPage } from './pages/error/error.page';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { UserPage } from './pages/user/user.page';
     SearchComponent,
     EditProfilePage,
     EditProfileFormComponent,
-    UserPage
+    UserPage,
+    ErrorPage
   ],
   imports: [
     BrowserModule,
