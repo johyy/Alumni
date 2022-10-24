@@ -1,12 +1,10 @@
-import { startOfDay } from 'date-fns';
-import { Component, OnInit, Input } from '@angular/core';
+
+import { Component, OnInit} from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user.model';
-import { Event } from 'src/app/models/event.model';
 import { CalendarOptions, defineFullCalendarElement } from '@fullcalendar/web-component';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 defineFullCalendarElement();
 
@@ -20,7 +18,7 @@ export class CalendarComponent implements OnInit {
   events:any = []
   userevents:any = []
 
-  constructor(private eventService: EventService, private userService : UserService, private route: ActivatedRoute) { }
+  constructor(private eventService: EventService, private userService : UserService, private route: ActivatedRoute, private router:Router) { }
 
   calendarOptions: CalendarOptions = {
    plugins: [dayGridPlugin],
@@ -38,9 +36,6 @@ export class CalendarComponent implements OnInit {
    dayMaxEvents: true
  };
 
-  // get events(): any {
-  //   return this.eventService.calendarEvents;
-  // }
 
   get loading(): boolean {
     return this.eventService.loading;
@@ -51,7 +46,7 @@ export class CalendarComponent implements OnInit {
   }
 
 
-renderCalendar() {
+renderCalendar(router:Router) {
    this.calendarOptions = {
       plugins: [dayGridPlugin],
       headerToolbar: {
@@ -67,7 +62,7 @@ renderCalendar() {
       selectMirror: true,
       dayMaxEvents: true,
       eventClick: function(info) {
-        alert('Event: ' + info.event.title);
+        router.navigateByUrl(`/event/` + info.event.id)
       }
     };
 }
@@ -79,18 +74,32 @@ renderCalendar() {
     let calendarevents: any= []
     for(let event of this.userevents)
     {
-      calendarevents = [
-              ...calendarevents,
-              {
-      start:new Date(event.date_time_begin.toString()),
-      title:event.title
-        }
+
+      //check if event has start date
+      if(event.date_time_begin == undefined){
+        calendarevents = [
+          ...calendarevents,
+          {
+        title:event.title,
+        id: event.id
+         }
+        ]
+      }else{
+        calendarevents = [
+          ...calendarevents,
+          {
+        start:new Date(event.date_time_begin.toString()),
+        title:event.title,
+        id: event.id
+          }
       ]
+      }
+      }
+
+      this.events = calendarevents
+      this.eventService.findAllUsersEvents()
+      this.renderCalendar(this.router)
     }
-    this.events = calendarevents
-    this.eventService.findAllUsersEvents()
-    this.renderCalendar()
-  }
 
 
 }

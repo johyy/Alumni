@@ -4,7 +4,6 @@ import { finalize, Observable, of } from 'rxjs';
 import { catchError, concatMap,  tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Event } from '../models/event.model';
-import { CalendarEvent } from 'angular-calendar';
 import { NewEvent } from '../models/new-event.model';
 import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../enums/storage-keys.enum';
@@ -43,7 +42,7 @@ export class EventService {
               ...calendarevents,
               {
       start:new Date(event.date_time_begin.toString()),
-      title:event.title
+      title:event.title,
         }
     ]
     

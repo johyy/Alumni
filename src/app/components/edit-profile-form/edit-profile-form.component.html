@@ -1,0 +1,73 @@
+<div class="edit-profile-wrap">    
+    <form #editProfileForm="ngForm" 
+        (ngSubmit)="editProfile(editProfileForm)">       
+        <div class="edit-profile-group"> 
+            <label for="name" class="profile-compose-text">NAME: </label> 
+            <input 
+                type="text"                  
+                id="name"
+                name="name"
+                class="edit-profile-text-input"                     
+                ngModel
+                #name="ngModel"
+                [(ngModel)]="userInEdit && userInEdit.name"
+            >                
+        </div>
+        <div>
+            <label for="avatar" class="profile-compose-text">AVATAR URL: </label> 
+            <input 
+                type="text"                  
+                id="avatar"
+                name="avatar"
+                class="edit-profile-text-input"                     
+                ngModel
+                #avatar="ngModel"
+                [(ngModel)]="userInEdit && userInEdit.avatar"
+            >                
+        </div>
+        <div class="edit-profile-group">                   
+            <label for="status_message" class="profile-compose-text">STATUS MESSAGE: </label>  
+            <textarea 
+                type="text"
+                id="status_message"
+                name="status_message"
+                class="edit-profile-text-input"  
+                ngModel
+                #status_message="ngModel" 
+                [(ngModel)]="userInEdit && userInEdit.status_message"
+            >
+            </textarea>
+        </div>  
+        <div class="edit-profile-group">                   
+            <label for="bio" class="profile-compose-text label-textarea">Bio: </label>  
+            <textarea 
+                class="profile-compose-textarea" 
+                id="bio"
+                name="bio"
+                ngModel
+                #bio="ngModel" 
+                [(ngModel)]="userInEdit && userInEdit.bio"
+            >
+            </textarea>
+        </div>   
+        <div class="edit-profile-group">                   
+            <label for="fun_fact" class="profile-compose-text">FUN FACT: </label>  
+            <textarea 
+                type="text"
+                id="fun_fact"
+                name="fun_fact"
+                class="edit-profile-text-input" 
+                ngModel
+                #fun_fact="ngModel" 
+                [(ngModel)]="userInEdit && userInEdit.fun_fact"
+            >
+            </textarea>
+        </div>         
+        <div class="profile-compose-button-group">
+            <button type="button" class="profile-compose-button" (click)="cancel()">CANCEL</button>
+            <div class="post-compose-button-group-inner">
+                <button type="submit" class="profile-compose-button"  >EDIT</button>     
+            </div>           
+        </div> 
+       
+    </form>
