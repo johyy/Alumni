@@ -12,7 +12,7 @@
         <li>
             <b>FUN FACT: </b>{{ user.fun_fact }}
         </li>
-        <div *ngIf="isCurrentUser() == true">
+        <div *ngIf="isCurrentUser()">
         <button class="edit-button"(click)="navigateToEditUser()">Edit Profile</button>
         </div>
     </ul>
