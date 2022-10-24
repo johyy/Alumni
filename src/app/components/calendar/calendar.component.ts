@@ -46,7 +46,7 @@ export class CalendarComponent implements OnInit {
   }
 
 
-renderCalendar() {
+renderCalendar(router:Router) {
    this.calendarOptions = {
       plugins: [dayGridPlugin],
       headerToolbar: {
@@ -62,7 +62,7 @@ renderCalendar() {
       selectMirror: true,
       dayMaxEvents: true,
       eventClick: function(info) {
-        alert('Event: ' + info.event.title);
+        router.navigateByUrl(`/event/` + info.event.id)
       }
     };
 }
@@ -74,15 +74,14 @@ renderCalendar() {
     let calendarevents: any= []
     for(let event of this.userevents)
     {
-      console.log(event.title)
-      console.log(event.date_time_begin)
 
       //check if event has start date
       if(event.date_time_begin == undefined){
         calendarevents = [
           ...calendarevents,
           {
-        title:event.title
+        title:event.title,
+        id: event.id
          }
         ]
       }else{
@@ -90,7 +89,8 @@ renderCalendar() {
           ...calendarevents,
           {
         start:new Date(event.date_time_begin.toString()),
-        title:event.title
+        title:event.title,
+        id: event.id
           }
       ]
       }
@@ -98,7 +98,7 @@ renderCalendar() {
 
       this.events = calendarevents
       this.eventService.findAllUsersEvents()
-      this.renderCalendar()
+      this.renderCalendar(this.router)
     }
 
 
