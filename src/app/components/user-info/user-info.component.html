@@ -12,8 +12,10 @@
         <li>
             <b>FUN FACT: </b>{{ user.fun_fact }}
         </li>
+        <button class="edit-button"(click)="navigateToEditUser()">Edit Profile</button>
     </ul>
     <section id="avatar">
         <img id="img" src="{{ user.avatar ?? '/assets/img/blank_avatar.png' }}" [alt]="user.name">
     </section>
+    
 </div>
