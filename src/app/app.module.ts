@@ -96,7 +96,7 @@ import { UserPage } from './pages/user/user.page';
     PostListItemComponent,
     SearchComponent,
     EditProfilePage,
-    EditProfileFormComponent
+    EditProfileFormComponent,
     UserPage
   ],
   imports: [

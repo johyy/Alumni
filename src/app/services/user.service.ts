@@ -9,7 +9,6 @@ import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { isAfter } from 'date-fns';
 
 const { apiUsers } = environment
 
@@ -17,10 +16,6 @@ const { apiUsers } = environment
   providedIn: 'root'
 })
 export class UserService {
-  private httpOptions = {
-    headers: new HttpHeaders({ 
-      'Content-Type': 'application/json',})
-  };
 
   private _user!: User;
   private _error: string = "";
@@ -77,6 +72,7 @@ export class UserService {
     })
   }
 
+  
   // -------- Test method --------
   public userFindTest(): Observable<User>{
     return this.http.get<User>(apiUsers).pipe(
@@ -135,6 +131,7 @@ export class UserService {
       bio: user.bio,
       fun_fact: user.fun_fact
     }
+
     return this.http.patch<any>(`${environment.baseUrl}/user/${userId}`,body,this.httpOptions).pipe(
       catchError(this.handleError<string>('edituser'))
     )
