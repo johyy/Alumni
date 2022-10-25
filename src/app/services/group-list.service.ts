@@ -88,6 +88,10 @@ export class GroupListService {
     }
   }
 
+  navigateToError() {
+    this.router.navigate(['/error'])
+  }
+
   createGroup(title: String, description: String, userId: number, privateBoolean: boolean): Observable<string>{
     const body = {
       title:title,

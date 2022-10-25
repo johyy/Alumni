@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Topic } from 'src/app/models/topic.model';
 import { User } from 'src/app/models/user.model';
+import { GroupListService } from 'src/app/services/group-list.service';
 import { JoinTopicService } from 'src/app/services/join-topic.service';
 import { TopicService } from 'src/app/services/topic.service';
 import { UserService } from 'src/app/services/user.service';
@@ -20,7 +21,7 @@ export class TopicsListItemComponent implements OnInit {
     return this.userService.user;
   }
 
-  constructor(private topicService: TopicService, private userService: UserService, private joinTopicService: JoinTopicService) { }
+  constructor(private topicService: TopicService, private userService: UserService, private joinTopicService: JoinTopicService, private groupService: GroupListService) { }
 
   ngOnInit(): void {
     this.userService.findProfile();
@@ -49,6 +50,7 @@ export class TopicsListItemComponent implements OnInit {
           this.topicService.findAllTopics();
         },
         error: (error: HttpErrorResponse) => {
+          this.groupService.navigateToError()
           console.log("ERROR", error.message)
         }
       })

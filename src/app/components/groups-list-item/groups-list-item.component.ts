@@ -56,6 +56,7 @@ export class GroupsListItemComponent implements OnInit {
           this.groupListService.findAllGroups();
         },
         error: (error: HttpErrorResponse) => {
+          this.groupListService.navigateToError()
           console.log("ERROR", error.message)
         }
       })
