@@ -10,7 +10,7 @@ Front-end client for *Alumni Network Portal* -web application.
 <br />
 Separate repository for the [backend](https://gitlab.com/Laura_Byman/alumni_backend).
 <br />
-User Manual for the application can be found [here](https://gitlab.com/johyy/alumni-front/-/blob/master/user_manual.pdf).
+User Manual for the application can be found [here](https://gitlab.com/johyy/alumni-front/-/blob/master/usermanual.pdf).
 
 ## Table of contents
 * [Introduction](#introduction)
