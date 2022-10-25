@@ -16,6 +16,9 @@
         >Guest capacity: {{singleEvent && singleEvent.guest_capacity}}
         </h4>
         <p class="event-info-description">{{singleEvent && singleEvent.description}}</p>
+        <div class="event-info-button-group">
+            <button (click)="newPost()" class="event-addPost-button">ADD A COMMENT</button>  
+        </div> 
     </div>
     <div class="event-info-scroll">
         <ul >
@@ -33,9 +36,11 @@
             </div>     
             <div class="event-info-button-group">
                 <button type="button" class="event-info-button" (click)="cancel()">Back</button>    
-            </div>           
+            </div> 
+       
         </ul>
     </div>
+    
 
 </div>
 
