@@ -57,8 +57,13 @@ export class PostComposeComponent implements OnInit {
       this.postService.createPost(newPost).subscribe( 
         resp => {if(resp.status == 201){
           // If post is a reply navigate to thread, else to created post itself
-          const navigateToPostId = newPost.original_post_id != 0? newPost.original_post_id : resp.body;
-          this.router.navigate(['post',navigateToPostId]);
+          if((this.target === "event")){
+            this.router.navigate(['event',this.postTargetId]);
+          }else{
+            const navigateToPostId = newPost.original_post_id != 0? newPost.original_post_id : resp.body;
+            this.router.navigate(['post',navigateToPostId]);
+          }
+         
         }else this.errorMsg = "Failed to send post"}
       )        
     }    

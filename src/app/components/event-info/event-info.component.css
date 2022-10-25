@@ -3,7 +3,7 @@
 .event-info-wrap {
     box-sizing: border-box;
     width: 90%;
-    height: 80%;
+    height: 90%;
     margin: 2% 0% 0% 5%;
     background: #D9D8D2;
     border-radius: 30px;
@@ -111,6 +111,23 @@
 .event-info-button{
    font-family: 'Shadows Into Light Two';    
    width: 203px;
+   height: 57px;
+   margin: 2%;
+   background: #949494;
+   color: #FFFFFF;
+   border-color: transparent;
+   border-radius: 30px;
+   font-style: normal;
+   font-weight: 700;
+   font-size: 32px;
+   line-height: 61px;    
+}
+
+
+
+.event-addPost-button{
+   font-family: 'Shadows Into Light Two';    
+   width: 303px;
    height: 57px;
    margin: 2%;
    background: #949494;
