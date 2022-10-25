@@ -64,7 +64,6 @@ export class EventService {
   }
 
   findAllUsersEvents(): void {
-    console.log("findAllUsersEvents");
     if(!this._refreshEvents){
       if(this._events) return;
       if(StorageUtil.storageRead(StorageKeys.Events)) {
@@ -82,8 +81,6 @@ export class EventService {
     .subscribe({
       next: (events: Event[]) => {
         this._events = events
-        console.log("findAllUsersEvents", events);
-        
         StorageUtil.storageSave(StorageKeys.Events, events);
         this._refreshEvents = false;
       },
