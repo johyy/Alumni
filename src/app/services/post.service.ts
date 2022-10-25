@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
 import { environment } from 'src/environments/environment';
 import { finalize, Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../enums/storage-keys.enum';
@@ -77,7 +77,6 @@ export class PostService {
       catchError(this.handleError<string>('editPost'))
     )
    }
-
   
    /**
     * (GET) get all posts targeted to an event
@@ -129,7 +128,6 @@ export class PostService {
     })
     this._posts = posts;
   }
-
 
   findPostById(postId: number): Post {
     if(!StorageUtil.storageRead<Post>(StorageKeys.Posts)) {      

@@ -35,17 +35,14 @@ export class EventInfoComponent implements OnInit, OnChanges {
         // Get users who have posted for this event
         this.userService.findUsersByIdList({userIds: userIds}).subscribe(
           resp => {this.users = resp;this.mapIdsToUsers()}          
-          )
+        )
       }    
     )}
   }
 
-  
   newPost():void{
     this.router.navigate(['post','event', this.id]) 
   }
-
-
 
   cancel(): void {
     this.location.back()

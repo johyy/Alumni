@@ -47,9 +47,9 @@ ul li {
     margin: 30px 0px 0px 5%;
     display: flex;
     justify-content: flex-end;
- }
+}
  
- .edit-button{
+.edit-button{
     font-family: 'Shadows Into Light Two';    
     width: 203px;
     height: 57px;
@@ -62,4 +62,4 @@ ul li {
     font-weight: 700;
     font-size: 32px;
     line-height: 61px;    
- }
+}

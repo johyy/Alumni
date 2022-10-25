@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, firstValueFrom, Observable, take, tap } from 'rxjs';
+import { finalize, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StorageKeys } from '../enums/storage-keys.enum';
 import { Group } from '../models/group.model';
@@ -71,7 +71,6 @@ export class UserService {
       }
     })
   }
-
   
   // -------- Test method --------
   public userFindTest(): Observable<User>{
@@ -90,7 +89,6 @@ export class UserService {
       //tap(resp => console.log(resp)),
     )
   }
-
 
   public findUserById(id: User | number): Observable<User> {
     if (!StorageUtil.storageReadOne<User>(StorageKeys.User)) {
@@ -135,5 +133,5 @@ export class UserService {
     return this.http.patch<any>(`${environment.baseUrl}/user/${userId}`,body,this.httpOptions).pipe(
       catchError(this.handleError<string>('edituser'))
     )
-    }
+  }
 }

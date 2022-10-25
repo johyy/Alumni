@@ -44,8 +44,7 @@ export class EventService {
       start:new Date(event.date_time_begin.toString()),
       title:event.title,
         }
-    ]
-    
+      ]
     }
     return calendarevents;
   }
@@ -153,6 +152,6 @@ export class EventService {
     return this.http.post<any>(
       `${environment.baseUrl}/event/${eventId}/invite/${targetAudience}/${targetId}`,this.httpOptions).pipe(
         catchError(this.handleError<string>('targetInvitation'))
-      )
+    )
   }
 }

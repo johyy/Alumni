@@ -36,7 +36,6 @@ export class CalendarComponent implements OnInit {
    dayMaxEvents: true
  };
 
-
   get loading(): boolean {
     return this.eventService.loading;
   }
@@ -44,7 +43,6 @@ export class CalendarComponent implements OnInit {
   get error(): string {
     return this.eventService.error;
   }
-
 
 renderCalendar(router:Router) {
    this.calendarOptions = {
@@ -65,9 +63,7 @@ renderCalendar(router:Router) {
         router.navigateByUrl(`/event/` + info.event.id)
       }
     };
-}
-
-
+  }
 
   ngOnInit(): void {
     this.userevents = this.route.snapshot.data['events']
@@ -84,22 +80,19 @@ renderCalendar(router:Router) {
         id: event.id
          }
         ]
-      }else{
+      } else {
         calendarevents = [
           ...calendarevents,
           {
-        start:new Date(event.date_time_begin.toString()),
-        title:event.title,
-        id: event.id
+            start:new Date(event.date_time_begin.toString()),
+            title:event.title,
+            id: event.id
           }
-      ]
+        ]
       }
-      }
-
-      this.events = calendarevents
-      this.eventService.findAllUsersEvents()
-      this.renderCalendar(this.router)
     }
-
-
+    this.events = calendarevents
+    this.eventService.findAllUsersEvents()
+    this.renderCalendar(this.router)
+  }
 }

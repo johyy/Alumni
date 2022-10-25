@@ -28,5 +28,4 @@ export class GroupListPage implements OnInit {
   ngOnInit(): void {
     this.groupListService.findAllGroups();
   }
-
 }

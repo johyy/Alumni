@@ -141,7 +141,6 @@ const routes: Routes = [
     component: ErrorPage,
     canActivate: [AuthGuard]
   }
-
 ];
 
 @NgModule({

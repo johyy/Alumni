@@ -59,5 +59,4 @@ export class EventCreateComponent implements OnInit {
   cancel(): void {
     this.location.back()
   }
-
 }

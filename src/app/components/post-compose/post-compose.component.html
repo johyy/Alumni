@@ -1,5 +1,5 @@
 <div class="post-compose-wrap">  
-        <h1 class="post-compose-header-text">New post: {{targetTitle}}</h1>
+    <h1 class="post-compose-header-text">New post: {{targetTitle}}</h1>
         <span class="post-compose-errormsg">{{errorMsg}}</span>      
         <form #createPostForm="ngForm" 
             (ngSubmit)="title.invalid? title.control.markAsTouched() : postInEdit? editPost(createPostForm) : createPost(createPostForm);
@@ -43,9 +43,6 @@
                     <button type="submit" class="post-compose-button"  >SEND</button>     
                 </div>           
             </div> 
-           
         </form>
-    
-
 </div>
  

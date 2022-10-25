@@ -49,5 +49,4 @@ export class PostListComponent implements OnInit {
     this.groupListService.findAllGroups();
     this.topicService.findAllTopics();
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { Topic } from 'src/app/models/topic.model';
@@ -37,5 +37,4 @@ export class TopicInfoComponent implements OnInit {
     let parts = this.router.url.split("/");
     this.topicId = parseInt(parts[2]);
   }
-
 }

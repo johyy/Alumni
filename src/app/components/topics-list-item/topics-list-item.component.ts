@@ -54,7 +54,7 @@ export class TopicsListItemComponent implements OnInit {
           console.log("ERROR", error.message)
         }
       })
-  }
+    }
 
   onJoinClick(topicId: number): void {
     this.topicService.navigateToPage(true, topicId)
@@ -66,8 +66,7 @@ export class TopicsListItemComponent implements OnInit {
         },
         error: (error: HttpErrorResponse) => {
           console.log("ERROR", error.message)
-        }
-      })
-    }
-
+      }
+    })
+  }
 }

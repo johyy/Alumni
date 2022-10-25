@@ -28,5 +28,4 @@ export class ProfilePage implements OnInit {
   ngOnInit(): void {
     this.userService.findProfile();
   }
-
 }
