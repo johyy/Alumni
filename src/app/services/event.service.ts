@@ -44,8 +44,7 @@ export class EventService {
       start:new Date(event.date_time_begin.toString()),
       title:event.title,
         }
-    ]
-    
+      ]
     }
     return calendarevents;
   }
@@ -65,7 +64,6 @@ export class EventService {
   }
 
   findAllUsersEvents(): void {
-    console.log("findAllUsersEvents");
     if(!this._refreshEvents){
       if(this._events) return;
       if(StorageUtil.storageRead(StorageKeys.Events)) {
@@ -83,8 +81,6 @@ export class EventService {
     .subscribe({
       next: (events: Event[]) => {
         this._events = events
-        console.log("findAllUsersEvents", events);
-        
         StorageUtil.storageSave(StorageKeys.Events, events);
         this._refreshEvents = false;
       },
@@ -153,6 +149,6 @@ export class EventService {
     return this.http.post<any>(
       `${environment.baseUrl}/event/${eventId}/invite/${targetAudience}/${targetId}`,this.httpOptions).pipe(
         catchError(this.handleError<string>('targetInvitation'))
-      )
+    )
   }
 }

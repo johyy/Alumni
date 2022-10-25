@@ -95,5 +95,5 @@ export class TopicService {
     return this.http.post<any>(`${environment.baseUrl}/topic`,body,this.httpOptions).pipe(      
       catchError(this.handleError<string>('createTopic'))
     )
-   }
+  }
 }

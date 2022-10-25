@@ -22,5 +22,4 @@ export class JoinGroupPage implements OnInit {
   onGroupPageClick(groupId: number) {
     this.groupListService.navigateToGroupPage(groupId);
   }
-
 }

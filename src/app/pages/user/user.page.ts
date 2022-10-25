@@ -22,5 +22,4 @@ export class UserPage implements OnInit {
     let userId = parseInt(parts[2]);
     this.userService.findUserById(userId).subscribe(data => this.user = data);
   }
-
 }

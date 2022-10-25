@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
  
- .post-compose-wrap {
+.post-compose-wrap {
     box-sizing: border-box;
     width: 90%;
     height: 75%;
@@ -8,8 +8,8 @@
     background: #D9D8D2;
     border: 4px solid #000000;
     border-radius: 30px;
- }
- .post-compose-header-text{
+}
+.post-compose-header-text{
     width: 100%;
     margin: 15px;
     font-family: 'Shadows Into Light Two';
@@ -18,8 +18,8 @@
     font-size: 56px;
     text-align: center;
     color: #000000;
- }
- .post-compose-title-input{
+}
+.post-compose-title-input{
     width: 85%;
     height: 10%;
     background: #FFFFFF;
@@ -31,7 +31,7 @@
     letter-spacing: 2px;
     font-family: 'Shadows Into Light Two';
     padding: 8px;
- }
+}
 .post-compose-textarea{
     width: 85%;
     height: 370px;

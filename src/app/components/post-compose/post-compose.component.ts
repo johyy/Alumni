@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router,ActivatedRoute, ParamMap } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common'
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/models/post.model';
@@ -64,7 +64,7 @@ export class PostComposeComponent implements OnInit {
             this.router.navigate(['post',navigateToPostId]);
           }
          
-        }else this.errorMsg = "Failed to send post"}
+        } else this.errorMsg = "Failed to send post"}
       )        
     }    
   }
@@ -87,5 +87,4 @@ export class PostComposeComponent implements OnInit {
   cancel(): void {
     this.location.back()
   }
-
 }

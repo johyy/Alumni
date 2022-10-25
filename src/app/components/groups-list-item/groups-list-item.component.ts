@@ -60,7 +60,7 @@ export class GroupsListItemComponent implements OnInit {
           console.log("ERROR", error.message)
         }
       })
-  }
+    }
 
   checkIfIsIn(): void {
     if (this.user.id === undefined) {

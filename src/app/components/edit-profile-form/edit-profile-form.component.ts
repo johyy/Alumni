@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
@@ -43,10 +43,7 @@ export class EditProfileFormComponent implements OnInit {
           ()=>{this.router.navigate(['profile'])
           StorageUtil.StorageSaveOne(StorageKeys.User, editedProfile)
         } 
-        )
-      }
-
-    }   
-  }
-
-
+      )
+    }
+  }   
+}

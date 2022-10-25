@@ -26,5 +26,4 @@ export class TopicListPage implements OnInit {
   ngOnInit(): void {
     this.topicService.findAllTopics();
   }
-
 }

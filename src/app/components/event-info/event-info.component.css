@@ -1,113 +1,111 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 
 .event-info-wrap {
-    box-sizing: border-box;
-    width: 90%;
-    height: 90%;
-    margin: 2% 0% 0% 5%;
-    background: #D9D8D2;
-    border-radius: 30px;
-    opacity: 0.95;
- }
- .event-info-header-text{
-    width: 100%;
-    font-family: 'Shadows Into Light Two';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 56px;
-    text-align: center;
-    color: #000000;
- }
- .event-info-small-headers-3{
-    margin: 10px;
-    font-family: 'Shadows Into Light Two';
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: whitesmoke;
-    text-align: center;    
- }
- .event-info-small-headers-4{
-    font-family: 'Shadows Into Light Two';
-    font-weight: 600;
-    color: whitesmoke;
-    margin-left: 2%;
-    letter-spacing: 1px;
- }
- .event-info-p{
-    font-family: 'Shadows Into Light Two';
-    font-weight: 600;
-    color: whitesmoke;
-    margin: 1%;
-    letter-spacing: 1px;
- }
- .event-info-description{
-    font-family: 'Shadows Into Light Two';
-    color: whitesmoke;
-    font-size: 18px;
-    margin-left: 2%;
-    letter-spacing: 1px;
- }
- .event-info-event{
-    position: relative;
-    margin-left: 5%;
-    width: 90%;
-    height: 35%;
-    background: #949494;
-    border: 2px solid #000000;
-    border-radius: 30px;
- }
- .event-info-host {
-    position: absolute;
-    flex-direction: column;
-    left: 90%;
-    top: 1%;
-    padding: 5px;
-    border-radius: 30px;
-    background-color: #a7a1a1;    
- }
- .event-info-avatar{
-    width: 70px;
-    border: 1px solid #000000;
-    border-radius: 50px;
-    background-color: lightgray;
- }
- .event-info-host-name{
-    color: whitesmoke;
-    font-family: 'Shadows Into Light Two';
-    letter-spacing: 1px;
-    font-size: 20px;
-    text-align: center;
- }
- .event-info-scroll{
-    overflow-y: scroll;
-    border-radius: 5px;
-    height: 50%;
-    width: 90%;
-    margin-left: 5%;
- }
- .event-info-comment{
-    position: relative;
-    border: 1px solid #000000;
-    border-radius: 25px;
-    margin: 10px;
-    padding: 5px;
-    height: 200px;
-    background-color: #949494;
-    display: flex;
-    justify-content: space-around;
- }
- .event-info-host{
+   box-sizing: border-box;
+   width: 90%;
+   height: 90%;
+   margin: 2% 0% 0% 5%;
+   background: #D9D8D2;
+   border-radius: 30px;
+   opacity: 0.95;
+}
+.event-info-header-text{
+   width: 100%;
+   font-family: 'Shadows Into Light Two';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 56px;
+   text-align: center;
+   color: #000000;
+}
+.event-info-small-headers-3{
+   margin: 10px;
+   font-family: 'Shadows Into Light Two';
+   font-weight: 600;
+   letter-spacing: 1px;
+   color: whitesmoke;
+   text-align: center;    
+}
+.event-info-small-headers-4{
+   font-family: 'Shadows Into Light Two';
+   font-weight: 600;
+   color: whitesmoke;
+   margin-left: 2%;
+   letter-spacing: 1px;
+}
+.event-info-p{
+   font-family: 'Shadows Into Light Two';
+   font-weight: 600;
+   color: whitesmoke;
+   margin: 1%;
+   letter-spacing: 1px;
+}
+.event-info-description{
+   font-family: 'Shadows Into Light Two';
+   color: whitesmoke;
+   font-size: 18px;
+   margin-left: 2%;
+   letter-spacing: 1px;
+}
+.event-info-event{
+   position: relative;
+   margin-left: 5%;
+   width: 90%;
+   height: 35%;
+   background: #949494;
+   border: 2px solid #000000;
+   border-radius: 30px;
+}
+.event-info-host {
+   position: absolute;
+   flex-direction: column;
+   left: 90%;
+   top: 1%;
+   padding: 5px;
+   border-radius: 30px;
+   background-color: #a7a1a1;    
+}
+.event-info-avatar{
+   width: 70px;
+   border: 1px solid #000000;
+   border-radius: 50px;
+   background-color: lightgray;
+}
+.event-info-host-name{
+   color: whitesmoke;
+   font-family: 'Shadows Into Light Two';
+   letter-spacing: 1px;
+   font-size: 20px;
+   text-align: center;
+}
+.event-info-scroll{
+   overflow-y: scroll;
+   border-radius: 5px;
+   height: 50%;
+   width: 90%;
+   margin-left: 5%;
+}
+.event-info-comment{
+   position: relative;
+   border: 1px solid #000000;
+   border-radius: 25px;
+   margin: 10px;
+   padding: 5px;
+   height: 200px;
+   background-color: #949494;
+   display: flex;
+   justify-content: space-around;
+}
+.event-info-host{
     display: flex;
     justify-content: flex-start;
- }
-
- .event-info-button-group{
+}
+.event-info-button-group{
    width: 90%;
    margin: 30px 0px 0px 5%;
    display: flex;
    justify-content: flex-end;
 }
-
 .event-info-button{
    font-family: 'Shadows Into Light Two';    
    width: 203px;
@@ -122,9 +120,6 @@
    font-size: 32px;
    line-height: 61px;    
 }
-
-
-
 .event-addPost-button{
    font-family: 'Shadows Into Light Two';    
    width: 303px;

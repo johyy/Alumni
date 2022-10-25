@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
 import { Post } from 'src/app/models/post.model';
@@ -37,5 +37,4 @@ export class GroupInfoComponent implements OnInit {
     let parts = this.router.url.split("/")
     this.groupId = parseInt(parts[2])
   }
-
 }

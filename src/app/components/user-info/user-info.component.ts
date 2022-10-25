@@ -21,9 +21,9 @@ export class UserInfoComponent implements OnInit {
   }
 
   isCurrentUser(): Boolean {
-    if(this.user.id == this.currentUser.id){
+    if (this.user.id == this.currentUser.id) {
       return true;
-    }else{
+    } else {
       return false
     }
   }
