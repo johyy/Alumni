@@ -1,8 +1,12 @@
 .calendar { 
     padding: 20px; 
-    position: absolute; 
+    /* position: absolute;  */
     width: 905px; 
     height: 367px; 
-    left: 30px; 
-    top: 150px; 
+    /* left: 30px; 
+    top: 150px;  */
+}
+
+:host {
+    height: 85vh;
 }
